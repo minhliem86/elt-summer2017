@@ -1,12 +1,11 @@
 <?php
 
 Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],function(){
+	Route::get('login',['middleware'=>'Checklogined','as'=>'admin.getlogin','uses'=>'Auth\AuthController@getLogin']);
+	Route::post('login',['middleware'=>'Checklogined','as'=>'admin.postLogin','uses'=>'Auth\AuthController@postLogin']);
 
-	Route::get('login',['as'=>'admin.getlogin','uses'=>'Auth\AuthController@getLogin']);
-	Route::post('login',['as'=>'admin.postLogin','uses'=>'Auth\AuthController@postLogin']);
-
-	Route::get('register',['as'=>'admin.getRegister','uses'=>'Auth\AuthController@getRegister']);
-	Route::post('register',['as'=>'admin.postRegister','uses'=>'Auth\AuthController@postRegister']);
+	Route::get('register',['middleware'=>'Checklogined','as'=>'admin.getRegister','uses'=>'Auth\AuthController@getRegister']);
+	Route::post('register',['middleware'=>'Checklogined', 'as'=>'admin.postRegister','uses'=>'Auth\AuthController@postRegister']);
 
 	Route::get('sendEmailReset',['as'=>'admin.getSendEmailReset','uses'=>'Auth\PasswordController@getEmail']);
 	Route::post('sendEmailReset',['as'=>'admin.postSendEmailReset','uses'=>'Auth\PasswordController@postEmail']);
@@ -15,21 +14,14 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 
 	Route::get('logout',['as'=>'admin.getLogout','uses'=>'Auth\AuthController@getLogout']);
 
-	Route::group(['middleware'=>'auth'],function(){
+	Route::group(['middleware'=>'admin'],function(){
 		Route::get('dashboard',['as'=>'admin','uses'=>'AdminController@index']);
 
 		/*PROMOTION*/
 		Route::post('promotion/deleteall',['as'=>'admin.promotion.deleteall','uses'=>'PromotionController@deleteAll']);
 		Route::resource('promotion','PromotionController');
 
-		/*COUTRY*/
-		Route::post('country/deleteall',['as'=>'admin.country.deleteall','uses'=>'CountryController@deleteAll']);
-		Route::post('country/ajaxRemoveBanner',['as'=>'admin.country.removeBanner','uses'=>'CountryController@removeBanner']);
-		Route::resource('country','CountryController');
 
-		/*LOCATION*/
-		Route::post('location/deleteall',['as'=>'admin.location.deleteall','uses'=>'LocationController@deleteAll']);
-		Route::resource('location','LocationController');
 
 		/*TESTIMONIAL*/
 		Route::post('testimonial/deleteall',['as'=>'admin.testimonial.deleteall','uses'=>'TestimonialController@deleteAll']);
@@ -41,14 +33,12 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 
 		/*Tour*/
 		Route::post('tour/deleteall',['as'=>'admin.tour.deleteall','uses'=>'TourController@deleteAll']);
-		// Route::post('tour/addSchedule',['as'=>'admin.tour.addSchedule','uses'=>'TourController@addSchedule']);
-		// Route::post('tour/ajaxDeleteSchedule',['as'=>'admin.tour.ajaxDeleteShedule','uses'=>'TourController@ajaxDeleteSchedule']);
 		Route::resource('tour','TourController');
 
 		/*CHANGE PASS*/
 		Route::get('password',['as'=>'admin.getChangePass','uses'=>'AdminController@getChangePass']);
 		Route::post('password',['as'=>'admin.postChangePass','uses'=>'AdminController@postChangePass']);
 	});
-	
+
 
 });

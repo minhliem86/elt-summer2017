@@ -12,9 +12,14 @@ class CreatePromotionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('promotions', function(Blueprint $table)
+		Schema::connection('mysql')->create('promotions', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('title')->nullable();
+			$table->text('content')->nullable();
+			$table->string('img_url')->nullable();
+			$table->integer('order')->nullable()->default(0);
+			$table->boolean('status')->nullable()->default(1);
 			$table->timestamps();
 		});
 	}
@@ -26,7 +31,7 @@ class CreatePromotionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('promotions');
+		Schema::connection('mysql')->drop('promotions');
 	}
 
 }

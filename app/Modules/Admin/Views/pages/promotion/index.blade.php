@@ -38,10 +38,10 @@
 					    @foreach($promotion as $item)
 						<tr data-id="{!!$item->id!!}">
 							<td >{!!$item->id!!}</td>
-							<td><b><a href="{!!route('admin.promotion.edit',$item->id)!!}">{!!$item->name!!}</a></b></td>
-							<td><img src="{!!$item->img_avatar!!}" width="100" alt=""></td>
+							<td><b><a href="{!!route('admin.promotion.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
+							<td><img src="{!!$item->img_url!!}" width="100" alt=""></td>
 							<td>
-							<a href="{!!route('admin.promotion.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a> 
+							<a href="{!!route('admin.promotion.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
 							{!!Form::open(array('route'=>array('admin.promotion.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
 							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"   > Remove </button>
 							{!!Form::close()!!}
@@ -77,7 +77,7 @@
 		$(document).ready(function(){
 			{!! Notification::showSuccess('alertify.success(":message");') !!}
 			{!! Notification::showError('alertify.error(":message");') !!}
-			
+
 			var table = $('#table-post').DataTable({
 				'ordering': false,
 				"bLengthChange": false,
@@ -86,7 +86,7 @@
 			$('#table-post tbody').on('click','tr',function(){
 				$(this).toggleClass('selected');
 			})
-			
+
 			$('#btn-count').click( function () {
 				var data = [];
 				table.rows('.selected').data().each(function(index, e){

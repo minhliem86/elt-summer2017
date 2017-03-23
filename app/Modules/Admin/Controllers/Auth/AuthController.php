@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;
 use Auth;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller {
@@ -37,7 +38,7 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		// $this->middleware('guest', ['except' => 'getLogout']);
 	}
 
 	protected function validator(array $data)
@@ -53,13 +54,12 @@ class AuthController extends Controller {
 
     protected function create(array $data)
     {
-        return App\Models\User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-//		Auth::logout();
-//		return view('admin::pages.auth.waiting');
+
     }
 
 
@@ -77,7 +77,7 @@ class AuthController extends Controller {
 	 */
 	public function postRegister(Request $request)
 	{
-		$validator = $this->registrar->validator($request->all());
+		$validator = $this->validator($request->all());
 
 		if ($validator->fails())
 		{
@@ -85,8 +85,12 @@ class AuthController extends Controller {
 				$request, $validator
 			);
 		}
+		$user = $this->create($request->all());
+		$admin = Role::where('name','Admin')->first();
 
-		$this->auth->login($this->registrar->create($request->all()));
+		$user->attachRole($admin);
+
+		$this->auth->login($user);
 
 		return redirect($this->redirectPath());
 	}

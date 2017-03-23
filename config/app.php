@@ -145,7 +145,10 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
-
+		'App\Modules\ModuleServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
+		'Krucas\Notification\NotificationServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 	],
 
 	/*
@@ -194,7 +197,11 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form' => 'Collective\Html\FormFacade',
-      	'Html' => 'Collective\Html\HtmlFacade',
+    'Html' => 'Collective\Html\HtmlFacade',
+		'Str' => 'Illuminate\Support\Str',
+		'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
+		'Notification' => 'Krucas\Notification\Facades\Notification',
+		'Image' => 'Intervention\Image\Facades\Image'
 
 	],
 
