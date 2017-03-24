@@ -16,6 +16,7 @@ class CreateTestimonialsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title')->nullable();
+			$table->string('slug')->nullable();
 			$table->text('content')->nullable();
 			$table->string('img_url')->nullable();
 			$table->string('img_fb_thumb')->nullable();

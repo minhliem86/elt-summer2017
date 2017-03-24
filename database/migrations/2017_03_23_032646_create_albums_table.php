@@ -16,6 +16,7 @@ class CreateAlbumsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title')->nullable();
+			$table->string('slug')->nullable();
 			$table->text('description')->nullable();
 			$table->integer('order')->nullable()->default(0);
 			$table->boolean('status')->nullable()->default(1);

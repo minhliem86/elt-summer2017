@@ -3,7 +3,7 @@
 @section('content')
  <section class="content-header">
   <h1>
-    Testimonial Page
+    Activity Page
     <!-- <small>Optional description</small> -->
   </h1>
   <!-- <ol class="breadcrumb">
@@ -17,35 +17,33 @@
 			<div class="box">
 	            <div class="box-header">
 	              <div class="pull-right">
-	              	<a href="{!!route('admin.testimonial.create')!!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i> Add New</a>
+	              	<a href="{!!route('admin.activity.create')!!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i> Add New</a>
 					<button class="btn btn-danger btn-xs" id="btn-count">Remove data selected</button>
 	              </div>
 	            </div>
 	            <!-- /.box-header -->
-	            @if($testimonial->count() != 0)
+	            @if($activity->count() != 0)
 				<div class="box-body">
 
 				  <table id="table-post" class="table table-bordered table-striped">
 				    <thead>
 					    <tr>
 							<th>ID</th>
-							<th data-width="30%">Articles</th>
+							<th data-width="30%">Title</th>
 							<th>Image</th>
-							<th>Author</th>
 							<th>Action</th>
 						</tr>
 				    </thead>
 				    <tbody>
-					    @foreach($testimonial as $item)
+					    @foreach($activity as $item)
 						<tr>
 							<td >{!!$item->id!!}</td>
-							<td><b><a href="{!!route('admin.testimonial.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
+							<td><b><a href="{!!route('admin.activity.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
 							<td><img src="{!!$item->img_url!!}" width="100" alt=""></td>
-							<td>{!!$item->author!!}</td>
 							<td>
-							<a href="{!!route('admin.testimonial.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
-							{!!Form::open(array('route'=>array('admin.testimonial.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
-							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"   > Remove </button>
+							<a href="{!!route('admin.activity.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
+							{!!Form::open(array('route'=>array('admin.activity.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
+							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"> Remove </button>
 							{!!Form::close()!!}
 							</td>
 						</tr>
@@ -100,7 +98,7 @@
 				alertify.confirm('You can not undo this action. Are you sure ?', function(e){
 					if(e){
 						$.ajax({
-							'url':"{!!route('admin.testimonial.deleteall')!!}",
+							'url':"{!!route('admin.activity.deleteall')!!}",
 							'data' : {arr: data,_token:$('meta[name="csrf-token"]').attr('content')},
 							'type': "POST",
 							'success':function(result){

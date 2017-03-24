@@ -9,38 +9,26 @@
 		<div class="container-fluid">
 			{!!Form::model($promotion,array('route'=>array('admin.promotion.update',$promotion->id),'method'=>'PUT' ,'class'=>'formAdmin form-horizontal','files'=>true))!!}
 				<div class="form-group">
-					<label for="">Tên bài viết</label>
-					{!!Form::text('name',old('name'),array('class'=>'form-control'))!!}
+					<label for="">Title</label>
+					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}
 				</div>
 				<div class="form-group">
-					<label for="">Mô tả</label>
-					{!!Form::textarea('description',old('description'),array('class'=>'form-control','rows'=>3))!!}
-				</div>
-				<div class="form-group">
-					<label for="" >Nội dung</label>
+					<label for="" >Content</label>
 					{!!Form::textarea('content',old('content'),array('class'=>'form-control ckeditor'))!!}
 				</div>
-				
+
 				<div class="form-group">
-					<label for="" >Sắp xếp</label>
+					<label for="" >Sort</label>
 					{!!Form::text('order',old('order'),array('class'=>'form-control'))!!}
 				</div>
 
 				<div class="form-group">
-					<label for="" >Hình đại diện</label>
+					<label for="" >Image URL</label>
 					<p>
-						<img src="{!!$promotion->img_icon!!}" width="150" alt="">
-						{!!Form::hidden('img-bk',$promotion->img_icon)!!}
+						<img src="{!!$promotion->img_url!!}" width="150" alt="">
+						{!!Form::hidden('img-bk',$promotion->img_url)!!}
 					</p>
 					{!!Form::file('img')!!}
-				</div>
-				<div class="form-group">
-					<label for="" >Hình trang chi tiết</label>
-					<p>
-						<img src="{!!$promotion->img_avatar!!}" width="150" alt="">
-						{!!Form::hidden('img-bk-chitiet',$promotion->img_avatar)!!}
-					</p>
-					{!!Form::file('img-slide')!!}
 				</div>
 				<div class="form-group">
 					<span class="inline-radio"><input type="radio" name="status" value="1" {!!$promotion->status == 1 ? 'checked' : ''!!}> <b>Active</b> </span>

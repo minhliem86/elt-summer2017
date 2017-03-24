@@ -4,25 +4,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Notification;
 use App\Http\Requests\ImageRequest;
-use App\Repositories\PromotionRepository;
+use App\Repositories\ActivityRepository;
 use App\Repositories\CommonRepository;
 
 
-class PromotionController extends Controller {
+class ActivityController extends Controller {
 
-	protected $promotionRepository;
+	protected $activityRepository;
 
-	protected $_upload_folder = 'public/upload/promotion';
+	protected $_upload_folder = 'public/upload/activity';
 	protected $_default_img = "asset('public/assets/backend/img/image_thumbnail.gif')";
 
-	public function __construct(PromotionRepository $promotion){
-		$this->promotionRepository = $promotion;
+	public function __construct(ActivityRepository $activity){
+		$this->activityRepository = $activity;
 	}
 
 	public function index()
     {
-        $promotion = $this->promotionRepository->getAll();
-        return view('Admin::pages.promotion.index')->with(compact('promotion'));
+        $activity = $this->activityRepository->getAll();
+        return view('Admin::pages.activity.index')->with(compact('activity'));
     }
 
     /**
@@ -32,7 +32,8 @@ class PromotionController extends Controller {
      */
     public function create()
     {
-        return view('Admin::pages.promotion.create');
+			$center_lists = $this->activityRepository->listCenter();
+      return view('Admin::pages.activity.create',compact('center_lists'));
     }
 
     /**
@@ -43,9 +44,7 @@ class PromotionController extends Controller {
      */
     public function store(Request $request,ImageRequest $imgrequest)
     {
-        $current = $this->promotionRepository->getOrder();
-
-
+        $current = $this->activityRepository->getOrder();
 
 				if($imgrequest->hasFile('img')){
 						$common = new CommonRepository;
@@ -61,11 +60,12 @@ class PromotionController extends Controller {
             'img_url' => $img_url,
             'content' => $request->input('content'),
             'status'=> $request->status,
-            'order'=>$current
+            'order'=>$current,
+            'center_id'=>$request->center_id,
         ];
-        $this->promotionRepository->postCreate($data);
+        $this->activityRepository->postCreate($data);
         Notification::success('Created');
-        return  redirect()->route('admin.promotion.index');
+        return  redirect()->route('admin.activity.index');
     }
 
     /**
@@ -87,8 +87,9 @@ class PromotionController extends Controller {
      */
     public function edit($id)
     {
-        $promotion = $this->promotionRepository->getFindID($id);
-        return view('Admin::pages.promotion.view')->with(compact('promotion'));
+				$center_lists = $this->activityRepository->listCenter();
+        $activity = $this->activityRepository->getFindID($id);
+        return view('Admin::pages.activity.view')->with(compact('activity','center_lists'));
     }
 
     /**
@@ -113,10 +114,11 @@ class PromotionController extends Controller {
 				'content' => $request->input('content'),
 				'status'=> $request->status,
 				'order'=>$request->order,
+				'center_id'=>$request->center_id,
 			];
-			$this->promotionRepository->postUpdate($id,$data);
+			$this->activityRepository->postUpdate($id,$data);
       Notification::success('Updated');
-      return  redirect()->route('admin.promotion.index');
+      return  redirect()->route('admin.activity.index');
     }
 
     /**
@@ -126,9 +128,9 @@ class PromotionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $this->promotionRepository->delete($id);
+        $this->activityRepository->delete($id);
         \Notification::success('Remove Successful');
-        return redirect()->route('admin.promotion.index');
+        return redirect()->route('admin.activity.index');
     }
 
     public function deleteAll(Request $request){
@@ -137,7 +139,7 @@ class PromotionController extends Controller {
         }else{
             $data = $request->arr;
             if($data){
-                $this->promotionRepository->deleteAll($data);
+                $this->activityRepository->deleteAll($data);
                 return response()->json(array('msg'=>'ok'));
             }else{
                 return response()->json(array('msg'=>'error'));
@@ -146,12 +148,12 @@ class PromotionController extends Controller {
     }
 
     public function checkRelate(Request $request){
-        // $promotion = $this->promotionRepository->find($request->dataid);
-        // $count = $promotion->image()->get()->count();
+        // $activity = $this->activityRepository->find($request->dataid);
+        // $count = $activity->image()->get()->count();
         // if($count > 0){
         //     return response()->json(['msg'=>'yes']);
         // }else{
-        //     $promotion->delete();
+        //     $activity->delete();
         //     return response()->json(['msg'=>'done']);
         // }
     }

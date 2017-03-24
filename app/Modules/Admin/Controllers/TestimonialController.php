@@ -1,26 +1,28 @@
 <?php namespace App\Modules\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Testimonial;
 use Illuminate\Http\Request;
+
 use Notification;
 use App\Http\Requests\ImageRequest;
+use App\Repositories\TestimonialRepository;
+use App\Repositories\CommonRepository;
 
 
 class TestimonialController extends Controller {
 
-	protected $testimonial;
+	protected $testimonialRepository;
 
-    protected $upload_folder = 'testimonial';
-    protected $upload_sub_folder = 'slide';
+	protected $_upload_folder = 'public/upload/testimonial';
+	protected $_default_img = "asset('public/assets/backend/img/image_thumbnail.gif')";
 
-    public function __construct(Testimonial $testimonial){
-        $this->testimonial = $testimonial;
-    }
-    
-    public function index()
+	public function __construct(TestimonialRepository $testimonial){
+		$this->testimonialRepository = $testimonial;
+	}
+
+	public function index()
     {
-        $testimonial = $this->testimonial->select('id','title','author','img_avatar')->get();
+        $testimonial = $this->testimonialRepository->getAll();
         return view('Admin::pages.testimonial.index')->with(compact('testimonial'));
     }
 
@@ -40,66 +42,28 @@ class TestimonialController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageRequest $imgrequest, Testimonial $testimonial)
+    public function store(Request $request,ImageRequest $imgrequest)
     {
-        $order = $this->testimonial->orderBy('order','DESC')->first();
-        count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
-
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            $file->move($destinationPath,$filename);
-
-            // $size = getimagesize($file);
-            // if($size[0] > 620){
-            //     \Image::make($file->getRealPath())->resize(620,null,function($constraint){$constraint->aspectRatio();})->save($destinationPath.'/'.$filename);
-            // }else{
-            //     $file->move($destinationPath,$filename);
-            // }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-            // $img_alt = \GetNameImage::make('\/',$filename);
-        }else{
-            $img_url = asset('public/assets/backend/img/image_thumbnail.gif');
-            // $img_alt = \GetNameImage::make('\/',$img_url);
-        }
-
-        if($imgrequest->hasFile('imgslide')){
-            $file = $imgrequest->file('imgslide');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder.'/'.$this->upload_sub_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            // $file->move($destinationPath,$filename);
-
-            $filename_resize = $destinationPath.'/'.$filename;
-            $size = getimagesize($file);
-            \Image::make($file->getRealPath())->resize(760,500)->save($filename_resize);
-
-            $imgslide_url = asset('public/upload').'/'.$this->upload_folder.'/'.$this->upload_sub_folder.'/'.$filename;
-            // $img_alt = \GetNameImage::make('\/',$filename);
-        }else{
-            $imgslide_url = asset('public/assets/frontend/images/default-img/testimonial-default.jpg');
-            // $img_alt = \GetNameImage::make('\/',$img_url);
-        }
+        $current = $this->testimonialRepository->getOrder();
 
 
+
+				if($imgrequest->hasFile('img')){
+						$common = new CommonRepository;
+						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+				}else{
+					$img_url = $this->_default_img;
+				}
         $data = [
             'title'=>$request->title,
             'slug' => \Unicode::make($request->title),
-            'author' => $request->author,
-            'description' => $request->description,
-            'content' => $request->content,
-            'focus' => $request->focus,
-            'img_avatar' => $img_url,
-            'img_slides' => $imgslide_url,
+            'img_url' => $img_url,
+						'author'=>$request->author,
+            'content' => $request->input('content'),
             'status'=> $request->status,
             'order'=>$current
         ];
-        $this->testimonial->create($data);
+        $this->testimonialRepository->postCreate($data);
         Notification::success('Created');
         return  redirect()->route('admin.testimonial.index');
     }
@@ -123,7 +87,7 @@ class TestimonialController extends Controller {
      */
     public function edit($id)
     {
-        $testimonial = $this->testimonial->find($id);
+        $testimonial = $this->testimonialRepository->getFindID($id);
         return view('Admin::pages.testimonial.view')->with(compact('testimonial'));
     }
 
@@ -136,58 +100,24 @@ class TestimonialController extends Controller {
      */
     public function update(Request $request,ImageRequest $imgrequest, $id)
     {
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            $file->move($destinationPath,$filename);
-
-            // $size = getimagesize($file);
-            // if($size[0] > 620){
-            //     \Image::make($file->getRealPath())->resize(620,null,function($constraint){$constraint->aspectRatio();})->save($destinationPath.'/'.$filename);
-            // }else{
-            //     $file->move($destinationPath,$filename);
-            // }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-        }else{
-            $img_url = $request->input('img-bk');
-        }
-
-        if($imgrequest->hasFile('imgslide')){
-            $file = $imgrequest->file('imgslide');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder.'/'.$this->upload_sub_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            // $file->move($destinationPath,$filename);
-
-            $filename_resize = $destinationPath.'/'.$filename;
-            $size = getimagesize($file);
-            \Image::make($file->getRealPath())->resize(760,500)->save($filename_resize);
-
-            $imgslide_url = asset('public/upload').'/'.$this->upload_folder.'/'.$this->upload_sub_folder.'/'.$filename;
-        }else{
-            $imgslide_url = $request->input('imgslide-bk');
-        }
-
-        $testimonial = $this->testimonial->find($id);
-        $testimonial->title = $request->title;
-        $testimonial->slug = \Unicode::make($request->title);
-        $testimonial->author = $request->input('author');
-        $testimonial->description = $request->input('description');
-        $testimonial->content = $request->input('content');
-        $testimonial->focus = $request->input('focus');
-        $testimonial->img_avatar = $img_url;
-        $testimonial->img_slides = $imgslide_url;
-        $testimonial->status = $request->status;
-        $testimonial->order = $request->order;
-        $testimonial->save();
-
-        Notification::success('Updated');
-        return  redirect()->route('admin.testimonial.index');
+			if($imgrequest->hasFile('img')){
+				$common = new CommonRepository;
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+			}else{
+				$img_url = $request->input('img-bk');
+			}
+			$data = [
+				'title'=>$request->title,
+				'slug' => \Unicode::make($request->title),
+				'img_url' => $img_url,
+				'author'=>$request->author,
+				'content' => $request->input('content'),
+				'status'=> $request->status,
+				'order'=>$request->order,
+			];
+			$this->testimonialRepository->postUpdate($id,$data);
+      Notification::success('Updated');
+      return  redirect()->route('admin.testimonial.index');
     }
 
     /**
@@ -197,7 +127,7 @@ class TestimonialController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $this->testimonial->destroy($id);
+        $this->testimonialRepository->delete($id);
         \Notification::success('Remove Successful');
         return redirect()->route('admin.testimonial.index');
     }
@@ -208,7 +138,7 @@ class TestimonialController extends Controller {
         }else{
             $data = $request->arr;
             if($data){
-                $this->testimonial->destroy($data);
+                $this->testimonialRepository->deleteAll($data);
                 return response()->json(array('msg'=>'ok'));
             }else{
                 return response()->json(array('msg'=>'error'));
@@ -217,14 +147,14 @@ class TestimonialController extends Controller {
     }
 
     public function checkRelate(Request $request){
-        $testimonial = $this->testimonial->find($request->dataid);
-        $count = $testimonial->image()->get()->count();
-        if($count > 0){
-            return response()->json(['msg'=>'yes']);
-        }else{
-            $testimonial->delete();
-            return response()->json(['msg'=>'done']);
-        }
+        // $testimonial = $this->testimonialRepository->find($request->dataid);
+        // $count = $testimonial->image()->get()->count();
+        // if($count > 0){
+        //     return response()->json(['msg'=>'yes']);
+        // }else{
+        //     $testimonial->delete();
+        //     return response()->json(['msg'=>'done']);
+        // }
     }
-	
+
 }

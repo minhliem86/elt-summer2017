@@ -30,6 +30,10 @@ class PromotionRepository{
       $this->promotion->destroy($id);
     }
 
+    public function deleteAll($data){
+      $this->promotion->destroy($data);
+    }
+
     public function getOrder(){
       $order = $this->promotion->orderBy('order','DESC')->first();
       count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;

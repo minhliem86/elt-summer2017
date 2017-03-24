@@ -8,6 +8,6 @@ class Testimonial extends Model {
 
 	public $table = 'testimonials';
 
-	protected $fillable = ['title','content','img_url','img_fb_thumb','order','status'];
+	protected $fillable = ['title','slug','content','img_url','img_fb_thumb','order','status','author'];
 
 }
