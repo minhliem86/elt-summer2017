@@ -16,10 +16,6 @@
             <p class="error">{!!$errors->first('img')!!}</p>
           @endif
         </div>
-        <div class="form-group">
-          <label for="">Center List</label>
-          {!!Form::select('center_id',$center_lists,old('center_id'),['class'=>'form-control'])!!}
-        </div>
 				<div class="form-group">
 					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('VideoSeeder');
 		$this->call('ImageSeeder');
 		$this->call('ScheduleSeeder');
-
+		$this->call('CenterActivitySeeder');
 	}
 
 }

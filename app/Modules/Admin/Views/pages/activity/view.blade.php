@@ -16,10 +16,6 @@
           </p>
           {!!Form::file('img')!!}
         </div>
-        <div class="form-group">
-          <label for="">Center List</label>
-          {!!Form::select('center_id',$center_lists,$activity->center_id,['class'=>'form-control'])!!}
-        </div>
 				<div class="form-group">
 					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}

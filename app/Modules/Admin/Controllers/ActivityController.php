@@ -32,8 +32,7 @@ class ActivityController extends Controller {
      */
     public function create()
     {
-			$center_lists = $this->activityRepository->listCenter();
-      return view('Admin::pages.activity.create',compact('center_lists'));
+      return view('Admin::pages.activity.create');
     }
 
     /**
@@ -61,7 +60,6 @@ class ActivityController extends Controller {
             'content' => $request->input('content'),
             'status'=> $request->status,
             'order'=>$current,
-            'center_id'=>$request->center_id,
         ];
         $this->activityRepository->postCreate($data);
         Notification::success('Created');
@@ -87,9 +85,8 @@ class ActivityController extends Controller {
      */
     public function edit($id)
     {
-				$center_lists = $this->activityRepository->listCenter();
-        $activity = $this->activityRepository->getFindID($id);
-        return view('Admin::pages.activity.view')->with(compact('activity','center_lists'));
+				$activity = $this->activityRepository->getFindID($id);
+        return view('Admin::pages.activity.view',compact('activity'));
     }
 
     /**
@@ -114,7 +111,6 @@ class ActivityController extends Controller {
 				'content' => $request->input('content'),
 				'status'=> $request->status,
 				'order'=>$request->order,
-				'center_id'=>$request->center_id,
 			];
 			$this->activityRepository->postUpdate($id,$data);
       Notification::success('Updated');

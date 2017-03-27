@@ -12,7 +12,7 @@ class ActivityRepository{
     }
 
     public function getAll(){
-      return $this->activity->select('title','content','img_url','status','id','center_id')->orderBy('id','DESC')->get();
+      return $this->activity->select('title','content','img_url','status','id')->orderBy('id','DESC')->get();
     }
 
     public function getFindID($id){

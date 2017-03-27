@@ -16,6 +16,7 @@
         <li class="{!!Active::setActive(2,'album')!!}"><a href="{!!route('admin.album.index')!!}"><i class="fa fa-photo"></i> <span>Albums</span></a></li>
         <li class="{!!Active::setActive(2,'video')!!}"><a href="{!!route('admin.video.index')!!}"><i class="fa fa-photo"></i> <span>Videos</span></a></li>
         <li class="{!!Active::setActive(2,'activity')!!}"><a href="{!!route('admin.activity.index')!!}"><i class="fa fa-photo"></i> <span>Activity</span></a></li>
+        <li class="{!!Active::setActive(2,'schedule')!!}"><a href="{!!route('admin.schedule.index')!!}"><i class="fa fa-photo"></i> <span>Schedule</span></a></li>
 
       </ul>
       <!-- /.sidebar-menu -->

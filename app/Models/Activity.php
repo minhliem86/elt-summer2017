@@ -8,14 +8,14 @@ class Activity extends Model {
 
 	public $table='activities';
 
-  protected $fillable = ['title','slug','content','img_url','img_fb_thumb','order','status','center_id'];
+  protected $fillable = ['title','slug','content','img_url','img_fb_thumb','order','status'];
 
   public function schedules(){
-    return $this->hasMany('App\Models\Schedule','activity_id');
+    return $this->morphMany('App\Models\Schedule','scheduleable');
   }
 
 	public function centers(){
-		return $this->belongsTo('App\Models\Center','center_id');
+		return $this->belongsToMany('App\Models\Center','center_activity');
 	}
 
 }
