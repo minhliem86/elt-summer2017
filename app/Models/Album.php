@@ -5,10 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 class Album extends Model {
 
 	protected $connection = 'mysql';
-	
+
 	public $table = 'albums';
 
-  protected $fillable = ['title','description','order','status'];
+  protected $fillable = ['title','slug','description','order','status'];
 
   public function images(){
     return $this->hasMany('App\Models\Image','album_id');

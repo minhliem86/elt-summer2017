@@ -8,10 +8,21 @@ class Schedule extends Model {
 
 	public $table='schedules';
 
-  protected $fillable = ['date','location','order','status'];
+  protected $fillable = ['date','location','order','status','scheduleable_id','scheduleable_type','center_id'];
 
-  public function activities(){
-    return $this->belongsTo('App\Models\Activity','activity_id');
+  public function scheduleable()
+  {
+    return $this->morphTo();
+  }
+
+  // public function centers()
+  // {
+  //   return $this->morphedByMany('App\Models\Center','scheduleable');
+  // }
+
+  public function centers()
+  {
+    return $this->belongsTo('App\Models\Center','center_id');
   }
 
 }

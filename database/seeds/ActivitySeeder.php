@@ -22,7 +22,6 @@ class ActivitySeeder extends Seeder {
 				'img_url' => $faker->imageUrl(400,400),
 				'img_fb_thumb' => $faker->imageUrl(600,315),
 				'order' => $i,
-				'center_id'=>$faker->randomElement($center),
 			]);
 		}
 		// Model::unguard();

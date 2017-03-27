@@ -15,12 +15,13 @@ class ScheduleSeeder extends Seeder {
 	{
 		$faker = Faker::create();
     $activity = DB::connection('mysql')->table('activities')->select('id')->lists('id');
+    $center = DB::connection('corporat_ref')->table('center')->select('id')->lists('id');
 		for($i = 1; $i<=10 ; $i++){
 			\DB::connection('mysql')->table('schedules')->insert([
 				'date' => $faker->dateTime(),
 				'location' => $faker->address(),
 				'order' => $i,
-        'activity_id'=>$faker->randomElement($activity),
+				'center_id' => $faker->randomElement($center),
 			]);
 		}
 		// Model::unguard();

@@ -40,10 +40,10 @@
 						<tr>
 							<td >{!!$item->id!!}</td>
 							<td><b><a href="{!!route('admin.testimonial.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
-							<td><img src="{!!$item->img_avatar!!}" width="100" alt=""></td>
+							<td><img src="{!!$item->img_url!!}" width="100" alt=""></td>
 							<td>{!!$item->author!!}</td>
 							<td>
-							<a href="{!!route('admin.testimonial.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a> 
+							<a href="{!!route('admin.testimonial.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
 							{!!Form::open(array('route'=>array('admin.testimonial.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
 							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"   > Remove </button>
 							{!!Form::close()!!}
@@ -79,7 +79,7 @@
 		$(document).ready(function(){
 			{!! Notification::showSuccess('alertify.success(":message");') !!}
 			{!! Notification::showError('alertify.error(":message");') !!}
-			
+
 			var table = $('#table-post').DataTable({
 				'ordering': false,
 				"bLengthChange": false,

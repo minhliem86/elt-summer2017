@@ -9,54 +9,42 @@
 		<div class="container-fluid">
 			{!!Form::model($testimonial,array('route'=>array('admin.testimonial.update',$testimonial->id),'method'=>'PUT' ,'class'=>'formAdmin form-horizontal','files'=>true))!!}
 				<div class="form-group">
-					<label for="">Tên bài viết</label>
+					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}
 				</div>
 				<div class="form-group">
-					<label for="">Tác giả</label>
+					<label for="">Author</label>
 					{!!Form::text('author',old('author'),array('class'=>'form-control'))!!}
 				</div>
 				<div class="form-group">
-					<label for="">Mô tả</label>
-					{!!Form::textarea('description',old('description'),array('class'=>'form-control','rows'=>3))!!}
-				</div>
-				<div class="form-group">
-					<label for="" >Nội dung</label>
+					<label for="" >Content</label>
 					{!!Form::textarea('content',old('content'),array('class'=>'form-control ckeditor'))!!}
 				</div>
-				
+
 				<div class="form-group">
-					<label for="" >Thứ tự</label>
+					<label for="" >Sort</label>
 					{!!Form::text('order',old('order'),array('class'=>'form-control'))!!}
 				</div>
 
 				<div class="form-group">
-					<label for="" >Hình đại diện</label>
+					<label for="" >Image URL</label>
 					<p>
-						<img src="{!!$testimonial->img_avatar!!}" width="150" alt="">
-						{!!Form::hidden('img-bk',$testimonial->img_avatar)!!}
+						<img src="{!!$testimonial->img_url!!}" width="150" alt="">
+						{!!Form::hidden('img-bk',$testimonial->img_url)!!}
 					</p>
 					{!!Form::file('img')!!}
-				</div>
-				<div class="form-group">
-					<label for="" >Hình slideshow</label>
-					<p>
-						<img src="{!!$testimonial->img_slides!!}" width="150" alt="">
-						{!!Form::hidden('imgslide-bk',$testimonial->img_slides)!!}
-					</p>
-					{!!Form::file('imgslide')!!}
 				</div>
 				<div class="form-group">
 					<span class="inline-radio"><input type="radio" name="status" value="1" {!!$testimonial->status == 1 ? 'checked' : ''!!}> <b>Active</b> </span>
 					<span class="inline-radio"><input type="radio" name="status" value="0" {!!$testimonial->status == 0 ? 'checked' : ''!!}> <b>Deactive</b> </span>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="">Nổi bật</label>
 					<div>
-						<span class="inline-radio"><input type="radio" name="focus" value="1" {!!$testimonial->focus == 1 ? 'checked' : ''!!}> <b>Active</b> </span>
-						<span class="inline-radio"><input type="radio" name="focus" value="0" {!!$testimonial->focus == 0 ? 'checked' : ''!!}> <b>Deactive</b> </span>
+						<span class="inline-radio"><input type="radio" name="focus" value="1"> <b>Active</b> </span>
+						<span class="inline-radio"><input type="radio" name="focus" value="0"> <b>Deactive</b> </span>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="form-group">
 					{!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}

@@ -1,29 +1,30 @@
 <?php namespace App\Modules\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tour;
-use App\Models\Location;
-use App\Models\Country;
 use Illuminate\Http\Request;
 use Notification;
 use App\Http\Requests\ImageRequest;
+use App\Repositories\ScheduleRepository;
+use App\Repositories\CommonRepository;
+use App\Models\Center;
+use App\Models\Activity;
+use Carbon\Carbon as Carbon;
+
+use App\Models\Schedule;
 
 
-class TourController extends Controller {
+class ScheduleController extends Controller {
 
-	protected $tour;
+	protected $scheduleRepository;
 
-    protected $upload_folder = 'tour';
+	public function __construct(ScheduleRepository $schedule){
+		$this->scheduleRepository = $schedule;
+	}
 
-    public function __construct(Tour $tour){
-        $this->tour = $tour;
-    }
-    
-    public function index()
+	public function index()
     {
-        $tour = $this->tour->select('id','title','start','end','price','age')
-        ->with(['location'=>function($query){$query->select('title');}])->get();
-        return view('Admin::pages.tour.index')->with(compact('tour'));
+        $schedule = $this->scheduleRepository->getAll();
+        return view('Admin::pages.schedule.index')->with(compact('schedule'));
     }
 
     /**
@@ -33,17 +34,9 @@ class TourController extends Controller {
      */
     public function create()
     {
-        if(!Country::select('id')->first()){
-            Notification::error('Create Country first, Please!');
-            return view('Admin::pages.country.index');
-        }
-        if(!Location::select('id')->first()){
-            Notification::error('Create Location first, Please!');
-            return view('Admin::pages.location.index');
-        }
-        $location = Location::lists('title','id');
-        $country = Country::lists('name','id');
-        return view('Admin::pages.tour.create',compact('location','country'));
+			$list_center = $this->scheduleRepository->listCenter();
+			$list_activity = $this->scheduleRepository->listActivity();
+      return view('Admin::pages.schedule.create',compact('list_center','list_activity'));
     }
 
     /**
@@ -52,53 +45,24 @@ class TourController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageRequest $imgrequest, Tour $tour)
+    public function store(Request $request)
     {
-        $order = $this->tour->orderBy('order','DESC')->first();
-        count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
+        $current = $this->scheduleRepository->getOrder();
+				$activity = Activity::find($request->input('activity_id'));
+				$date = $request->date;
+				$date = date('Y-m-d',strtotime($date));
 
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = public_path().'/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            $file->move($destinationPath,$filename);
-
-            // $size = getimagesize($file);
-            // if($size[0] > 620){
-            //     \Image::make($file->getRealPath())->resize(620,null,function($constraint){$constraint->aspectRatio();})->save($destinationPath.'/'.$filename);
-            // }else{
-            //     $file->move($destinationPath,$filename);
-            // }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-            // $img_alt = \GetNameImage::make('\/',$filename);
-        }else{
-            $img_url = asset('public/assets/backend/img/image_thumbnail.gif');
-            // $img_alt = \GetNameImage::make('\/',$img_url);
-        }
         $data = [
-            'title'=>$request->title,
-            'slug' => \Unicode::make($request->title),
-            'description' => $request->description,
-            'content' => $request->content,
-            'partner' => $request->partner,
-            'stay' => $request->stay,
-            'week' => $request->week,
-            'start' => $request->start,
-            'end' => $request->end,
-            'price' => $request->price,
-            'age' => $request->age,
-            'img_avatar' => $img_url,
-            'country_id' => $request->country_id,
+            'date'=>$date,
+            'location' => $request->input('location'),
             'status'=> $request->status,
-            'order'=>$current
+						'center_id'=>$request->input('center_id'),
+            'order'=>$current,
         ];
-        $tour = $this->tour->create($data);
-        $tour->location()->attach($request->location_id);
+				$schedule = $this->scheduleRepository->postCreate($data);
+				$activity->schedules()->save($schedule);
         Notification::success('Created');
-        return  redirect()->route('admin.tour.index');
+        return  redirect()->route('admin.schedule.index');
     }
 
     /**
@@ -120,10 +84,10 @@ class TourController extends Controller {
      */
     public function edit($id)
     {
-        $tour = $this->tour->find($id);
-        $country = Country::lists('name','id');
-        $location = Location::lists('title','id');
-        return view('Admin::pages.tour.view')->with(compact('tour','country','location'));
+				$schedule = $this->scheduleRepository->getFindID($id);
+				$list_center = $this->scheduleRepository->listCenter();
+				$list_activity = $this->scheduleRepository->listActivity();
+        return view('Admin::pages.schedule.view',compact('schedule','list_center','list_activity'));
     }
 
     /**
@@ -133,49 +97,25 @@ class TourController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,ImageRequest $imgrequest, $id)
+    public function update(Request $request, $id)
     {
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = public_path().'/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
+			$activity = Activity::find($request->input('activity_id'));
+			$date = $request->date;
+			$date = date('Y-m-d',strtotime($date));
 
-            $file->move($destinationPath,$filename);
+			$data = [
+				'date'=>$date,
+				'location' => $request->input('location'),
+				'status'=> $request->status,
+				'center_id'=>$request->input('center_id'),
+				'order'=>$request->order,
+			];
 
-            // $size = getimagesize($file);
-            // if($size[0] > 620){
-            //     \Image::make($file->getRealPath())->resize(620,null,function($constraint){$constraint->aspectRatio();})->save($destinationPath.'/'.$filename);
-            // }else{
-            //     $file->move($destinationPath,$filename);
-            // }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-        }else{
-            $img_url = $request->input('img-bk');
-        }
-
-        $tour = $this->tour->find($id);
-        $tour->title = $request->title;
-        $tour->slug = \Unicode::make($request->title);
-        $tour->description = $request->input('description');
-        $tour->content = $request->input('content');
-        $tour->img_avatar = $img_url;
-        $tour->partner = $request->input('partner');
-        $tour->stay = $request->input('stay');
-        $tour->week = $request->input('week');
-        $tour->start = $request->input('start');
-        $tour->end = $request->input('end');
-        $tour->price = $request->input('price');
-        $tour->age = $request->input('age');
-        $tour->country_id = $request->input('country_id');
-        $tour->status = $request->status;
-        $tour->order = $request->order;
-        $tour->save();
-
-        $tour->location()->sync([$request->location_id]);
-        Notification::success('Updated');
-        return  redirect()->route('admin.tour.index');
+			$this->scheduleRepository->postUpdate($id,$data);
+			$schedule = $this->scheduleRepository->getFindID($id);
+			$activity->schedules()->save($schedule);
+      Notification::success('Updated');
+      return  redirect()->route('admin.schedule.index');
     }
 
     /**
@@ -185,9 +125,9 @@ class TourController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $this->tour->destroy($id);
+        $this->scheduleRepository->delete($id);
         \Notification::success('Remove Successful');
-        return redirect()->route('admin.tour.index');
+        return redirect()->route('admin.schedule.index');
     }
 
     public function deleteAll(Request $request){
@@ -196,7 +136,7 @@ class TourController extends Controller {
         }else{
             $data = $request->arr;
             if($data){
-                $this->tour->destroy($data);
+                $this->scheduleRepository->deleteAll($data);
                 return response()->json(array('msg'=>'ok'));
             }else{
                 return response()->json(array('msg'=>'error'));
@@ -205,14 +145,14 @@ class TourController extends Controller {
     }
 
     public function checkRelate(Request $request){
-        $tour = $this->tour->find($request->dataid);
-        $count = $tour->image()->get()->count();
-        if($count > 0){
-            return response()->json(['msg'=>'yes']);
-        }else{
-            $tour->delete();
-            return response()->json(['msg'=>'done']);
-        }
+        // $schedule = $this->scheduleRepository->find($request->dataid);
+        // $count = $schedule->image()->get()->count();
+        // if($count > 0){
+        //     return response()->json(['msg'=>'yes']);
+        // }else{
+        //     $schedule->delete();
+        //     return response()->json(['msg'=>'done']);
+        // }
     }
-	
+
 }

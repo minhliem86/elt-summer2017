@@ -16,6 +16,7 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title')->nullable();
+			$table->string('slug')->nullable();
 			$table->text('description')->nullable();
 			$table->string('img_url')->nullable();
 			$table->integer('order')->nullable()->default(0);

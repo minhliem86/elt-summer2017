@@ -14,14 +14,14 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('PromotionSeeder');
-		// $this->call('ActivitySeeder');
-		// $this->call('AlbumSeeder');
-		// $this->call('TestimonialSeeder');
-		// $this->call('VideoSeeder');
-		// $this->call('ImageSeeder');
+		$this->call('PromotionSeeder');
+		$this->call('ActivitySeeder');
+		$this->call('AlbumSeeder');
+		$this->call('TestimonialSeeder');
+		$this->call('VideoSeeder');
+		$this->call('ImageSeeder');
 		$this->call('ScheduleSeeder');
-
+		$this->call('CenterActivitySeeder');
 	}
 
 }
