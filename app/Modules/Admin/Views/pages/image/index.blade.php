@@ -29,8 +29,8 @@
 				    <thead>
 					    <tr>
 							<th>ID</th>
-							<th data-width="60%">Image</th>
-							<th>type</th>
+							<th data-width="20%">Image</th>
+							<th>Album</th>
 							<th>Action</th>
 						</tr>
 				    </thead>
@@ -38,10 +38,10 @@
 					    @foreach($image as $item)
 						<tr>
 							<td >{!!$item->id!!}</td>
-							<td><img src="{!!$item->img_url!!}" width="300" alt=""></td>
-							<td>{!!$item->type!!}</td>
+							<td><img src="{!!$item->img_url!!}" width="200" alt=""></td>
+							<td>{!!$item->albums->title!!}</td>
 							<td>
-							<a href="{!!route('admin.image.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a> 
+							<a href="{!!route('admin.image.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
 							{!!Form::open(array('route'=>array('admin.image.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
 							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"   > Remove </button>
 							{!!Form::close()!!}
@@ -77,7 +77,7 @@
 		$(document).ready(function(){
 			{!! Notification::showSuccess('alertify.success(":message");') !!}
 			{!! Notification::showError('alertify.error(":message");') !!}
-			
+
 			var table = $('#table-post').DataTable({
 				'ordering': false,
 				"bLengthChange": false,

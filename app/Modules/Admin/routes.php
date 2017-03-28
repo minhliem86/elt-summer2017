@@ -1,14 +1,14 @@
 <?php
 
 Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],function(){
-	Route::get('/role',function(){
-		$role = new App\Models\Role;
-		$role->name = 'Admin';
-		$role->display_name = 'admin';
-		$role->description = " Can login in CMS";
-		$role->save();
-		return "Role create";
-	});
+	// Route::get('/role',function(){
+	// 	$role = new App\Models\Role;
+	// 	$role->name = 'Admin';
+	// 	$role->display_name = 'admin';
+	// 	$role->description = " Can login in CMS";
+	// 	$role->save();
+	// 	return "Role create";
+	// });
 	Route::get('login',['middleware'=>'Checklogined','as'=>'admin.getlogin','uses'=>'Auth\AuthController@getLogin']);
 	Route::post('login',['middleware'=>'Checklogined','as'=>'admin.postLogin','uses'=>'Auth\AuthController@postLogin']);
 
@@ -56,6 +56,7 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 
 		/*Image*/
 		Route::post('image/deleteall',['as'=>'admin.image.deleteall','uses'=>'ImageController@deleteAll']);
+		Route::post('image/postUpload',['as'=>'admin.image.postUpload','uses'=>'ImageController@postUpload']);
 		Route::resource('image','ImageController');
 
 

@@ -5,21 +5,26 @@ use App\Models\Image;
 use Illuminate\Http\Request;
 use Notification;
 use App\Http\Requests\ImageRequest;
+use App\Repositories\UploadRepository;
+use App\Repositories\CommonRepository;
+
+use App\Events\ImageWasDeleted;
 
 
 class ImageController extends Controller {
 
-	protected $image;
+		protected $image;
 
-    protected $upload_folder = 'image';
+    protected $_upload_folder = 'public/upload/image';
 
-    public function __construct(Image $image){
+    public function __construct(UploadRepository $image){
         $this->image = $image;
     }
-    
+
     public function index()
     {
-        $image = $this->image->select('id','img_url','type')->get();
+        $image = $this->image->getAll();
+				// dd($image);
         return view('Admin::pages.image.index')->with(compact('image'));
     }
 
@@ -30,7 +35,8 @@ class ImageController extends Controller {
      */
     public function create()
     {
-        return view('Admin::pages.image.create');
+				$list_album = $this->image->getListAlbum();
+        return view('Admin::pages.image.create',compact('list_album'));
     }
 
     /**
@@ -39,52 +45,11 @@ class ImageController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageRequest $imgrequest, Image $image)
+    public function store(Request $request)
     {
-        $order = $this->image->orderBy('order','DESC')->first();
-        count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
 
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
-
-            // $file->move($destinationPath,$filename);
-
-            if($request->input('type') && $request->input('type') == 'banner'){
-                $banner_width = 2000;
-                $banner_height = 400;
-
-                $size = getimagesize($file);
-                if($size[0] > $banner_width){
-                    \Image::make($file->getRealPath())->resize($banner_width,$banner_height)->save($destinationPath.'/'.$filename);
-                }else{
-                    $file->move($destinationPath,$filename);
-                }
-            }else{
-                $file->move($destinationPath,$filename);
-            }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-            $img_alt = \GetNameImage::make('\/',$filename);
-        }else{
-            $img_url = asset('public/assets/backend/img/image_thumbnail.gif');
-            $img_alt = \GetNameImage::make('\/',$img_url);
-        }
-
-
-        $data = [
-            'img_url'=>$img_url,
-            'img_alt'=>$img_alt,
-            'type' =>$request->type,
-            'status'=> $request->status,
-            'order'=>$current
-        ];
-        $this->image->create($data);
-        Notification::success('Created');
-        return  redirect()->route('admin.image.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -105,8 +70,9 @@ class ImageController extends Controller {
      */
     public function edit($id)
     {
-        $image = $this->image->find($id);
-        return view('Admin::pages.image.view')->with(compact('image'));
+        $image = $this->image->getFindID($id);
+				$list_album = $this->image->getListAlbum();
+        return view('Admin::pages.image.view')->with(compact('image','list_album'));
     }
 
     /**
@@ -118,46 +84,29 @@ class ImageController extends Controller {
      */
     public function update(Request $request,ImageRequest $imgrequest, $id)
     {
-        if($imgrequest->hasFile('img')){
-            $file = $imgrequest->file('img');
-            $destinationPath = 'public/upload'.'/'.$this->upload_folder;
-            $name = preg_replace('/\s+/', '', $file->getClientOriginalName());
-            $filename = time().'_'.$name;
+			if($imgrequest->hasFile('img')){
+				$common = new CommonRepository;
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=false,400,400);
 
-            // $file->move($destinationPath,$filename);
+			}else{
+				$img_url = $request->input('img-bk');
+			}
+			$arr_filename = explode('/',$img_url);
+			$filename = end($arr_filename);
 
-            if($request->input('type') && $request->input('type') == 'banner'){
-                $banner_width = 2000;
-                $banner_height = 400;
-                
-                $filename_resize = $destinationPath.$filename;
-                $size = getimagesize($file);
-                if($size[0] > $banner_width){
-                    \Image::make($file->getRealPath())->resize($banner_width,$banner_height)->save($filename_resize);
-                }else{
-                    $file->move($destinationPath,$filename);
-                }
-            }else{
-                $file->move($destinationPath,$filename);
-            }
-
-            $img_url = asset('public/upload').'/'.$this->upload_folder.'/'.$filename;
-            $img_alt = \GetNameImage::make('\/',$filename);
-        }else{
-            $img_url = $request->input('img-bk');
-            $img_alt = \GetNameImage::make('\/',$img_url);
-        }
-
-        $image = $this->image->find($id);
-        $image->img_url = $img_url;
-        $image->img_alt = $img_alt;
-        $image->type = $request->type;
-        $image->status = $request->status;
-        $image->order = $request->order;
-        $image->save();
-
-        Notification::success('Updated');
-        return  redirect()->route('admin.image.index');
+			$data = [
+				'title'=>$request->title,
+				'slug' => \Unicode::make($request->title),
+				'description' => $request->input('description'),
+				'img_url' => $img_url,
+				'status'=> $request->status,
+				'order'=>$request->order,
+				'album_id' => $request->album_id,
+				'filename' => $filename,
+			];
+			$this->image->postUpdate($id,$data);
+			Notification::success('Updated');
+			return  redirect()->route('admin.image.index');
     }
 
     /**
@@ -166,8 +115,20 @@ class ImageController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+		 public function postDelete(Request $request)
+		 {
+				 $response = $this->image->delete($request->input('id'));
+				 return $response;
+		 }
     public function destroy($id){
-        $this->image->destroy($id);
+				$upload_path = config('dropzoner.upload-path');
+
+				$filename = $this->image->getNameImg($id);
+				$full_path = $upload_path . $filename;
+				if (\File::exists($full_path)) {
+						\File::delete($full_path);
+				}
+        event(new ImageWasDeleted($id));
         \Notification::success('Remove Successful');
         return redirect()->route('admin.image.index');
     }
@@ -176,14 +137,29 @@ class ImageController extends Controller {
         if(!$request->ajax()){
             return view('404');
         }else{
+						$upload_path = config('dropzoner.upload-path');
             $data = $request->arr;
-            if($data){
-                $this->image->destroy($data);
-                return response()->json(array('msg'=>'ok'));
-            }else{
-                return response()->json(array('msg'=>'error'));
-            }
-        }
+						if($data){
+							foreach($data as $item){
+								$filename = $this->image->getNameImg($item);
+
+								$full_path = $upload_path . $filename;
+
+								if (\File::exists($full_path)) {
+										\File::delete($full_path);
+								}
+
+								event(new ImageWasDeleted($data));
+
+								return response()->json([
+										'error' => false,
+										'code'  => 200
+								], 200);
+							}
+						}else{
+								return response()->json(array('msg'=>'error'));
+						}
+				}
     }
 
     public function checkRelate(Request $request){
@@ -196,5 +172,11 @@ class ImageController extends Controller {
             return response()->json(['msg'=>'done']);
         }
     }
-	
+
+		public function postUpload(Request $request){
+			$input = $request->all();
+			$response = $this->image->upload($input);
+			return $response;
+		}
+
 }

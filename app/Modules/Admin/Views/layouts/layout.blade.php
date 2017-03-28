@@ -9,7 +9,7 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta name="csrf-token" content="{!! csrf_token() !!}">
 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-	
+
 	{!!Html::style('public/assets/backend/bootstrap/css/bootstrap.min.css')!!}
 
 		 <!-- Font Awesome -->
@@ -31,6 +31,8 @@
 
 	<!-- Date Picker -->
 	{!!Html::style('public/assets/backend/plugins/datepicker/datepicker3.css')!!}
+
+	@yield('css')
 
 	<!-- Html5 Shiv and Respond.js for IE8 support of Html5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,7 +90,7 @@ desired effect
 	{!!Html::script('public/assets/backend/js/alert/alertify.js')!!}
 	{!!Html::style('public/assets/backend/js/alert/alertify.css')!!}
 	{!!Html::style('public/assets/backend/js/alert/semantic.min.css')!!}
-	
+
 	@yield('script')
 </body>
 </html>

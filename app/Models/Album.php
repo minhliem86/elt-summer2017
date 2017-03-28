@@ -11,7 +11,7 @@ class Album extends Model {
   protected $fillable = ['title','slug','description','order','status'];
 
   public function images(){
-    return $this->hasMany('App\Models\Image','album_id');
+    return $this->hasMany('App\Models\Image');
   }
 
 }

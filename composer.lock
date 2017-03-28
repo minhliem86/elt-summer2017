@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16b11302840f0e57175a37ef04893e85",
-    "content-hash": "123051b0b6123fe167307dae2c049a55",
+    "hash": "39be4792bd6b482dc40f6777f05f45de",
+    "content-hash": "a81219215b1e7a4c472501ca2ca85d87",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -66,6 +66,47 @@
                 "preload"
             ],
             "time": "2015-05-26 10:57:51"
+        },
+        {
+            "name": "codingo-me/dropzoner",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codingo-me/dropzoner.git",
+                "reference": "c6660d70d66b82dc672b814aeb33479d0e358730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codingo-me/dropzoner/zipball/c6660d70d66b82dc672b814aeb33479d0e358730",
+                "reference": "c6660d70d66b82dc672b814aeb33479d0e358730",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "^2.3",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codingo\\Dropzoner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Radunovic",
+                    "email": "ivan@codingo.me"
+                }
+            ],
+            "description": "Simpe Laravel package for image uploads using DropzoneJS library",
+            "keywords": [
+                "dropzone",
+                "laravel"
+            ],
+            "time": "2015-12-26 18:59:11"
         },
         {
             "name": "danielstjules/stringy",

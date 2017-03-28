@@ -11,8 +11,14 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		// 'event.name' => [
+		// 	'EventListener',
+		// ],
+		'App\Events\ImageWasUploaded' => [
+			'App\Handlers\CreateImageHandler'
+		],
+		'App\Events\ImageWasDeleted' => [
+			'App\Handlers\DeleteImageHandler'
 		],
 	];
 

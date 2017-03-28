@@ -149,6 +149,7 @@ return [
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Krucas\Notification\NotificationServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Codingo\Dropzoner\DropzonerServiceProvider'
 	],
 
 	/*

@@ -1,0 +1,56 @@
+%message{
+    border: solid 1px ;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px 10px;
+}
+$color-yellow : yellow;
+$color-red : red;
+$color-blue : blue;
+
+@mixin checkColor($color) {
+      @if $color == red {
+          background: yellow;
+      } @else if $color == yellow {
+         background: blue;
+      } @else {
+          background: black;
+      }
+}
+
+.error{
+    @extend %message;
+    color: $color-yellow;
+    @include checkColor($color-yellow)
+}
+ 
+.success{
+    @extend %message;
+    background: $color-blue;
+    color: $color-red;
+}
+ 
+.warning{
+    @extend %message;
+    background: $color-yellow;
+    color: $color-blue;
+}
+
+
+@mixin menu{
+    #menu 
+    {
+        a {
+            @extend %message;
+            background: $color-blue;
+            text-decoration: none;
+        }
+         
+        li {
+            height: 30px;
+            line-height: 30px;
+        }
+    }
+}
+ 
+@include menu;
