@@ -13,12 +13,12 @@
             </a>
             <div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false">
                 <ul class="nav navbar-nav">
-                    <li class="{!!\Active::setActive(1,'','current')!!}"><a href="#">Amazing Summer</a></li>
-                    <li><a href="#" >Amazing Race</a></li>
+                    <li class="{!!\Active::setActive(1,'','current')!!}"><a href="{!!route('f.homepage')!!}">Amazing Summer</a></li>
+                    <li class="{!!\Active::setActive(1,'amazing','current')!!}" ><a href="{!!route('f.getAmazing')!!}" >Amazing Race</a></li>
                     <li><a href="#">Enrichment schedule</a></li>
                     <li><a href="#">Testimonial</a></li>
                     <li><a href="#">Library</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li class="{!!\Active::setActive(1,'lien-he','current')!!}" ><a href="{!!route('f.getContact')!!}">Contact us</a></li>
                 </ul>
             </div>
         </nav>

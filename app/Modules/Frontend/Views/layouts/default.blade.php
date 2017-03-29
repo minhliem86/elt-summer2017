@@ -13,9 +13,8 @@
 <body>
   <div class="warpper">
     @include('Frontend::layouts.header')
-    @include('Frontend::layouts.banner')
       @yield('content')
-    @include('Frontend::layouts.footer')
+
   </div>
   <!-- Custom JS -->
   <script src="{!!asset('public/assets/frontend')!!}/js/jquery-2.1.1.js"></script>

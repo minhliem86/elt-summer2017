@@ -26,7 +26,7 @@
 //    background: $color-blue;
 //    color: $color-red;
 //}
-$color-blue : #050D9E;
+$color-blue : #000565;
 $color-white : #fff;
 $color-yellow : #FFDE17;
 $color-orange : #F26522;
@@ -92,6 +92,16 @@ $padding-0: 0;
     background: transparent;
     border-color: $color-blue;
     color: $color-blue;
+    &:hover{
+        @extend .btn-blue;
+    }
+}
+.btn-white-border{
+    color: $color-white;
+    border-color: $color-white;
+    &:hover{
+        @extend .btn-yellow;
+    }
 }
 .btn-yellow{
     background: $color-yellow;
@@ -133,6 +143,7 @@ nav.top-menu{
         background: $color-blue;
         padding: 80px 15px 30px;
         box-shadow: 2px 1px 10px #231F21;
+        z-index: 10;
     }
     .nav{
         li{
@@ -152,7 +163,18 @@ nav.top-menu{
                 background: $color-blue;
               }
             }
+            @include media(320px, 480px){
+              a{
+                text-transform: uppercase;
+                padding:0 15px;
+              }
+            };
         }
+        @include media(320px, 480px){
+          ul.navbar-nav{
+            margin-top:40px;
+          }
+        };
     }
 }
 
@@ -163,14 +185,7 @@ header.top-header{
         background: $color-blue url(../images/header-bg-01.png) no-repeat 35px center;
         padding: 40px 0;
         position: relative;
-        &:before{
-            content: "";
-            position: absolute;
-            width: calc(100% - 35px);
-            height: 100%;
-            top: 0;
-            background: transparent url(../images/header-bg-02.png) no-repeat right center  ;
-        }
+
         h1{
             margin: 0;
             position: relative;
@@ -185,23 +200,28 @@ header.top-header{
     position: relative;
     background: white;
     padding-bottom: 85px;
+    overflow:hidden;
     img.img-leaf{
       position:absolute;
+      display: none;
       &.leaf1{
         top:120px;
-        left:0;
+        left:-60px;
       }
       &.leaf2{
         bottom:50px;
         left:0;
       }
       &.leaf3{
-        bottom:40%;
-        right:0;
+        bottom:35%;
+        right:-30px;
       }
     }
     .banner{
         padding: 20px 0 40px;
+        img{
+          max-width: 250px;
+        }
     }
     h2{
         text-transform: uppercase;
@@ -214,8 +234,13 @@ header.top-header{
     }
     .wrap-btn{
       margin: 30px 5px 70px;
+      text-align: center;
       .btn{
         margin:0 8px;
+
+        @include media(320px, 480px){
+          max-width:140px;
+        };
       }
     }
     .text-content{
@@ -273,6 +298,9 @@ header.top-header{
                     &:hover{
                         @extend .btn-yellow;
                     }
+                    @include media(320px, 480px){
+                      max-width:140px;
+                    };
                 }
             }
             img{
@@ -288,12 +316,16 @@ header.top-header{
     background-position: 50px bottom;
     padding: 70px 0;
     position: relative;
+    overflow: hidden;
     img.img-funkid{
       position:absolute;
-      right:-15px;
+      right:-95px;
       bottom:0;
-      max-width:600px;
+      max-width:650px;
       opacity: 0.8;
+      @include media(320px, 480px){
+        display: none;
+      };
       @include media(992px, 1199px){
         max-width: 300px;
         right:3%;
@@ -317,33 +349,247 @@ header.top-header{
         color: $color-yellow;
         font-family: $font-VIE;
         margin-bottom: 15px;
+        @include media(320px, 480px){
+          text-align: center;
+        };
     }
     h4{
         color: $color-yellow;
         margin-bottom: 30px;
+        @include media(320px, 480px){
+          text-align: center;
+        };
     }
-    .btn{
-        margin-top: 60px;
-        &:hover{
-            @extend .btn-blue;
-        }
+    .wrap-btn{
+      .btn{
+          margin-top: 60px;
+          &:hover{
+              @extend .btn-blue;
+          }
+          @include media(320px, 480px){
+            margin-top:20px;
+            max-width: 140px;
+            background:$color-blue;
+            color:white;
+          };
+      }
+      @include media(320px, 480px){
+        text-align: center;
+      };
     }
+
     .text-content{
       p{
         font-weight:400;
       }
+      @include media(320px, 480px){
+        text-align: justify;
+      };
+    }
+    img.ic-amazing{
+      @include media(320px, 480px){
+        margin:0 auto 10px;
+      };
     }
 }
 
+/*AMAZING PAGE*/
+.amazinng-page-header{
+    background: #27aae1 url(../images/amazing-page-bg-01.png) no-repeat 60px bottom ;
+    color: $color-yellow;
+    padding: 0 0 100px;
+    position: relative;
+    @include media(320px, 480px){
+      overflow: hidden;
+    }
+    .wrap-title-banner{
+      padding:150px 0 0 20px;
+      position: relative;
+      z-index:10;
+      width:65%;
+      @include media(320px, 480px){
+        padding:30px 0 0 0px;
+      }
+    }
+    img.img-visual{
+      position:absolute;
+      max-width:500px;
+      right:20px;
+      bottom: 0;
+      z-index: 5;
+      @include media(320px, 480px){
+        max-width: 300px;
+        right:-80px;
+      };
+    }
+    h2{
+        margin-bottom: 20px;
+    }
+    .btn{
+        margin-top: 40px;
+        @include media(320px, 480px){
+          max-width: 140px;
+          background:$color-yellow;
+          color:$color-blue;
+        }
+    }
+}
+
+.amazinng-page{
+    text-align: center;
+    color: $color-blue;
+    padding-top:30px;
+    padding-bottom: 90px;
+    background:white url(../images/amazing-page-bg-left.png) no-repeat 20px bottom;
+    position:relative;
+    img.img-bird{
+      position:absolute;
+      top:10%;
+      right:30px;
+    }
+    .banner{
+      img.img-key{
+        max-width: 250px;
+        margin:0 auto 10px;
+      }
+    }
+    .amazinng-page-box{
+        text-align: left;
+        margin-top: 40px;
+        .wrap-each-rule{
+          @include media(320px, 480px){
+            margin-bottom:20px;
+            img{
+              margin:0 auto 10px;
+            }
+          };
+        }
+        .box-text{
+            padding: 0;
+            @include media(320px, 480px){
+              text-align: center;
+            }
+            p{
+                margin-bottom: 5px;
+                line-height: 1.3em;
+            }
+        }
+    }
+
+}
+
+.rules{
+    text-align: center;
+    color: $color-blue;
+    padding: 30px 0;
+    background-color:#27A9E1;
+    // background: #27A9E1 url(../images/rules-bg-01.png) no-repeat 140px bottom;
+    &:before{
+        background: url(../images/rules-bg-02.png) no-repeat right bottom;
+        width: calc(100% - 170px);
+        left: 0;
+        top: 0;
+    }
+    .btn{
+        margin:20px 5px 0;
+        @include media(320px, 480px){
+          max-width: 140px;
+          background:$color-yellow;
+          color:$color-blue;
+        }
+    }
+}
+.ILA-footer{
+    padding: 20px 0 40px;
+    color: $color-white;
+    background: $color-yellow url(../images/ILA-footer-bg-01.png) no-repeat left bottom;
+    &:before{
+        background: url(../images/ILA-footer-bg-03.png) no-repeat right bottom;
+    }
+    &:after{
+        background: url(../images/ILA-footer-bg-02.png) no-repeat 120px 55px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+    h2{
+        text-align: center;
+        color: $color-blue;
+        z-index: 2;
+        position: relative;
+    }
+    div{
+        .ILA-footer-item{
+            z-index: 1;
+            &:nth-child(2){
+                color: $color-blue;
+                .box{
+                    background: #FFEE00;
+                }
+            }
+            &:nth-child(3){
+                .box{
+                    background: rgba(253,188,37,1);
+                    background: -moz-radial-gradient(center, ellipse cover, rgba(253,188,37,1) 0%, rgba(247,147,32,1) 70%, rgba(246,138,31,1) 100%);
+                    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(253,188,37,1)), color-stop(70%, rgba(247,147,32,1)), color-stop(100%, rgba(246,138,31,1)));
+                    background: -webkit-radial-gradient(center, ellipse cover, rgba(253,188,37,1) 0%, rgba(247,147,32,1) 70%, rgba(246,138,31,1) 100%);
+                    background: -o-radial-gradient(center, ellipse cover, rgba(253,188,37,1) 0%, rgba(247,147,32,1) 70%, rgba(246,138,31,1) 100%);
+                    background: -ms-radial-gradient(center, ellipse cover, rgba(253,188,37,1) 0%, rgba(247,147,32,1) 70%, rgba(246,138,31,1) 100%);
+                    background: radial-gradient(ellipse at center, rgba(253,188,37,1) 0%, rgba(247,147,32,1) 70%, rgba(246,138,31,1) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdbc25', endColorstr='#f68a1f', GradientType=1 );
+                }
+            }
+            @include media(320px, 480px){
+              margin-bottom:20px;
+            };
+            .box{
+                background: #00A14B;
+                border-radius: 10px;
+                min-height: 235px;
+                position: relative;
+                overflow: hidden;
+                div{
+                    padding: 15px 10px;
+                    width: 63%;
+                    position: relative;
+                    h3{
+                        margin:10px 0 5px;
+                        font-family: $font-cabin;
+                    }
+                    p{
+                        line-height: 1.2em;
+                    }
+                }
+                .btn{
+                        position: absolute;
+                        z-index: 3;
+                        bottom: 25px;
+                        left: 10px;
+                        &:hover{
+                            border-color: $color-blue;
+                            @extend .btn-blue;
+                        }
+                        @include media(320px, 480px){
+                          max-width: 140px;
+                        }
+                    }
+                .img-margin{
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+/*END*/
+
 .gift{
-    background: $color-yellow url(../images/gift-bg-01.png) no-repeat left bottom ;
+    background: $color-yellow url(../images/ILA-footer-bg-01.png) no-repeat left bottom ;
     text-align: right;
     padding: 35px 0 60px;
     position: relative;
-    img.img-sun{
-      position:absolute;
-      left:30px;
-    }
+
     &:before{
         content: '';
         position: absolute;
@@ -366,6 +612,12 @@ header.top-header{
         &:hover{
             @extend .btn-blue;
         }
+        @include media(320px, 480px){
+          margin-top:20px;
+          background:$color-blue;
+          color:$color-yellow;
+          max-width: 140px;
+        };
     }
 }
 
@@ -445,12 +697,12 @@ header.top-header{
 }
 
 .register{
-    text-align: center;
     background: url(../images/register-bg.png) no-repeat;
     background-size: cover;
     padding: 90px 0 35px;
     h2{
         color: $color-white;
+        text-align: center;
     }
     form{
         .form-group{
@@ -478,8 +730,170 @@ header.top-header{
                 @extend .btn-yellow;
             }
         }
+        span.study_inline{
+          position:relative;
+          &:first-child{
+            margin-right:60px;
+          }
+          input{
+            position:absolute;
+            opacity: 0;
+            visibility: hidden;
+            &:checked{
+              &+label:after{
+                background:$color-orange;
+              }
+            }
+          }
+          label{
+            color:white;
+            padding-left:30px;
+            position:relative;
+            cursor:pointer;
+            &:after{
+              content:'';
+              display:block;
+              position: absolute;
+              width:20px;
+              height:20px;
+              background:white;
+              border-radius: 50%;
+              transform:translateY(-50%);
+              -webkit-transform:translateY(-50%);
+              -moz-transform:translateY(-50%);
+              left:0;
+              top:50%;
+              @extend %transition;
+            }
+
+          }
+        }
     }
 }
+
+/*CONTACT*/
+.contact{
+    color: $color-blue;
+    padding-bottom: 100px;
+    background: $color-yellow url(../images/contact-bg-left.png) no-repeat left bottom;
+    position:relative;
+    &:before{
+        content:'';
+        width:374px;
+        height:164px;
+        display:block;
+        position:absolute;
+        background: url(../images/contact-bg-right.png) no-repeat right bottom;
+        right: 0;
+        bottom: 0;
+    }
+    .banner{
+      img{
+        @include media(320px, 480px){
+          margin:0 auto 10px;
+          max-width: 250px;
+        };
+      }
+    }
+    img.contact-img{
+      position:absolute;
+      @include media(320px, 480px){
+        display: none;
+      };
+      &.img-leaf{
+        left:0;
+        top:40%;
+      }
+      &.img-bird{
+        right:20px;
+        top:10%;
+      }
+      &.img-sun{
+        left:20px;
+        top:30px;
+      }
+    }
+    h2{
+        text-align: center;
+        color: $color-blue;
+        margin-bottom: 70px;
+        @include media(320px, 480px){
+          margin-bottom:30px;
+        };
+    }
+    .gift-pack{
+      @include media(320px, 480px){
+        text-align: center;
+      };
+        .title{
+          margin-bottom: 40px;
+          @include media(320px, 480px){
+            margin-bottom:20px;
+          }
+        }
+        div{
+            margin-bottom: 30px;
+            h4{
+                margin-top: -10px;
+                margin-bottom: 30px;
+            }
+            .btn{
+                margin-top: 10px;
+                width:170px;
+            }
+        }
+    }
+    .contact-register{
+        background: $color-white;
+        color: $color-blue;
+        border-radius: 25px;
+        border: 1px solid #D1D2D4;
+        padding: 35px 30px 20px;
+        box-shadow: 5px 5px 15px #37343E;
+        .btn{
+            margin-top: 5px;
+        }
+        span.study_inline{
+          position:relative;
+          &:first-child{
+            margin-right:60px;
+          }
+          input{
+            position:absolute;
+            opacity: 0;
+            visibility: hidden;
+            &:checked{
+              &+label:after{
+                background:$color-orange;
+              }
+            }
+          }
+          label{
+            color:$color-blue;
+            padding-left:30px;
+            position:relative;
+            cursor:pointer;
+            &:after{
+              content:'';
+              display:block;
+              position: absolute;
+              width:20px;
+              height:20px;
+              background:$color-blue;
+              border-radius: 50%;
+              transform:translateY(-50%);
+              -webkit-transform:translateY(-50%);
+              -moz-transform:translateY(-50%);
+              left:0;
+              top:50%;
+              @extend %transition;
+            }
+
+          }
+        }
+    }
+}
+/*END*/
 ::-webkit-input-placeholder {
   color: $color-blue !important;
 }
@@ -521,6 +935,22 @@ footer{
         flex-wrap: wrap;
         -webkit-flex-wrap: wrap;
         padding-bottom: 20px;
+        position:relative;
+        &:after{
+          content:'';
+          display:block;
+          position: absolute;
+          width:calc(100% - 35rem);
+          border-bottom:1px solid white;
+          left:50%;
+          bottom:0;
+          transform:translateX(-50%);
+          -webkit-transform:translateX(-50%);
+          -moz-transform:translateX(-50%);
+          @include media(320px, 480px){
+            width: 80%;
+          };
+        }
         // border-bottom: 1px solid $color-white;
         li{
             margin: 0 10px;
@@ -530,6 +960,180 @@ footer{
         }
     }
 }
+.footer-orange{
+    background: #F7941E url(../images/footer-orange-bg-01.png) no-repeat 7% center;
+    &:before{
+        background: url(../images/footer-orange-bg-02.png);
+    }
+}
+/*=============================== Start amazing-summer.html ===============================*/
+$color-green : #00A14B;
+
+.rps-table th {
+    display: none;
+}
+.rps-table td {
+    display: block;
+}
+.rps-table td:before{
+    content: attr(data-th) " ";
+    display: inline-block;
+}
+/*
+.rps-table td:first-child {
+    padding-top: .5em;
+}
+.rps-table td:last-child {
+    padding-bottom: .5em;
+}
+*/
+
+@media (min-width: 768px) {
+    .rps-table td:before {
+        display: none;
+    }
+    .rps-table th,
+    .rps-table td {
+        display: table-cell;
+    }
+}
+.flex-items-end{
+    display: flex;
+    display: -webkit-flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+}
+
+.amazinng-summer-top{
+    color: $color-blue;
+    text-align: center;
+    background-color:white;
+    position:relative;
+    .btn{
+        margin: 25px 0 50px;
+    }
+}
+
+.six-skill{
+    background: $color-green;
+    padding-top: 30px;
+    color: $color-white;
+    &:before{
+        background: url(../images/amazinng-summer/six-skill-ng-02.png) no-repeat right center;
+        right: 35px;
+        top: 0;
+    }
+    div{
+         position: relative;
+         z-index: 2;
+         h2{
+            text-transform: none;
+            color: $color-yellow;
+        }
+        .btn{
+            margin: 20px 0 40px;
+        }
+    }
+}
+
+.kiddom{
+    padding-top:40px;
+    text-align: right;
+    background: $color-yellow url(../images/amazinng-summer/ILA-footer-bg-02.png) no-repeat 70px 70px;
+    &:before{
+        background: url(../images/amazinng-summer/ILA-footer-bg-01.png) no-repeat left bottom;
+        top: 0;
+        left: 0
+    }
+    &:after{
+        background: url(../images/amazinng-summer/ILA-footer-bg-03.png) no-repeat right bottom;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    div{
+        position: relative;
+        z-index: 2;
+        h2{
+            text-transform: none;
+            color: $color-blue;
+        }
+        table.happy-kiddom{
+            width: 100%;
+            tr{
+                font-weight: bold;
+                line-height: 1.2em;
+                th,  td{
+                    text-align: center;
+                    width: 20%;
+                    padding: 15px 10px;
+                    color: $color-white;
+                    &:not(:first-child){
+                        border: 1px solid $color-white;
+                        color: $color-yellow
+                    }
+                    &:first-child{
+                        width: 40%;
+                        background: $color-blue;
+                        border: 1px solid #E6E7E8;
+                    }
+                    &:nth-child(2){
+                        background: #27A9E1
+                    }
+                    &:nth-child(3){
+                        background: #F16521
+                    }
+                    &:last-child{
+                        background: #00A14B;
+                    }
+                }
+                td{
+                    color: $color-blue;
+                    background: $color-white;
+                    &:first-child{
+                        background: $color-white;
+                        border: 1px solid #E6E7E8;
+                    }
+                }
+            }
+        }
+        .btn{
+            margin: 30px 0;
+        }
+    }
+}
+
+.adventures{
+    padding-top: 40px;
+    color: $color-white;
+    background: #F7941E url(../images/amazinng-summer/adventures-bg-01.png) no-repeat left center;
+    &:before{
+        background: url(../images/amazinng-summer/adventures-bg-02.png) no-repeat right bottom;
+        left: 0;
+        bottom: 40px;
+    }
+    &:after{
+
+    }
+    div{
+        position: relative;
+        z-index: 2;
+        h2{
+            text-transform: none;
+        }
+        p{
+            margin-bottom: 0;
+        }
+        .btn{
+            margin: 80px 0 30px;
+        }
+    }
+}
+
+footer.cyan{
+    background-color: #27A9E1;
+}
+/*=============================== End amazing-summer.html ===============================*/
 
 @media only screen and (max-width: 1050px){
     nav.top-menu{
@@ -540,6 +1144,14 @@ footer{
                     padding: 0 5px;
                 }
             }
+            @include media(320px, 480px){
+              margin-top:40px;
+              li{
+                a{
+                  padding: 0 15px;
+                }
+              }
+            };
         }
     }
 
@@ -678,7 +1290,6 @@ footer{
             margin: 15px 0;
             &:last-child{
                 margin-top: 0;
-                margin-bottom: 50px;
             }
         }
         .wel-come-more{

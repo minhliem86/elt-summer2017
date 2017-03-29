@@ -2,6 +2,17 @@
 
 @section('content')
   <div class="container">
+    <header class="top-header">
+      <div >
+          <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" alt="">
+      </div>
+      <div class="title-header">
+          <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+      </div>
+    </header>
+  </div>
+
+  <div class="container">
     <section class="wel-come">
       <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-bg-01.png" class="img-responsive img-leaf leaf1" alt="Amazing Summer">
       <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-bg-02.png" class="img-responsive img-leaf leaf2" alt="Amazing Summer">
@@ -9,7 +20,7 @@
       <div class="container-fluid">
           <div class="row">
               <center class="banner col-xs12">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" class="img-responsive" alt="">
               </center>
               <h2>CHÀO MỪNG BẠN ĐẾN VỚI<br><span>ILA AMAZING SUMMER 2017</span></h2>
               <div class="text-content col-sm-10 col-sm-offset-1">
@@ -64,9 +75,9 @@
   <div class="container">
     <section class="amazinng">
       <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-funkid" alt="">
-      <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-01.png" class="img-responsive img-ic-ny" alt="">
+      <!-- <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-01.png" class="img-responsive img-ic-ny" alt=""> -->
       <div class="container-fluid">
-          <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive " alt="">
+          <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive ic-amazing" alt="">
           <h2>AMAZINNG RACE</h2>
           <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
           <div class="row">
@@ -74,7 +85,7 @@
                   <p>Với niềm tin học tiếng Anh là phải dùng được, một sân chơi độc quyền của ILA sẽ lần đầu xuất hiện tại HCMC dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới với giải thưởng hấp dẫn. </p>
                   <p>ILA Amazing Race 2017 là một sân chơi đời thực, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng thành phố HCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại 4 quốc  gia trong thời gian ngắn nhất.</p>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-12 wrap-btn">
                   <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
               </div>
           </div>
@@ -84,7 +95,6 @@
 
   <div class="container">
     <section class="gift">
-      <img src="{!!asset('public/assets/frontend')!!}/images/sun.png" class="img-responsive img-sun" alt="">
       <div class="container-fluid">
           <div class="row">
               <div class="col-sm-4">
@@ -146,6 +156,9 @@
     </section>
   </div>
 
+  @include('Frontend::layouts.register')
+
+  @include('Frontend::layouts.footer')
 @stop
 
 @section('script')
