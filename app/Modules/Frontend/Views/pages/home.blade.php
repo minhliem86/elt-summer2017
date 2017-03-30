@@ -4,7 +4,8 @@
   <div class="container">
     <header class="top-header">
       <div >
-          <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" alt="">
+          <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt="">
+          <img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt="">
       </div>
       <div class="title-header">
           <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
@@ -25,12 +26,10 @@
               <h2>CHÀO MỪNG BẠN ĐẾN VỚI<br><span>ILA AMAZING SUMMER 2017</span></h2>
               <div class="text-content col-sm-10 col-sm-offset-1">
                   <p>Thuộc hành trình kiến tạo thế hệ Việt Nam ưu Việt và tiếp nối thành công của những mùa hè vừa qua, ILA vui mừng giới thiệu .Chương trình Anh văn Hè ILA AMAZING SUMMER 2017mang đậm phong cách thế kỷ 21 với chuỗi sân chơi tiếng Anh mới lạ, độc đáo AMAZING RACE, HAPPY KIDDOM, ILA AMAZING ADVENTURE.</p>
-                  <br>
                   <p>Đây sẽ là mùa hè tuyệt vời nhất mà các em không thể quên! Vừa học giỏi tiếng Anh, vừa rèn luyện 7 thói quen tích cực trong mùa hè, các em sẽ trở thành thế hệ ưu việt nhí thành công và hạnh phúc.</p>
               </div>
               <center class="col-xs-12 wrap-btn">
-                  <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
-                  <a href="#" class="btn btn-white">Lịch học <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                  <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
               </center>
               <div class="col-xs-12">
                   <div class="wel-come-more col-xs-12 col-sm-4">
@@ -38,7 +37,7 @@
                           <div>
                               <h2 class="title">Summer <br class="xs-hidden">Learn</h2>
                               <p>Tiếng Anh và 6 kỹ năng thành công</p>
-                              <a href="#" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                              <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
                           </div>
                           <img src="{!!asset('public/assets/frontend')!!}/images/wel-more-01.png" alt="">
                       </div>
@@ -49,7 +48,7 @@
                           <div>
                               <h2 class="title">Happy <br class="xs-hidden">Kiddom</h2>
                               <p>Thế hệ ưu việt nhí</p>
-                              <a href="#" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                              <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
                           </div>
                           <img src="{!!asset('public/assets/frontend')!!}/images/wel-more-02.png" alt="">
                       </div>
@@ -60,7 +59,7 @@
                           <div>
                               <h2 class="title">Amazing <br class="xs-hidden">Adventures</h2>
                               <p>Kỷ niệm để đời</p>
-                              <a href="#" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                              <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-white">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
                           </div>
                           <img src="{!!asset('public/assets/frontend')!!}/images/wel-more-03.png" alt="">
                       </div>
@@ -82,11 +81,10 @@
           <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
           <div class="row">
               <div class="text-content col-sm-8">
-                  <p>Với niềm tin học tiếng Anh là phải dùng được, một sân chơi độc quyền của ILA sẽ lần đầu xuất hiện tại HCMC dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới với giải thưởng hấp dẫn. </p>
-                  <p>ILA Amazing Race 2017 là một sân chơi đời thực, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng thành phố HCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại 4 quốc  gia trong thời gian ngắn nhất.</p>
+                  <p>Dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới với giải thưởng hấp dẫn, ILA Amazing Race 2017 là một sân chơi đời thực, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng thành phố HCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại 4 quốc  gia trong thời gian ngắn nhất.</p>
               </div>
               <div class="col-sm-12 wrap-btn">
-                  <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                  <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
               </div>
           </div>
       </div>
@@ -98,17 +96,18 @@
       <div class="container-fluid">
           <div class="row">
               <div class="col-sm-4">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive hidden-sm hidden-xs" alt="">
               </div>
               <div class="col-sm-8">
                   <h4>ILA dành tặng ấn phẩm đặc biệt</h4>
                   <h3>7 THÓI QUEN CỦA THẾ HỆ ƯU VIỆT NHÍ</h3>
+                  <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive visible-sm visible-xs book-mobile" alt="">
                   <div class="text-content">
                       <p>LLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus ut nisl id rutrum. Sed velit sapien, congue et dignissim id, aliquet ut neque. Etiam leo tellus, mattis eu sem et, euismod ultricies velit. Aenean gravida porttitor ornare. Suspendisse mauris nibh, placerat et eros a, consectetur aliquam  arcu</p>
                       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam consectetur </p>
                   </div>
                   <div class="col-sm-12">
-                      <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                      <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
                   </div>
               </div>
           </div>

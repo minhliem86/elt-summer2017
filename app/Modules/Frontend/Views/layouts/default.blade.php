@@ -19,5 +19,6 @@
   <!-- Custom JS -->
   <script src="{!!asset('public/assets/frontend')!!}/js/jquery-2.1.1.js"></script>
   <script src="{!!asset('public/assets/frontend')!!}/js/bootstrap.min.js"></script>
+  @yield('script')
 </body>
 </html>

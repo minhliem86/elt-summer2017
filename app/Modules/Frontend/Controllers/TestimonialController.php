@@ -14,8 +14,9 @@ class TestimonialController extends Controller {
 
 	public function getIndex()
 	{
-		
-		return view('Frontend::pages.testimonial',compact(('one_testi', 'three_testi')));
+		$last_testi = $this->testimonialRepository->getFinalTesti();
+		$list_testi = $this->testimonialRepository->getAll();
+		return view('Frontend::pages.testimonial', compact('list_testi','last_testi'));
 	}
 
 	public function postAjax(){

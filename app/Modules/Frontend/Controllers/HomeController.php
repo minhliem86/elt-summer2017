@@ -14,8 +14,8 @@ class HomeController extends Controller {
 
 	public function getIndex()
 	{
-		$one_testi = $this->testimonial->getOneRandom();
-		$three_testi = $this->testimonial->getThreeRandom([$one_testi->id]);
+		$one_testi = $this->testimonialRepository->getOneRandom();
+		$three_testi = $this->testimonialRepository->getThreeRandom([$one_testi->id]);
 		return view('Frontend::pages.home',compact('one_testi', 'three_testi'));
 	}
 

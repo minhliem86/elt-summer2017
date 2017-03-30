@@ -6,7 +6,8 @@
     <div class="container-fluid">
         <div class="row">
             <div>
-                <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" alt="">
+              <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt="">
+              <img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt="">
             </div>
             <div class="title-header">
                 <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
@@ -18,6 +19,7 @@
 
 <div class="container">
   <section class="amazinng-summer-top">
+    <img src="{!!asset('public/assets/frontend')!!}/images/amazing-page-bird.png" class="visible-lg visible-md img-bird" alt="">
     <div class="container-fluid">
         <div class="row">
             <center class="banner col-xs12">
@@ -29,9 +31,8 @@
             <div class="text-content col-sm-10 col-sm-offset-1">
                 <p>LA Amazing Summer 2017: mùa hè tuổi thơ bùng nổ cảm xúc, ngập tràn niềm vui. Vừa học giỏi tiếng Anh, vừa rèn luyện 7 thói quen tích cực, hãy trở thành Thế Hệ Ưu Việt Nhí thành công và hạnh phúc.“ Vì đây là mùa hè tuyệt vời nhất!”</p>
             </div>
-            <center class="col-xs-12">
-                <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
-                <a href="#" class="btn btn-white">Lịch học <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+            <center class="col-xs-12 wrap-btn">
+                <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
             </center>
         </div>
     </div>
@@ -44,7 +45,7 @@
         <div class="row flex-items-end">
             <div class="col-sm-7">
                 <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/icon-wel-more-01.png" alt="">
-                <h2><span>BEYOND ENGLISH</span><br>Tiếng Anh và 6 kỹ năng  thành công thế kỷ 21</h2>
+                <h2>BEYOND ENGLISH<span>Tiếng Anh và 6 kỹ năng  thành công thế kỷ 21</span></h2>
                 <ul class="list-unstyled">
                     <li>• Chương trình Anh ngữ chất lượng cao </li>
                     <li>• 100% giáo viên bản xứ giàu kinh nghiệm. </li>
@@ -54,7 +55,7 @@
                     <li>• Tiếp thu bài hiệu quả.</li>
                     <li>• Giao tiếp tiếng Anh tự tin hơn chỉ qua một mùa hè.  </li>
                 </ul>
-                <a href="#" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
             </div>
             <div class="col-sm-5">
                 <div class="box-img">
@@ -76,6 +77,7 @@
             <div class="col-sm-8">
                 <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/icon-crown-blue.png" alt="">
                 <h2><span>HAPPY KIDDOM</span><br>Vương Quốc Hạnh Phúc của thế hệ Ưu Việt Nhí</h2>
+                <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/kiddoom-01.png" class="visible-sm visible-xs img-kiddom" alt="">
                 <table class="rps-table happy-kiddom">
                     <tr>
                         <th>Hoạt Động</th>
@@ -138,7 +140,7 @@
                         <td data-th="Smart Teens"></td>
                     </tr>
                 </table>
-                <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -158,7 +160,7 @@
                     <li>• Trau dồi vốn tiếng Anh</li>
                     <li>• Trải nghiệm để đời thú vị, đáng nhớ</li>
                 </ul>
-                <a href="#" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
             </div>
             <div class="col-sm-6">
                 <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/adventures.png" alt="">

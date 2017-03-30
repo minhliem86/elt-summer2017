@@ -51,7 +51,7 @@
                       </div>
                   </div>
                   <center>
-                      <a href="#" class="btn btn-white">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                      <input type="submit" name="btn-submit" value="Đăng ký">
                   </center>
               </form>
           </div>
