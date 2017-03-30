@@ -39,4 +39,21 @@ class TestimonialRepository{
       count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
       return $current;
     }
+
+    // FRONTEND
+
+    public function getOneRandom(){
+      return $this->testimonial->where('status',1)->orderByRaw("RAND()")->take(1)->first();
+    }
+
+    public function getThreeRandom($arrDataNotIn)
+    {
+        return $this->testimonial->where('status',1)->whereNotIn('id',$arrDataNotIn)->take(3)->get();
+    }
+
+    public function getFinalTesti()
+    {
+        return $this->testimonial->where('status',1)->orderBy('id','DESC')->first();
+    }
+
 }

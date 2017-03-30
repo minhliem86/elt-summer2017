@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\TestimonialRepository;
 
-class HomeController extends Controller {
+class TestimonialController extends Controller {
 
 	protected $testimonialRepository;
 
@@ -14,9 +14,14 @@ class HomeController extends Controller {
 
 	public function getIndex()
 	{
-		$one_testi = $this->testimonial->getOneRandom();
-		$three_testi = $this->testimonial->getThreeRandom([$one_testi->id]);
-		return view('Frontend::pages.home',compact('one_testi', 'three_testi'));
+		
+		return view('Frontend::pages.testimonial',compact(('one_testi', 'three_testi')));
 	}
+
+	public function postAjax(){
+
+	}
+
+
 
 }
