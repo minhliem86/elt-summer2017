@@ -1,18 +1,27 @@
 @extends('Frontend::layouts.default')
 
+@section('title','Amazing Race')
+
+@section('meta-share')
+<meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare04.png" />
+@stop
+
 @section('content')
 <div class="container">
   <header class="amazinng-page-header">
-    <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-visual" alt="">
-    <div class="container">
-        <div class="wrap-title-banner">
-          <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" alt="">
-          <h2>AMAZINNG RACE</h2>
-          <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
-          <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
-        </div>
-    </div>
-</header>
+      <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-visual" alt="">
+      <div class="container">
+          <div class="wrap-title-banner">
+            <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" alt="">
+            <h2>AMAZINNG RACE</h2>
+            <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
+            <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay</a>
+          </div>
+      </div>
+  </header>
+  <div class="title-header">
+      <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+  </div>
 </div>
 
 <div class="container">
@@ -29,7 +38,7 @@
                   <p>Đây là hoạt động độc quyền của ILA và lần đầu tiên xuất hiện tại HCMC, dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới</p>
               </div>
               <div class="col-sm-12 amazinng-page-box">
-                  <div class="col-sm-4">
+                  <div class="col-sm-4 col-sm-offset-2">
                       <div class="wrap-each-rule clearfix">
                         <div class="col-sm-4 col-lg-3">
                             <img src="{!!asset('public/assets/frontend')!!}/images/icon-bag.png" class="img-responsive" alt="">
@@ -55,7 +64,7 @@
                         </div>
                       </div>
                   </div>
-                  <div class="col-sm-4">
+                  <!-- <div class="col-sm-4">
                     <div class="wrap-each-rule clearfix">
                       <div class="col-sm-4 col-lg-3">
                           <img src="{!!asset('public/assets/frontend')!!}/images/icon-cup-blue.png" class="img-responsive" alt="">
@@ -67,7 +76,7 @@
                           <p>•  Elit, sed diam</p>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
               </div>
           </div>
       </div>
@@ -87,7 +96,7 @@
                       <li>• Trong vòng 5 tiếng, cá nhân hoặc tập thể nào sưu tập đủ visa của 4 quốc gia và về đích trước 3h chiều cùng ngày sẽ giành được giải thưởng do ILA trao tặng .</li>
                   </ul>
                   <center class="col-xs-12">
-                      <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                      <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay</a>
                   </center>
               </div>
           </div>
@@ -105,10 +114,10 @@
                       <div class="box">
                           <div>
                               <img src="{!!asset('public/assets/frontend')!!}/images/icon-wel-more-01.png" alt="">
-                              <h3>Summer Learn</h3>
-                              <p>Tiếng Anh và 6 kỹ năng thành công</p>
+                              <h3>Beyond English</h3>
+                              <p>Tiếng Anh và 6 kỹ năng thành công của thế kỷ 21</p>
                           </div>
-                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm</a>
                           <img class="img-margin" src="{!!asset('public/assets/frontend')!!}/images/ila-amazinng-01.png" alt="">
                       </div>
                   </div>
@@ -116,10 +125,10 @@
                       <div class="box">
                           <div>
                               <img src="{!!asset('public/assets/frontend')!!}/images/icon-crown-blue.png" alt="">
-                              <h3>Happy Kiddom</h3>
+                              <h3>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</h3>
                               <p>Thế hệ ưu việt nhí</p>
                           </div>
-                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm</a>
                           <img class="img-margin" src="{!!asset('public/assets/frontend')!!}/images/ila-amazinng-02.png" alt="">
                       </div>
                   </div>
@@ -130,7 +139,7 @@
                               <h3>Amazing Adventures</h3>
                               <p>Kỷ niệm để đời</p>
                           </div>
-                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm <i class="fa fa-angle-right pull-right" aria-hidden="true"></i></a>
+                          <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm</a>
                           <img class="img-margin" src="{!!asset('public/assets/frontend')!!}/images/ila-amazinng-03.png" alt="">
                       </div>
                   </div>
@@ -141,6 +150,6 @@
 </div>
 
 @include('Frontend::layouts.register')
-@include('Frontend::layouts.footer')
+@include('Frontend::layouts.footer-orange')
 
 @stop

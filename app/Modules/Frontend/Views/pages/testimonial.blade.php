@@ -1,5 +1,11 @@
 @extends('Frontend::layouts.default')
 
+@section('title','Trải Nghiệm Mùa Hè')
+
+@section('meta-share')
+<meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />
+@stop
+
 @section('content')
 <div class="container">
   <header class="top-header">
@@ -8,6 +14,9 @@
               <div>
                   <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-banner.png" class="visible-lg visible-md" alt="">
                   <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/banner-mobile-testimonial.png" class="visible-sm visible-xs" alt="">
+              </div>
+              <div class="title-header">
+                  <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
               </div>
           </div>
       </div>
@@ -24,72 +33,45 @@
                   <h2>CẢM NHẬN MÙA HÈ</h2>
               </center>
               <div class="container-fluid box-slider">
-                  <div class="box-slider-top">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-6 col-lg-7">
-                              <div class="box-img">
-                                  <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-lg-5">
-                              <h4>LOREM IPSUM DOLOR SIT AMET</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris dolor, ultrices porttitor orci id, luctus bibendum sem. Sed tincidunt ligula eget ipsum luctus lacinia. Sed eget diam leo. Praesent quis mattis nibh.</p>
-                              <h4>MR. SIMPLE</h4>
+                  <i class="loading-ic"></i>
+                  <div class="load-ajax">
+                    @if($last_testi)
+                    <div class="box-slider-top visible-lg visible-md">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-6 col-lg-7">
+                                <div class="box-img">
+                                    <img src="{!!$last_testi->img_url!!}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-5">
+                              <h4>{!!$last_testi->title!!}</h4>
+                              <p>{!!Str::words($last_testi->content)!!}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                  </div>
-                  <div class="box-slider-top visible-sm visible-xs">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-6 col-lg-7">
-                              <div class="box-img">
-                                  <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
+                    </div>
+                    @if(!$list_testi->isEmpty())
+                      @foreach($list_testi as $item_testi_mobile)
+                      <div class="box-slider-top visible-sm visible-xs">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-md-6 col-lg-7">
+                                  <div class="box-img">
+                                      <img src="{!!$item_testi_mobile->img_url!!}" alt="">
+                                  </div>
                               </div>
+                              <div class="col-md-6 col-lg-5">
+                                  <h4>{!!$item_testi_mobile->title!!}</h4>
+                                  <p>{!!$item_testi_mobile->content!!}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-md-6 col-lg-5">
-                              <h4>LOREM IPSUM DOLOR SIT AMET</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris dolor, ultrices porttitor orci id, luctus bibendum sem. Sed tincidunt ligula eget ipsum luctus lacinia. Sed eget diam leo. Praesent quis mattis nibh.</p>
+                      </div>
+                      @endforeach
+                    @endif
 
-                              <h4>MR. SIMPLE</h4>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="box-slider-top visible-sm visible-xs">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-6 col-lg-7">
-                              <div class="box-img">
-                                  <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-lg-5">
-                              <h4>LOREM IPSUM DOLOR SIT AMET</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris dolor, ultrices porttitor orci id, luctus bibendum sem. Sed tincidunt ligula eget ipsum luctus lacinia. Sed eget diam leo. Praesent quis mattis nibh.</p>
-
-                              <h4>MR. SIMPLE</h4>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="box-slider-top visible-sm visible-xs">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-6 col-lg-7">
-                              <div class="box-img">
-                                  <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-lg-5">
-                              <h4>LOREM IPSUM DOLOR SIT AMET</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mauris dolor, ultrices porttitor orci id, luctus bibendum sem. Sed tincidunt ligula eget ipsum luctus lacinia. Sed eget diam leo. Praesent quis mattis nibh.</p>
-
-                              <h4>MR. SIMPLE</h4>
-                          </div>
-                        </div>
-                      </div>
+                    @endif
                   </div>
               </div>
               <div class="box-slider-bottom visible-lg visible-md">
@@ -98,46 +80,19 @@
                       <!-- Additional required wrapper -->
                       <div class="swiper-wrapper">
                           <!-- Slides -->
+                          @if(!$list_testi->isEmpty())
+                          @foreach($list_testi as $item_testi)
                           <div class="swiper-slide">
-                            <div class="box-slider-items">
-                                <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
+                            <div class="box-slider-items" data-id="{!!$item_testi->id!!}">
+                                <img src="{!!$item_testi->img_url!!}" alt="">
                                 <div class="slider-text">
-                                    <p>Lorem ipsum <br>Lorem ipsum</p>
+                                    <p>{!!Str::words($item_testi->title,10)!!}</p>
                                 </div>
                             </div>
                           </div>
-                          <div class="swiper-slide">
-                            <div class="box-slider-items">
-                                <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                                <div class="slider-text">
-                                    <p>Lorem ipsum <br>Lorem ipsum</p>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="box-slider-items">
-                                <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                                <div class="slider-text">
-                                    <p>Lorem ipsum <br>Lorem ipsum</p>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="box-slider-items">
-                                <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                                <div class="slider-text">
-                                    <p>Lorem ipsum <br>Lorem ipsum</p>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="swiper-slide">
-                            <div class="box-slider-items">
-                                <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-slider-01.png" alt="">
-                                <div class="slider-text">
-                                    <p>Lorem ipsum <br>Lorem ipsum</p>
-                                </div>
-                            </div>
-                          </div>
+                          @endforeach
+                          @endif
+
                       </div>
                       <!-- If we need navigation buttons -->
                       <div class="swiper-button-prev"></div>
@@ -145,112 +100,6 @@
                   </div>
                 </div>
               </div>  <!-- end swiper-testi -->
-          </div>
-      </div>
-  </section>
-</div>
-
-<div class="container">
-  <section class="feeling gallery">
-      <h2>THƯ VIỆN HÌNH ẢNH</h2>
-      <div class="box">
-        <div class="box-item-left">
-          <div class="box-slider-items">
-              <img src="{!!asset('public/assets/frontend')!!}/images/feeling-01.png" alt="">
-          </div>
-        </div>
-        <div class="box-item-right">
-          <div class="swiper-container" id="swiper-gallery-thumb">
-              <!-- Additional required wrapper -->
-              <div class="swiper-wrapper">
-                  <!-- Slides -->
-                  <div class="swiper-slide">
-                    <div class="box-item-child">
-                        <div class="box-child-img active">
-                            <img src="{!!asset('public/assets/frontend')!!}/images/feeling-02.png" alt="">
-                        </div>
-                        <div class="text-content">
-                            <p>Lorem ipsum dolor sit amet consec tetu r adipiscing elit. est eletmentum vulputate</p>
-                            <p class="time-day">01/04/2017</p>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="box-item-child">
-                        <div class="box-child-img">
-                            <img src="{!!asset('public/assets/frontend')!!}/images/feeling-02.png" alt="">
-                        </div>
-                        <div class="text-content">
-                            <p>Lorem ipsum dolor sit amet consec tetu r adipiscing elit. est eletmentum vulputate</p>
-                            <p class="time-day">01/04/2017</p>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="box-item-child">
-                        <div class="box-child-img">
-                            <img src="{!!asset('public/assets/frontend')!!}/images/feeling-02.png" alt="">
-                        </div>
-                        <div class="text-content">
-                            <p>Lorem ipsum dolor sit amet consec tetu r adipiscing elit. est eletmentum vulputate</p>
-                            <p class="time-day">01/04/2017</p>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="box-item-child">
-                        <div class="box-child-img">
-                            <img src="{!!asset('public/assets/frontend')!!}/images/feeling-02.png" alt="">
-                        </div>
-                        <div class="text-content">
-                            <p>Lorem ipsum dolor sit amet consec tetu r adipiscing elit. est eletmentum vulputate</p>
-                            <p class="time-day">01/04/2017</p>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="box-item-child">
-                        <div class="box-child-img">
-                            <img src="{!!asset('public/assets/frontend')!!}/images/feeling-02.png" alt="">
-                        </div>
-                        <div class="text-content">
-                            <p>Lorem ipsum dolor sit amet consec tetu r adipiscing elit. est eletmentum vulputate</p>
-                            <p class="time-day">01/04/2017</p>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid seasons">
-          <div class="row">
-              <div class="col-sm-12 seasons-items">
-                  <a href="#" class="summer">
-                      <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/seasons-01.png" alt="">
-                      <div class="slider-text">
-                          <h2>Summer 2014</h2>
-                      </div>
-                  </a>
-              </div>
-              <div class="col-sm-12 seasons-items">
-                  <a href="#" class="summer text-right">
-                      <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/seasons-02.png" alt="">
-                      <div class="slider-text">
-                          <h2>Summer 2015</h2>
-                      </div>
-                  </a>
-              </div>
-              <div class="col-sm-12 seasons-items">
-                  <a href="#" class="summer">
-                      <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/seasons-03.png" alt="">
-                      <div class="slider-text">
-                          <h2>Summer 2016</h2>
-                      </div>
-                  </a>
-              </div>
           </div>
       </div>
   </section>
@@ -284,8 +133,6 @@
           }
 
       });
-
-
       var swiperGalleryThumb = new Swiper('#swiper-gallery-thumb', {
           speed: 400,
           slidesPerView: 3,
@@ -295,6 +142,26 @@
       });
 
 
+      /*AJAX TESTI*/
+      $('.box-slider-items').on('click',function(){
+        var id = $(this).data('id');
+        $.ajax({
+          url: "{!!route('f.postDataTesti')!!}",
+          type: "POST",
+          data: {id:id, _token:$('meta[name="csrf-token"]').attr('content') },
+          beforSend:function(){
+            $('.load-ajax').empty();
+
+            $('.loading-ic').fadeIn();
+          },
+          success:function(data){
+            $('.loading-ic').fadeOut();
+            // $('.load-ajax').empty();
+            $('.load-ajax').html(data.rs);
+            // console.log(data.rs);
+          }
+        })
+      })
     })
   </script>
 @stop

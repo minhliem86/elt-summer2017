@@ -1,5 +1,11 @@
 @extends('Frontend::layouts.default')
 
+@section('title','Liên Hệ')
+
+@section('meta-share')
+<meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />
+@stop
+
 @section('content')
 <div class="container">
   <header class="top-header">
@@ -24,7 +30,8 @@
             </center>
             <h2>ĐĂNG KÝ NGAY<br><span>ĐỂ NHẬN BỘ QUÀ ĐẶC BIỆT</span></h2>
             <div class="col-sm-6 gift-pack">
-                <h4 class="title"><span class="visible-lg visible-md">bộ quà tặng</span> bao gồm:</h4>
+                <h4 class="title visible-lg visible-md">bộ quà tặng bao gồm:</h4>
+                <p class="text-on-mobile visible-sm visible-xs">bao gồm</p>
                 <div class="wrap-each-contact gift-mobile visible-xs visible-sm">
                   <div class="row">
                       <div class="col-sm-4">
@@ -74,51 +81,45 @@
             </div>
 
             <div class="col-sm-6">
-                <form class="contact-register">
+                <form action="{!!route('f.postContact')!!}" class="contact-register" method="POST" id="form_summer2017">
+                    {!!Form::token()!!}
                     <p class="note">Bạn vui lòng hoàn tất bản thông tin dưới đây, chúng tôi sẽ liên lạc lại với bạn trong 24 giờ tới.</p>
                     <div class="form-group">
                         <label>Họ Tên</label>
-                        <input type="text" class="form-control" required placeholder="">
+                        <input type="text" name="fullname" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" required placeholder="">
+                        <input type="email" name="email" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                         <label>Điện Thoại</label>
-                        <input type="tel" class="form-control" required placeholder="">
+                        <input type="tel" name="phone" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                         <label>Thành Phố</label>
-                        <select class="form-control">
-                            <option>Hồ Chí Minh</option>
-                            <option>Hà Nội</option>
-                            <option>Đà Nẵng</option>
-                        </select>
+                        {!!Form::select('id_city',['' =>'Chọn Thành Phố'] + $list_city,old('id_city'),['class'=>'form-control'])!!}
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="wrap-center" >
                         <label>Chọn trung Tâm ILA</label>
-                        <select class="form-control">
-                            <option>HCM 01</option>
-                            <option>HCM 02</option>
-                            <option>HCM 03</option>
+                        <select class="form-control" name="id_center" id="id_center">
+                          <option value="">Chọn trung tâm ILA</option>
                         </select>
+
                     </div>
                     <div class="form-group">
                         <label>Bạn có đang là học viên ILA?</label>
                         <div class="wrap-study">
                           <span class="study_inline">
-                            <input type="radio" id="yes" name="study_ila" value="1" checked> <label for="yes">Có</label>
+                            <input type="radio" id="yes" name="study_ila" value="1"> <label for="yes">Có</label>
                           </span>
                           <span class="study_inline">
                             <input type="radio" id="no" name="study_ila" value="0"> <label for="no">Không</label>
                           </span>
                         </div>
+                        <div id="error_study_id"></div>
                     </div>
-                    <div class="form-group">
-                        <label>Đặt câu hỏi để nhân được tư vấn</label>
-                        <textarea class="form-control"  name="" id="" cols="30" rows="10"></textarea>
-                    </div>
+                    
                     <center>
                         <input type="submit" name="btn-submit" value="Đăng ký">
                     </center>
