@@ -38,7 +38,7 @@
                   <p>Đây là hoạt động độc quyền của ILA và lần đầu tiên xuất hiện tại HCMC, dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới</p>
               </div>
               <div class="col-sm-12 amazinng-page-box">
-                  <div class="col-sm-4 col-sm-offset-2">
+                  <div class="col-sm-5 col-sm-offset-1">
                       <div class="wrap-each-rule clearfix">
                         <div class="col-sm-4 col-lg-3">
                             <img src="{!!asset('public/assets/frontend')!!}/images/icon-bag.png" class="img-responsive" alt="">
@@ -51,14 +51,14 @@
                       </div>
 
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-5">
                       <div class="wrap-each-rule clearfix">
                         <div class="col-sm-4 col-lg-3">
                             <img src="{!!asset('public/assets/frontend')!!}/images/icon-bag.png" class="img-responsive" alt="">
                         </div>
                         <div class="col-sm-8 col-lg-9 box-text">
                             <h4>THÔNG TIN CHUNG:</h4>
-                            <p>Hạn chót đăng ký tham dự: 01/04/2017</p>
+                            <p>• Hạn chót đăng ký tham dự: 16/04/2017</p>
                             <p>• Bắt đầu chương trình: 23/04/2017</p>
                             <p>• Thời gian chương trình: 9:00 – 16:00</p>
                         </div>
@@ -125,8 +125,9 @@
                       <div class="box">
                           <div>
                               <img src="{!!asset('public/assets/frontend')!!}/images/icon-crown-blue.png" alt="">
-                              <h3>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</h3>
-                              <p>Thế hệ ưu việt nhí</p>
+                              <h3>Happy Kiddom</h3>
+                              <!-- <h3>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</h3> -->
+                              <p>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</p>
                           </div>
                           <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm</a>
                           <img class="img-margin" src="{!!asset('public/assets/frontend')!!}/images/ila-amazinng-02.png" alt="">

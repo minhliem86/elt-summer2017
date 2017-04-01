@@ -28,42 +28,25 @@
             <center class="banner col-xs12">
                 <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" class="img-responsive img-key" alt="">
             </center>
-            <h2>ĐĂNG KÝ NGAY<br><span>ĐỂ NHẬN BỘ QUÀ ĐẶC BIỆT</span></h2>
+            <h2>ĐĂNG KÝ NGAY<br><span>ĐỂ NHẬN BỘ QUÀ ĐẶC BIỆT</span><span class="small-text">trước 25/04/2017</span></h2>
             <div class="col-sm-6 gift-pack">
-                <h4 class="title visible-lg visible-md">bộ quà tặng bao gồm:</h4>
-                <p class="text-on-mobile visible-sm visible-xs">bao gồm</p>
-                <div class="wrap-each-contact gift-mobile visible-xs visible-sm">
-                  <div class="row">
-                      <div class="col-sm-4">
-                          <img src="{!!asset('public/assets/frontend')!!}/images/contact-02.png" alt="">
-                      </div>
-                      <div class="col-sm-8">
-                          <div class="text-content-02">
-                              <h4><b>Nhận ngay 3,500,000 đồng và áo thun ILA Summmer </b></h4>
-                              <div class="text-content-02">
-                                  <p>khi đăng ký trước 25/04/2017</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                </div>
+                <h4 class="title ">bộ quà tặng bao gồm:</h4>
+                <!-- <p class="text-on-mobile visible-sm visible-xs">bao gồm</p> -->
                 <div class="wrap-each-contact">
                   <div class="row">
                       <div class="col-sm-4">
                           <img src="{!!asset('public/assets/frontend')!!}/images/contact-01.png" class="visible-lg visible-md" alt="">
                       </div>
                       <div class="col-sm-8">
-                          <p><b>Ấn phẩm đặc biệt</b></p>
-                          <h4><b>“7 THÓI QUEN CỦA THẾ HỆ ƯU VIỆT NHÍ”</b></h4>
-                          <div class="text-content-02">
-                              <p>của tác giả nổi tiếng thế giới SEAN COVEY do ILA độc quyền phát hành cho 10.000 học viên đầu tiên.</p>
-                          </div>
-                          <img src="{!!asset('public/assets/frontend')!!}/images/contact-01.png" class="img-mobile-book visible-sm visible-xs" alt="">
+                          <ul class="list-promotion">
+                            <li>Ưu đãi <b>3,500,000 đồng</b>, áo thun ILA Summmer </li>
+                            <li>Ấn phẩm đặc biệt <b>“7 THÓI QUEN CỦA THẾ HỆ ƯU VIỆT NHÍ”</b> của tác giả nổi tiếng thế giới SEAN COVEY do ILA độc quyền phát hành cho 10.000 học viên đầu tiên.</li>
+                          </ul>
                       </div>
                   </div>
                 </div>
 
-                <div class="wrap-each-contact visible-lg visible-md">
+                <!-- <div class="wrap-each-contact visible-lg visible-md">
                   <div class="row">
                       <div class="col-sm-4">
                           <img src="{!!asset('public/assets/frontend')!!}/images/contact-02.png" alt="">
@@ -77,7 +60,7 @@
                           </div>
                       </div>
                   </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="col-sm-6">
@@ -119,7 +102,7 @@
                         </div>
                         <div id="error_study_id"></div>
                     </div>
-                    
+
                     <center>
                         <input type="submit" name="btn-submit" value="Đăng ký">
                     </center>

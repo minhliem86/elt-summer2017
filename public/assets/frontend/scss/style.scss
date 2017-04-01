@@ -784,7 +784,7 @@ nav.top-menu{
 }
 
 .register{
-    background: url(../images/register-bg.png) no-repeat;
+    background: url(../images/banner-mobile-contact.png) no-repeat;
     background-size: cover;
     padding: 90px 0 35px;
     p.sub-form{
@@ -931,9 +931,14 @@ nav.top-menu{
         text-align: center;
         color: $color-blue;
         margin-bottom: 70px;
+        span.small-text{
+          display:block;
+        }
         @include media(320px, 480px){
           margin-bottom:10px;
+          font-size:22px;
         };
+
     }
     .gift-pack{
       @include media(320px, 480px){
@@ -958,6 +963,18 @@ nav.top-menu{
             @include media(320px, 480px){
               margin-bottom:30px;
             };
+            ul.list-promotion{
+              padding-left:0px;
+
+              li{
+                font-size:14px;
+                margin-bottom:8px;
+                @include media(320px, 480px){
+                  list-style: none;
+                  font-size:13px;
+                };
+              }
+            }
             > img{
               margin-bottom: 15px;
             }

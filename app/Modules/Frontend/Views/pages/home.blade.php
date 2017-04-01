@@ -87,7 +87,7 @@
       <!-- <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-01.png" class="img-responsive img-ic-ny" alt=""> -->
       <div class="container-fluid">
           <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive ic-amazing" alt="">
-          <h2>AMAZINNG RACE</h2>
+          <h2>AMAZING RACE</h2>
           <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
           <div class="row">
               <div class="text-content col-sm-8">

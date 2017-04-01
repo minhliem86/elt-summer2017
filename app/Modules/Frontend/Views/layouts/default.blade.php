@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="keywords" content="ILA Anh Văn Hè 2017, ILA Amazing Summer 2017, Tiếng Anh Hè 2017">
+    <meta name="description" content="LA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên.">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
     @yield('meta-share')
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="315" />
 
 
     <title>@yield('title', 'ILA Amazing Summer 2017')</title>
+    <link rel="icon" href="{!!asset('public')!!}/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{!!asset('public/assets/frontend')!!}/css/style.css" rel="stylesheet">
     <!-- FB Fixel-->
