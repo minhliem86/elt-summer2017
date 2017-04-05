@@ -53,8 +53,6 @@
 
     </script>
     <!--END GA-->
-
-
     <!-- GOOGLE ADS -->
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,25 +62,49 @@
     })(window,document,'script','dataLayer','GTM-NNC6V2W');</script>
     <!-- End Google Tag Manager -->
 
-
 </head>
 
 <body>
+	  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNC6V2W"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div class="warpper">
     @include('Frontend::layouts.header')
       @yield('content')
   </div>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNC6V2W"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+
 
   <!-- Custom JS -->
   <script src="{!!asset('public/assets/frontend')!!}/js/jquery-2.1.1.js"></script>
   <script src="{!!asset('public/assets/frontend')!!}/js/bootstrap.min.js"></script>
-
   <script src="{!!asset('public/assets/frontend')!!}/js/jquery.validate.min.js"></script>
+
+  <!--THIRD PARTY-->
+  <script src="{!!asset('public/assets/frontend')!!}/js/jquery.spritely.js"></script>
+  <script src="{!!asset('public/assets/frontend')!!}/js/jquery.enllax.min.js"></script>
+  <!--WOW-->
+  <link href="{!!asset('public/assets/frontend')!!}/js/wow/libs/animate.css" rel="stylesheet">
+  <script src="{!!asset('public/assets/frontend')!!}/js/wow/wow.min.js"></script>
+  <script defer>
+  $(document).ready(function(){
+    $('#far-cloud').pan({fps: 30, speed: 0.3, dir: 'left'});
+    $('#near-cloud').pan({fps: 30, speed: 0.5, dir: 'left'});
+
+    /*STELLAR*/
+    $(window).enllax();
+
+    /*WOW*/
+    let wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       200,
+      }
+    );
+    wow.init();
+  })
+  </script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#form_summer2017').validate({

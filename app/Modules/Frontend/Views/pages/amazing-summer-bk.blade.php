@@ -87,40 +87,81 @@
 
 <div class="container">
   <div class="row">
-    <section class="kiddom summer-page">
+    <section class="kiddom">
       <div class="container-fluid">
-            <div class="wrap-kiddom">
-              <div class="wrrap-title">
-                <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/icon-crown-blue.png" alt="">
-                <h2><span>HAPPY KIDDOM</span><br>Vương Quốc Hạnh Phúc của thế hệ Ưu Việt Nhí</h2>
+          <div class="row flex-items-end">
+              <div class="col-sm-4">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/kiddoom-01.png" class="wow slideInLeft" alt="">
               </div>
-              <div class="content-kiddom clearfix">
-                <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="">
-                  <div class="overlay">
-                    <h4 class="title-content">CLB Yoga</h4>
-                  </div>
-                </div>
-                <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="">
-                  <div class="overlay">
-                    <h4 class="title-content">CLB Yoga</h4>
-                  </div>
-                </div>
-                <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="">
-                  <div class="overlay">
-                    <h4 class="title-content">CLB Yoga</h4>
-                  </div>
-                </div>
-                <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="">
-                  <div class="overlay">
-                    <h4 class="title-content">CLB Yoga</h4>
-                  </div>
-                </div>
-              </div>  <!-- end content kiddom -->
-            </div>  <!-- end wrap-kiddom-->
+              <div class="col-sm-8">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/icon-crown-blue.png" alt="">
+                  <h2><span>HAPPY KIDDOM</span><br>Vương Quốc Hạnh Phúc của thế hệ Ưu Việt Nhí</h2>
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/kiddoom-01.png" class="visible-sm visible-xs img-kiddom " alt="">
+                  <table class="rps-table happy-kiddom">
+                      <tr>
+                          <th>Hoạt Động</th>
+                          <th>Jumpstart</th>
+                          <th>Supper Junior</th>
+                          <th>Smart Teens</th>
+                      </tr>
+                      <tr>
+                          <td>Bộ Flashcard<br>“7 Thói Quen Của Thế Hệ Ưu Việt Nhí”</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>CLB Siêu Mẫu</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>CLB Bước Nhảy</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>CLB Bóng Rổ</td>
+                          <td data-th="Jumpstart"></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>CLB Điện Ảnh</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"></td>
+                          <td data-th="Smart Teens"></td>
+                      </tr>
+                      <tr>
+                          <td>Chương trình Năng Lượng Hạnh Phúc</td>
+                          <td data-th="Jumpstart"></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>CLB Lắp ráp Lego</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"></td>
+                          <td data-th="Smart Teens"></td>
+                      </tr>
+                      <tr>
+                          <td>Làm Kem Thần Kỳ</td>
+                          <td data-th="Jumpstart"></td>
+                          <td data-th="Supper Junior"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Smart Teens"><i class="fa fa-check" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>Chuyến Đi Nông Trại</td>
+                          <td data-th="Jumpstart"><i class="fa fa-check" aria-hidden="true"></i></td>
+                          <td data-th="Supper Junior"></td>
+                          <td data-th="Smart Teens"></td>
+                      </tr>
+                  </table>
+                  <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
+              </div>
+          </div>
       </div>
     </section>
   </div>
@@ -147,7 +188,7 @@
               </div>
           </div>
       </div>
-    </section>
+    </section>    
   </div>
 </div>
 

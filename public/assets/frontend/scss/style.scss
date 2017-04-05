@@ -192,20 +192,40 @@ nav.top-menu{
     }
 }
 
-
-.title-header{
-    background: $color-blue url(../images/header-bg-01.png) no-repeat 35px center;
-    padding: 40px 0;
-    position: relative;
-
-    h1{
-        margin: 0;
-        position: relative;
-        z-index: 2;
-        color: $color-white;
-        text-align: center;
+.wrap-title{
+  background: $color-blue;
+  position:relative;
+  .stage{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    z-index: 100;
+    &.far-cloud{
+      background:url('../images/cloud/far-cloud.png') left top repeat-x;
     }
+    &.near-cloud{
+      background:url('../images/cloud/near-cloud.png') left top repeat-x;
+    }
+  }
+  .title-header{
+      background:  url(../images/cloud/sky.png) no-repeat left center;
+      padding: 40px 0;
+      position: relative;
+      z-index: 103;
+      h1{
+          margin: 0;
+          position: relative;
+          z-index: 2;
+          color: $color-white;
+          text-align: center;
+      }
+  }
 }
+
+
 
 .wel-come{
     position: relative;
@@ -488,6 +508,7 @@ nav.top-menu{
     padding-bottom: 80px;
     background:white url(../images/amazing-page-bg-left.png) no-repeat 20px bottom;
     position:relative;
+    overflow: hidden;
     img.img-bird{
       position:absolute;
       top:10%;
@@ -711,7 +732,7 @@ nav.top-menu{
 .feeling{
     padding: 70px 0;
     text-align: center;
-    background: #F7941E url(../images/feeling-bg-01.png) no-repeat left 160px ;
+    background: #F7941E url(../images/feeling-bg-01.png) no-repeat -50px 160px ;
     position: relative;
     &:before{
         content: '';
@@ -720,7 +741,7 @@ nav.top-menu{
         height: 100%;
         left: 0;
         top: 0;
-        background: url(../images/feeling-bg-02.png) no-repeat right 300px;
+        background: url(../images/feeling-bg-02.png) no-repeat 104% 300px;
         z-index: 1;
     }
     h2{
@@ -891,6 +912,7 @@ nav.top-menu{
     padding-bottom: 100px;
     background: $color-yellow url(../images/contact-bg-left.png) no-repeat left bottom;
     position:relative;
+    overflow: hidden;
     &:before{
         content:'';
         width:374px;
@@ -1251,7 +1273,8 @@ $color-green : #00A14B;
 
 .kiddom{
     padding-top:40px;
-    text-align: right;
+    padding-bottom:100px;
+    text-align: center;
     background: $color-yellow;
     position:relative;
     &:before{
@@ -1273,65 +1296,78 @@ $color-green : #00A14B;
       width:374px;
       height:164px;
     }
-    div{
-        position: relative;
-        z-index: 2;
-        h2{
-            text-transform: none;
-            color: $color-blue;
-        }
-        img.img-kiddom{
-          @include media(320px, 480px){
-            max-width: 150px;
-            margin:0 auto;
-          };
-        }
-        table.happy-kiddom{
-            width: 100%;
-            tr{
-                font-weight: bold;
-                line-height: 1.2em;
-                th,  td{
-                    text-align: center;
-                    width: 20%;
-                    padding: 15px 10px;
-                    color: $color-white;
-                    &:not(:first-child){
-                        border: 1px solid $color-white;
-                        color: $color-yellow
-                    }
-                    &:first-child{
-                        width: 40%;
-                        background: $color-blue;
-                        border: 1px solid #E6E7E8;
-                    }
-                    &:nth-child(2){
-                        background: #27A9E1
-                    }
-                    &:nth-child(3){
-                        background: #F16521
-                    }
-                    &:last-child{
-                        background: #00A14B;
-                    }
-                }
-                td{
-                    color: $color-blue;
-                    background: $color-white;
-                    &:first-child{
-                        background: $color-white;
-                        border: 1px solid #E6E7E8;
-                    }
-                }
-            }
-        }
-        .btn{
-            margin: 30px 0;
-            @include media(320px, 480px){
-              max-width: 140px;
-            };
-        }
+    h2{
+        margin:0;
+        margin:25px 0 50px;
+        text-transform: none;
+        color: $color-blue;
     }
+    // img.img-kiddom{
+    //   @include media(320px, 480px){
+    //     max-width: 150px;
+    //     margin:0 auto;
+    //   };
+    // }
+    // table.happy-kiddom{
+    //     width: 100%;
+    //     tr{
+    //         font-weight: bold;
+    //         line-height: 1.2em;
+    //         th,  td{
+    //             text-align: center;
+    //             width: 20%;
+    //             padding: 15px 10px;
+    //             color: $color-white;
+    //             &:not(:first-child){
+    //                 border: 1px solid $color-white;
+    //                 color: $color-yellow
+    //             }
+    //             &:first-child{
+    //                 width: 40%;
+    //                 background: $color-blue;
+    //                 border: 1px solid #E6E7E8;
+    //             }
+    //             &:nth-child(2){
+    //                 background: #27A9E1
+    //             }
+    //             &:nth-child(3){
+    //                 background: #F16521
+    //             }
+    //             &:last-child{
+    //                 background: #00A14B;
+    //             }
+    //         }
+    //         td{
+    //             color: $color-blue;
+    //             background: $color-white;
+    //             &:first-child{
+    //                 background: $color-white;
+    //                 border: 1px solid #E6E7E8;
+    //             }
+    //         }
+    //     }
+    // }
+    .content-kiddom{
+      .each-img{
+        width:25%;
+        float:left;
+        position:relative;
+        .overlay{
+          background:transparent url('../images/amazinng-summer/photo/bg-over.png')repeat-x;
+          position:absolute;
+          top:0;
+          left:0;
+        }
+      }
+
+    }
+    .btn{
+        margin: 30px 0;
+        @include media(320px, 480px){
+          max-width: 140px;
+        };
+    }
+
 }
 
 .adventures{
@@ -1393,6 +1429,7 @@ footer.cyan{
 .testimonial-top{
     background: $color-yellow;
     padding:20px 0 40px;
+    overflow: hidden;
     &:before{
         background: url(../images/testimonial/testimonial-bg-02.png) no-repeat right 200px;
         top: 0;
@@ -1754,43 +1791,44 @@ footer.cyan{
         }
     }
 
-    .kiddom{
-        .flex-items-end{
-            div{
-                &:first-child{
-                    display: none;
-                }
-                table.happy-kiddom{
-                    tr{
-                        margin-bottom: 1em;
-                        th,td{
-                            width: 100%;
-                            text-align: left;
-                        }
-                        td{
-                            border-bottom: none;
-                            position: relative;
-                            &:before{
-                                text-align: left;
-                                width: 120px;
-                            }
-                            &:first-child{
-                                text-align: center;
-                                margin-top: 2em;
-                                &:before{
-                                    width: 0;
-                                }
-                            }
-                            & i.fa{
-                              position: absolute;
-                              left:50%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .kiddom{
+    //     .flex-items-end{
+    //         div{
+    //             &:first-child{
+    //                 display: none;
+    //             }
+    //             table.happy-kiddom{
+    //                 tr{
+    //                     margin-bottom: 1em;
+    //                     th,td{
+    //                         width: 100%;
+    //                         text-align: left;
+    //                     }
+    //                     td{
+    //                         border-bottom: none;
+    //                         position: relative;
+    //                         &:before{
+    //                             text-align: left;
+    //                             width: 120px;
+    //                         }
+    //                         &:first-child{
+    //                             text-align: center;
+    //                             margin-top: 2em;
+    //                             &:before{
+    //                                 width: 0;
+    //                             }
+    //                         }
+    //                         & i.fa{
+    //                           position: absolute;
+    //                           left:50%;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
 
     .adventures{
         div{
