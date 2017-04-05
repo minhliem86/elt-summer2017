@@ -16,6 +16,10 @@
 					<label for="" >Description</label>
 					{!!Form::textarea('description',old('description'),array('class'=>'form-control ckeditor'))!!}
 				</div>
+        <div class="form-group">
+					<label for="">Year</label>
+					{!!Form::text('year',old('year'),array('class'=>'form-control'))!!}
+				</div>
 
 				<div class="form-group">
 					<label for="" >Sort</label>

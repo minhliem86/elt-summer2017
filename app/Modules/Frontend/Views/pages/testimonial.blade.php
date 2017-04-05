@@ -13,8 +13,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div>
-                    <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-banner.png" class="visible-lg visible-md" alt="">
-                    <img src="{!!asset('public/assets/frontend')!!}/images/testimonial/banner-mobile-testimonial.png" class="visible-sm visible-xs" alt="">
+                    <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/testimonial/testimonial-banner.png" class="visible-lg visible-md" alt=""></a>
+                    <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/testimonial/banner-mobile-testimonial.png" class="visible-sm visible-xs" alt=""></a>
                 </div>
                 <div class="wrap-title">
                   <div class="stage far-cloud" id="far-cloud"></div>

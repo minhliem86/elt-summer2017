@@ -58,6 +58,7 @@ class AlbumController extends Controller {
             'title'=>$request->title,
             'slug' => \Unicode::make($request->title),
             'description' => $request->input('description'),
+            'year' => $request->input('year'),
             'status'=> $request->status,
             'order'=>$current
         ];
@@ -108,6 +109,7 @@ class AlbumController extends Controller {
 				'title'=>$request->title,
 				'slug' => \Unicode::make($request->title),
 				'description' => $request->input('description'),
+				'year'=> $request->year,
 				'status'=> $request->status,
 				'order'=>$request->order,
 			];

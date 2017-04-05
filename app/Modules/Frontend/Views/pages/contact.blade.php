@@ -11,8 +11,8 @@
   <div class="row">
     <header class="top-header">
       <div >
-          <img src="{!!asset('public/assets/frontend')!!}/images/banner-02.png" class="visible-lg visible-md" alt="">
-          <img src="{!!asset('public/assets/frontend')!!}/images/banner-02.png" class="visible-sm visible-xs" alt="">
+          <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-02.png" class="visible-lg visible-md" alt=""></a>
+          <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-02.png" class="visible-sm visible-xs" alt=""></a>
       </div>
       <div class="wrap-title">
         <div class="stage far-cloud" id="far-cloud"></div>

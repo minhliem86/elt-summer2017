@@ -14,5 +14,8 @@ Route::group(['namespace' => 'App\Modules\Frontend\Controllers'], function(){
   Route::get('/trai-nghiem-mua-he',['as'=>'f.getTestimonial','uses'=>'TestimonialController@getIndex']);
   Route::post('/get-data',['as'=>'f.postDataTesti','uses'=>'TestimonialController@postAjax']);
 
+  Route::get('/album/{year}',['as'=>'f.getAlbum', 'uses'=>'AlbumController@getIndex'])->where(['year'=>'[0-9._\-]+']);
+  /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
+
 });

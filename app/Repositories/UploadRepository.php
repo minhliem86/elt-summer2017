@@ -181,4 +181,11 @@ class UploadRepository
     public function getNameImg($id){
       return $this->image->find($id)->filename;
     }
+
+    /*FRONTEND*/
+    public function getImgFromAlbum($id_album)
+    {
+      return $this->image->where('album_id', $id_album)->paginate(20);
+    }
+
 }

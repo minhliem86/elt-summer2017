@@ -10,7 +10,7 @@
 <div class="container">
   <div class="row">
     <header class="amazinng-page-header">
-        <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-visual" alt="">
+        <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-visual" alt=""></a>
         <div class="container">
             <div class="wrap-title-banner">
               <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" alt="">
