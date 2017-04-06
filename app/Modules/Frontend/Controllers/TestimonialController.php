@@ -14,7 +14,6 @@ class TestimonialController extends Controller {
 
 	public function getIndex()
 	{
-		
 		return view('Frontend::pages.testimonial',compact(('one_testi', 'three_testi')));
 	}
 
