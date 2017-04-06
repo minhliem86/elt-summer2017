@@ -1,8 +1,15 @@
-@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+// @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&subset=vietnamese');
 @import url('https://fonts.googleapis.com/css?family=Cabin+Condensed:400,700&subset=vietnamese');
 //@import url('https://fonts.googleapis.com/css?family=Cabin+Condensed:400,700|Montserrat:300,400,500,700&subset=vietnamese');
 @import "../css/bootstrap.min.css";
+
+/*RESET BOOTSTRAP*/
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9
+{
+  padding-left:20px;
+  padding-right:20px;
+}
 
 @charset "utf-8";
 *{
@@ -30,6 +37,8 @@ $color-blue : #000565;
 $color-white : #fff;
 $color-yellow : #FFDE17;
 $color-orange : #F26522;
+$color-light-orange: #F7941E;
+$color-light-blue:#27A9E1;
 
 $font-cabin: 'Cabin Condensed',sans-serif;
 $font-montserrat: 'Montserrat', sans-serif;
@@ -74,6 +83,7 @@ $padding-0: 0;
     border-radius: 30px;
     @extend %transition;
     position:relative;
+    font-weight: 600;
     .fa{
         position:absolute;
         right:8px;
@@ -117,9 +127,11 @@ h1{
     font-weight: bold;
 }
 h2{
-    font-size: 40px;
+    font-size: 30px;
+    line-height: 38px;
     font-weight: bold;
     margin-bottom: 40px;
+    font-family: $font-VIE;
 }
 h3{
     font-size: 25px;
@@ -128,8 +140,8 @@ h3{
 h4{
     font-size: 16px;
 }
+
 nav.top-menu{
-    font-size: 16px;
     margin-bottom: 0;
     padding: 20px 25px;
     font-family: $font-cabin;
@@ -143,24 +155,26 @@ nav.top-menu{
         background: $color-blue;
         padding: 80px 15px 30px;
         box-shadow: 2px 1px 10px #231F21;
-        z-index: 10;
+        z-index: 100;
     }
     .nav{
         li{
             margin-left: 15px;
             a{
                 @extend %transition;
-                color: $color-blue;
+                color: $color-orange;
                 margin: 0;
                 padding: 0 15px;
                 height: 35px;
                 line-height: 35px;
                 border-radius: 35px;
+                font-size:14px;
+                font-family: $font-montserrat;
             }
             &:hover, &.current{
               a{
-                color: $color-yellow;
-                background: $color-blue;
+                color: white;
+                background: $color-orange;
               }
             }
             @include media(320px, 480px){
@@ -178,23 +192,40 @@ nav.top-menu{
     }
 }
 
-header.top-header{
-    .top-banner{
+.wrap-title{
+  background: $color-blue;
+  position:relative;
+  .stage{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    z-index: 100;
+    &.far-cloud{
+      background:url('../images/cloud/far-cloud.png') left top repeat-x;
     }
-    .title-header{
-        background: $color-blue url(../images/header-bg-01.png) no-repeat 35px center;
-        padding: 40px 0;
-        position: relative;
-
-        h1{
-            margin: 0;
-            position: relative;
-            z-index: 2;
-            color: $color-white;
-            text-align: center;
-        }
+    &.near-cloud{
+      background:url('../images/cloud/near-cloud.png') left top repeat-x;
     }
+  }
+  .title-header{
+      background:  url(../images/cloud/sky.png) no-repeat left center;
+      padding: 40px 0;
+      position: relative;
+      z-index: 103;
+      h1{
+          margin: 0;
+          position: relative;
+          z-index: 2;
+          color: $color-white;
+          text-align: center;
+      }
+  }
 }
+
+
 
 .wel-come{
     position: relative;
@@ -203,7 +234,7 @@ header.top-header{
     overflow:hidden;
     img.img-leaf{
       position:absolute;
-      display: none;
+
       &.leaf1{
         top:120px;
         left:-60px;
@@ -216,21 +247,29 @@ header.top-header{
         bottom:35%;
         right:-30px;
       }
+      @include media(320px, 480px){
+        display: none;
+      };
     }
     .banner{
         padding: 20px 0 40px;
         img{
-          max-width: 250px;
+          @include media(320px, 480px){
+            max-width: 200px;
+          }
         }
+        @include media(320px, 480px){
+          padding:20px 0;
+        };
     }
     h2{
         text-transform: uppercase;
         font-family: $font-VIE;
         color: $color-blue;
         text-align: center;
-        span{
-            font-weight: normal;
-        }
+        margin:0;
+        margin-bottom:15px;
+
     }
     .wrap-btn{
       margin: 30px 5px 70px;
@@ -245,6 +284,7 @@ header.top-header{
     }
     .text-content{
         text-align:center;
+        font-size:14px;
     }
     .btn{
         // margin: 30px 5px 70px;
@@ -280,7 +320,7 @@ header.top-header{
             background: $color-blue;
             border-radius: 15px;
             div{
-                padding: 30px;
+                padding: 30px 45px 30px 30px;
                 h2{
                     font-family: $font-cabin;
                     color: $color-white;
@@ -288,6 +328,7 @@ header.top-header{
                     margin-top: -10px;
                     margin-bottom: 10px;
                     text-transform: capitalize;
+                    font-size:25px;
                 }
                 .btn{
                     color: $color-white;
@@ -317,11 +358,18 @@ header.top-header{
     padding: 70px 0;
     position: relative;
     overflow: hidden;
+    @include media(320px, 480px){
+      background-color: #27AAE1;
+      background-image: url('../images/amazinng-bg-small.png');
+      background-position: 180px bottom;
+      background-repeat: no-repeat;
+      padding:40px 0 120px;
+    };
     img.img-funkid{
       position:absolute;
       right:-95px;
       bottom:0;
-      max-width:650px;
+      max-width:550px;
       opacity: 0.8;
       @include media(320px, 480px){
         display: none;
@@ -350,14 +398,15 @@ header.top-header{
         font-family: $font-VIE;
         margin-bottom: 15px;
         @include media(320px, 480px){
-          text-align: center;
+          margin-bottom:8px;
         };
     }
     h4{
         color: $color-yellow;
         margin-bottom: 30px;
+        font-weight: 600;
         @include media(320px, 480px){
-          text-align: center;
+          margin-bottom:15px;
         };
     }
     .wrap-btn{
@@ -367,14 +416,15 @@ header.top-header{
               @extend .btn-blue;
           }
           @include media(320px, 480px){
-            margin-top:20px;
+            margin-top:0px;
             max-width: 140px;
             background:$color-blue;
             color:white;
+
           };
       }
       @include media(320px, 480px){
-        text-align: center;
+        margin-top:100px
       };
     }
 
@@ -388,7 +438,7 @@ header.top-header{
     }
     img.ic-amazing{
       @include media(320px, 480px){
-        margin:0 auto 10px;
+        margin-bottom:10px;
       };
     }
 }
@@ -401,6 +451,7 @@ header.top-header{
     position: relative;
     @include media(320px, 480px){
       overflow: hidden;
+      background:#27aae1;
     }
     .wrap-title-banner{
       padding:150px 0 0 20px;
@@ -410,6 +461,9 @@ header.top-header{
       @include media(320px, 480px){
         padding:30px 0 0 0px;
       }
+      > img {
+        margin-bottom:10px;
+      }
     }
     img.img-visual{
       position:absolute;
@@ -418,12 +472,24 @@ header.top-header{
       bottom: 0;
       z-index: 5;
       @include media(320px, 480px){
-        max-width: 300px;
-        right:-80px;
+        max-width: 350px;
+        right:-90px;
       };
     }
     h2{
+        margin:0;
         margin-bottom: 20px;
+        @include media(320px, 480px){
+          margin-bottom: 10px;
+        };
+    }
+    h4{
+      font-weight: 600;
+      font-size:18px;
+      @include media(320px, 480px){
+        font-size:14px;
+        line-height: 20px;
+      }
     }
     .btn{
         margin-top: 40px;
@@ -438,10 +504,11 @@ header.top-header{
 .amazinng-page{
     text-align: center;
     color: $color-blue;
-    padding-top:30px;
-    padding-bottom: 90px;
+    padding-top:20px;
+    padding-bottom: 80px;
     background:white url(../images/amazing-page-bg-left.png) no-repeat 20px bottom;
     position:relative;
+    overflow: hidden;
     img.img-bird{
       position:absolute;
       top:10%;
@@ -449,8 +516,21 @@ header.top-header{
     }
     .banner{
       img.img-key{
-        max-width: 250px;
+        // max-width: 200px;
         margin:0 auto 10px;
+      }
+    }
+    h2{
+      line-height: 45px;
+      @include media(320px, 480px){
+        line-height: 30px;
+      };
+      span{
+        display: block;
+        font-size:18px;
+        @include media(320px, 480px){
+          font-size:14px;
+        }
       }
     }
     .amazinng-page-box{
@@ -469,6 +549,10 @@ header.top-header{
             @include media(320px, 480px){
               text-align: center;
             }
+            h4{
+              font-weight:600;
+              font-family: $font-VIE
+            }
             p{
                 margin-bottom: 5px;
                 line-height: 1.3em;
@@ -479,11 +563,14 @@ header.top-header{
 }
 
 .rules{
-    text-align: center;
     color: $color-blue;
     padding: 30px 0;
     background-color:#27A9E1;
     // background: #27A9E1 url(../images/rules-bg-01.png) no-repeat 140px bottom;
+    text-align: center;
+    @include media(320px, 480px){
+      text-align: left;
+    };
     &:before{
         background: url(../images/rules-bg-02.png) no-repeat right bottom;
         width: calc(100% - 170px);
@@ -502,7 +589,7 @@ header.top-header{
 .ILA-footer{
     padding: 20px 0 40px;
     color: $color-white;
-    background: $color-yellow url(../images/ILA-footer-bg-01.png) no-repeat left bottom;
+    background: $color-yellow;
     &:before{
         background: url(../images/ILA-footer-bg-03.png) no-repeat right bottom;
     }
@@ -555,6 +642,15 @@ header.top-header{
                     h3{
                         margin:10px 0 5px;
                         font-family: $font-cabin;
+                        font-size:20px;
+                        line-height: 25px;
+                        font-weight: 600;
+                        @include media(320px, 480px){
+                          font-size:15px;
+                        };
+                        @include media(481px, 768px){
+                          font-size:18px;
+                        };
                     }
                     p{
                         line-height: 1.2em;
@@ -602,10 +698,22 @@ header.top-header{
     h4{
         color: $color-blue;
         margin-top: 60px;
+        font-family: $font-montserrat;
+        @include media(320px, 480px){
+          margin-top:0px;
+        }
     }
     h3{
         color: $color-blue;
         margin-bottom: 30px;
+        font-family: "VIE-KievitOT",sans-serif;
+    }
+    img.book-mobile{
+      max-width:150px;
+      margin:0 auto 10px;
+    }
+    .text-content{
+      padding-left: 30px;
     }
     .btn{
         margin-top: 60px;
@@ -624,7 +732,7 @@ header.top-header{
 .feeling{
     padding: 70px 0;
     text-align: center;
-    background: #F7941E url(../images/feeling-bg-01.png) no-repeat left 160px ;
+    background: #F7941E url(../images/feeling-bg-01.png) no-repeat -50px 160px ;
     position: relative;
     &:before{
         content: '';
@@ -633,12 +741,12 @@ header.top-header{
         height: 100%;
         left: 0;
         top: 0;
-        background: url(../images/feeling-bg-02.png) no-repeat right 300px;
+        background: url(../images/feeling-bg-02.png) no-repeat 104% 300px;
         z-index: 1;
     }
     h2{
         color: $color-yellow;
-        font-size: 30px;
+        font-size: 25px;
     }
     .box{
         width: 1000px;
@@ -697,16 +805,23 @@ header.top-header{
 }
 
 .register{
-    background: url(../images/register-bg.png) no-repeat;
+    background: url(../images/banner-mobile-contact.png) no-repeat;
     background-size: cover;
     padding: 90px 0 35px;
+    p.sub-form{
+      font-size:16px;
+      color:white;
+      text-align: center;
+    }
     h2{
         color: $color-white;
         text-align: center;
+        margin:0;
+        margin-bottom: 15px;
     }
     form{
         .form-group{
-                margin-bottom: 25px;
+                margin-bottom: 15px;
             }
         select{
             color: $color-blue;
@@ -729,6 +844,25 @@ header.top-header{
             &:hover{
                 @extend .btn-yellow;
             }
+            @include media(320px, 480px){
+              max-width:140px;
+            };
+        }
+        input[type="submit"]{
+          width: 135px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 14px;
+          font-weight: 500;
+          font-family: $font-montserrat;
+          padding: 0;
+          border-radius: 30px;
+          @extend %transition;
+          position:relative;
+          font-weight: 600;
+          background:none;
+          border:1px solid white;
+          color:white;
         }
         span.study_inline{
           position:relative;
@@ -774,9 +908,11 @@ header.top-header{
 /*CONTACT*/
 .contact{
     color: $color-blue;
+    padding-top:20px;
     padding-bottom: 100px;
     background: $color-yellow url(../images/contact-bg-left.png) no-repeat left bottom;
     position:relative;
+    overflow: hidden;
     &:before{
         content:'';
         width:374px;
@@ -791,7 +927,7 @@ header.top-header{
       img{
         @include media(320px, 480px){
           margin:0 auto 10px;
-          max-width: 250px;
+          max-width: 200px;
         };
       }
     }
@@ -817,29 +953,80 @@ header.top-header{
         text-align: center;
         color: $color-blue;
         margin-bottom: 70px;
+        span.small-text{
+          display:block;
+        }
         @include media(320px, 480px){
-          margin-bottom:30px;
+          margin-bottom:10px;
+          font-size:22px;
         };
+
     }
     .gift-pack{
       @include media(320px, 480px){
         text-align: center;
       };
         .title{
+          margin:0;
           margin-bottom: 40px;
+          text-transform: uppercase;
           @include media(320px, 480px){
-            margin-bottom:20px;
+            margin-bottom:15px;
+            text-transform: normal;
           }
         }
-        div{
-            margin-bottom: 30px;
+        p.text-on-mobile{
+          font-size: 14px;
+          color:$color-blue;
+          font-weight: 600;
+        }
+        div.wrap-each-contact{
+            margin-bottom:40px;
+            @include media(320px, 480px){
+              margin-bottom:30px;
+            };
+            ul.list-promotion{
+              padding-left:0px;
+
+              li{
+                font-size:14px;
+                margin-bottom:8px;
+                @include media(320px, 480px){
+                  list-style: none;
+                  font-size:13px;
+                };
+              }
+            }
+            > img{
+              margin-bottom: 15px;
+            }
+            img.img-mobile-book {
+              margin:0 auto 10px;
+            }
             h4{
                 margin-top: -10px;
-                margin-bottom: 30px;
+                margin-bottom: 15px;
+                line-height: 25px;
+                @include media(320px, 480px){
+                  margin-top:0;
+                };
             }
             .btn{
                 margin-top: 10px;
                 width:170px;
+            }
+            &.gift-mobile{
+              position: relative;
+              margin-bottom:0;
+              padding-bottom:30px;
+              &:after{
+                content:'&';
+                position:absolute;
+                left:50%;
+                bottom:5px;
+                font-size:30px;
+
+              }
             }
         }
     }
@@ -850,8 +1037,20 @@ header.top-header{
         border: 1px solid #D1D2D4;
         padding: 35px 30px 20px;
         box-shadow: 5px 5px 15px #37343E;
-        .btn{
-            margin-top: 5px;
+        input[type="submit"]{
+          width: 135px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 14px;
+          font-weight: 500;
+          font-family: $font-montserrat;
+          padding: 0;
+          border-radius: 30px;
+          @extend %transition;
+          position:relative;
+          font-weight: 600;
+          background:none;
+          border:1px solid $color-blue;
         }
         span.study_inline{
           position:relative;
@@ -864,7 +1063,7 @@ header.top-header{
             visibility: hidden;
             &:checked{
               &+label:after{
-                background:$color-orange;
+                background:$color-yellow;
               }
             }
           }
@@ -936,6 +1135,7 @@ footer{
         -webkit-flex-wrap: wrap;
         padding-bottom: 20px;
         position:relative;
+        z-index:5;
         &:after{
           content:'';
           display:block;
@@ -958,6 +1158,9 @@ footer{
                 color: $color-white;
             }
         }
+    }
+    p.copy-right{
+      position: relative;
     }
 }
 .footer-orange{
@@ -1009,13 +1212,37 @@ $color-green : #00A14B;
     text-align: center;
     background-color:white;
     position:relative;
-    .btn{
-        margin: 25px 0 50px;
+    padding:20px 0 40px;
+    h2{
+      margin:0;
+      margin-bottom:15px;
     }
+    img.img-bird{
+      position:absolute;
+      top:5%;
+      right:30px;
+    }
+    .banner{
+      img{
+        @include media(320px, 480px){
+          max-width: 200px;
+        }
+      }
+    }
+    .wrap-btn{
+      margin: 25px 0 0px;
+      .btn{
+          margin:0 5px;
+          @include media(320px, 480px){
+            max-width: 140px;
+          };
+      }
+    }
+
 }
 
 .six-skill{
-    background: $color-green;
+    background: $color-light-blue;
     padding-top: 30px;
     color: $color-white;
     &:before{
@@ -1029,88 +1256,181 @@ $color-green : #00A14B;
          h2{
             text-transform: none;
             color: $color-yellow;
+            line-height: 38px;
+            span{
+              display: block;
+              font-size:28px;
+            }
         }
         .btn{
             margin: 20px 0 40px;
+            @include media(320px, 480px){
+              max-width: 140px;
+            };
         }
     }
 }
 
 .kiddom{
     padding-top:40px;
-    text-align: right;
-    background: $color-yellow url(../images/amazinng-summer/ILA-footer-bg-02.png) no-repeat 70px 70px;
+    padding-bottom:100px;
+    text-align: center;
+    background: $color-yellow;
+    position:relative;
+
     &:before{
-        background: url(../images/amazinng-summer/ILA-footer-bg-01.png) no-repeat left bottom;
-        top: 0;
-        left: 0
+      content:'';
+      display:block;
+      position: absolute;
+      background: url(../images/contact-bg-left.png) no-repeat;
+      bottom: 0;
+      left: 0;
+      width:240px;
+      height:237px;
     }
     &:after{
-        background: url(../images/amazinng-summer/ILA-footer-bg-03.png) no-repeat right bottom;
-        height: 100%;
-        top: 0;
-        left: 0;
+      content:'';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: url(../images/contact-bg-right.png) no-repeat;
+      width:374px;
+      height:164px;
     }
-    div{
-        position: relative;
-        z-index: 2;
-        h2{
-            text-transform: none;
-            color: $color-blue;
-        }
-        table.happy-kiddom{
-            width: 100%;
-            tr{
-                font-weight: bold;
-                line-height: 1.2em;
-                th,  td{
-                    text-align: center;
-                    width: 20%;
-                    padding: 15px 10px;
-                    color: $color-white;
-                    &:not(:first-child){
-                        border: 1px solid $color-white;
-                        color: $color-yellow
-                    }
-                    &:first-child{
-                        width: 40%;
-                        background: $color-blue;
-                        border: 1px solid #E6E7E8;
-                    }
-                    &:nth-child(2){
-                        background: #27A9E1
-                    }
-                    &:nth-child(3){
-                        background: #F16521
-                    }
-                    &:last-child{
-                        background: #00A14B;
-                    }
-                }
-                td{
-                    color: $color-blue;
-                    background: $color-white;
-                    &:first-child{
-                        background: $color-white;
-                        border: 1px solid #E6E7E8;
-                    }
-                }
-            }
-        }
-        .btn{
-            margin: 30px 0;
-        }
+    .wrap-title-kiddom{
+      margin:0 auto 50px;
+      @include media(320px, 480px){
+        margin-bottom:30px;
+      }
     }
+    h2{
+        margin:0;
+        margin-bottom:20px;
+        margin-top:20px;
+        text-transform: none;
+        color: $color-blue;
+    }
+    p.text-kiddom{
+      margin:0 auto;
+      width:70%;
+      font-size:14px;
+      color:$color-blue;
+      @include media(320px, 480px){
+        width:90%
+      }
+    }
+    // img.img-kiddom{
+    //   @include media(320px, 480px){
+    //     max-width: 150px;
+    //     margin:0 auto;
+    //   };
+    // }
+    // table.happy-kiddom{
+    //     width: 100%;
+    //     tr{
+    //         font-weight: bold;
+    //         line-height: 1.2em;
+    //         th,  td{
+    //             text-align: center;
+    //             width: 20%;
+    //             padding: 15px 10px;
+    //             color: $color-white;
+    //             &:not(:first-child){
+    //                 border: 1px solid $color-white;
+    //                 color: $color-yellow
+    //             }
+    //             &:first-child{
+    //                 width: 40%;
+    //                 background: $color-blue;
+    //                 border: 1px solid #E6E7E8;
+    //             }
+    //             &:nth-child(2){
+    //                 background: #27A9E1
+    //             }
+    //             &:nth-child(3){
+    //                 background: #F16521
+    //             }
+    //             &:last-child{
+    //                 background: #00A14B;
+    //             }
+    //         }
+    //         td{
+    //             color: $color-blue;
+    //             background: $color-white;
+    //             &:first-child{
+    //                 background: $color-white;
+    //                 border: 1px solid #E6E7E8;
+    //             }
+    //         }
+    //     }
+    // }
+    .wrap-kiddom{
+      position:relative;
+      z-index:2;
+    }
+    .content-kiddom{
+      .each-img{
+        width:25%;
+        max-height:180px;
+        height:100%;
+        overflow: hidden;
+        float:left;
+        position:relative;
+        .overlay{
+          background:url('../images/amazinng-summer/photo/bg-over.png')repeat-x left bottom;
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          transition: all 0.7s;
+          -webkit-transition: all 0.7s;
+          -moz-transition: all 0.7s;
+          h4.title-content{
+            position:absolute;
+            bottom:10px;
+            left:10px;
+            font-family: $font-montserrat;
+            font-size:14px;
+            font-weight: 600;
+            text-transform: capitalize;
+            color:white;
+            text-align: left;
+          }
+        }
+        &:hover{
+          .overlay{
+            background:transparent;
+          }
+        }
+        @include media(320px, 480px){
+          width:50%;
+        }
+      }
+
+    }
+    .btn{
+        margin: 30px 0;
+        @include media(320px, 480px){
+          max-width: 140px;
+        };
+    }
+
 }
 
 .adventures{
     padding-top: 40px;
     color: $color-white;
     background: #F7941E url(../images/amazinng-summer/adventures-bg-01.png) no-repeat left center;
+    position: relative;
     &:before{
+        content:'';
+        position: absolute;
         background: url(../images/amazinng-summer/adventures-bg-02.png) no-repeat right bottom;
-        left: 0;
-        bottom: 40px;
+        right: 0;
+        bottom: 20px;
+        width: 252px;
+        height:361px;
     }
     &:after{
 
@@ -1135,7 +1455,230 @@ footer.cyan{
 }
 /*=============================== End amazing-summer.html ===============================*/
 
+/*=============================== Start testimonial.html ===============================*/
+.slider-text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 15px 10px;
+    color: $color-white;
+    font-size: 14px;
+    text-align: left;
+    font-family: $font-montserrat;
+    line-height: 1.2em;
+    background: -moz-linear-gradient(left,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+    @extend %transition;
+}
+.testimonial-top{
+    background: $color-yellow;
+    padding:20px 0 40px;
+    overflow: hidden;
+    &:before{
+        background: url(../images/testimonial/testimonial-bg-02.png) no-repeat right 200px;
+        top: 0;
+        left: 0;
+    }
+    h2{
+        color: $color-orange;
+    }
+    .banner{
+      margin-bottom:20px;
+      img{
+        @include media(320px, 480px){
+          max-width: 200px;
+        };
+      };
+    }
+    .btn{
+        margin-bottom: 30px;
+        @include media(320px, 480px){
+          max-width: 140px;
+        };
+    }
+    .box-slider{
+        position:relative;
+        i.loading-ic{
+          display: none;
+          width:90px;
+          height:90px;
+          background:url('../images/balls.gif')no-repeat;
+          position:absolute;
+          left:50%;
+          top:50%;
+        }
+        img{
+            width: 100%;
+        }
+        .box-slider-top{
+            background: #F7941E;
+            border-radius: 10px;
+            padding: 25px 10px;
+            color: $color-white;
+            overflow: hidden;
+            margin-bottom: 30px;
+            img{
+                border-radius: 10px;
+            }
+        }
+    }
+    .box-slider-bottom{
+        .box-slider-items{
+            border: 3px solid  #fff;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            &:hover, .active{
+                border-color: #F7941E;
+                cursor: pointer;
+                @extend %transition;
+                .slider-text{
+                    left: -100%;
+                }
+            }
+            img{
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+.gallery{
+    background: $color-yellow url(../images/testimonial/ILA-footer-bg-01.png) no-repeat left bottom;
+    &:before{
+        background: url(../images/testimonial/ILA-footer-bg-03.png) no-repeat right bottom;
+    }
+    h2{
+        color: $color-orange;
+    }
+    .box{
+        height:350px;
+        @include media(320px, 480px){
+          height:auto;
+        };
+        .box-item-left{
+          width:60%;
+          float:left;
+          @include media(320px, 480px){
+            width:100%;
+            float:none;
+            margin-bottom:15px;
+          };
+          .box-slider-items{
+            border-radius: 15px;
+            border:8px solid $color-light-orange;
+            img{
+              border: none;
+              border-radius:8px;
+            }
+          }
+
+        }
+        .box-item-right{
+          width:40%;
+          float:left;
+          padding-right:15px;
+          overflow: hidden;
+          @include media(320px, 480px){
+            width:100%;
+            float:none;
+            padding-right: 0;
+            height:350px;
+          };
+          .box-item-child{
+            padding-bottom:10px;
+            position:absolute;
+            &:after{
+              content:'';
+              position:absolute;
+              height:2px;
+              width:100%;
+              background:$color-light-orange;
+              bottom:0px;
+              left: 0;
+            }
+            .box-child-img{
+              img{
+                border-color:white;
+              }
+              &.active{
+                img{
+                  border-color:$color-light-orange;
+                }
+              }
+            }
+            .text-content{
+                p{
+                    color: $color-blue;
+                    font-size:13px;
+                 }
+             }
+          }
+
+        }
+        // .box-item-right{
+        //     .box-item-child{
+        //         .text-content{
+        //            p{
+        //                color: $color-blue;
+        //             }
+        //         }
+        //     }
+        // }
+        // .box-item-left{
+        //     img{
+        //         border-color: #F7941E;
+        //     }
+        // }
+    }
+    .seasons{
+        position: relative;
+        z-index: 2;
+        margin-top: 60px;
+        @include media(320px, 480px){
+          margin-top:20px;
+        };
+        h2{
+            color: $color-white;
+            margin-top: 0;
+        }
+        .seasons-items{
+            .summer{
+                position: relative;
+                display: block;
+                overflow: hidden;
+                &:hover{
+                    .slider-text{
+                        left: -100%;
+                    }
+                }
+            }
+            .summer.text-right{
+                &:hover{
+                     .slider-text{
+                        left: 100%;
+                    }
+                }
+                .slider-text{
+                    text-align: right;
+                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+                    background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
+                }
+            }
+        }
+    }
+}
+/*=============================== End testimonial.html ===============================*/
+
 @media only screen and (max-width: 1050px){
+    /*=========== Start index.html ===========*/
     nav.top-menu{
         .nav{
             li{
@@ -1144,14 +1687,6 @@ footer.cyan{
                     padding: 0 5px;
                 }
             }
-            @include media(320px, 480px){
-              margin-top:40px;
-              li{
-                a{
-                  padding: 0 15px;
-                }
-              }
-            };
         }
     }
 
@@ -1184,6 +1719,7 @@ footer.cyan{
             }
         }
     }
+    /*=========== End index.html ===========*/
 }
 
 @media only screen and (max-width: 768px){
@@ -1194,16 +1730,19 @@ footer.cyan{
         font-size: 30px;
         margin-bottom: 25px;
     }
-
+    /*=========== Start index.html ===========*/
     nav.top-menu{
-        background: $color-yellow;
+        background: white;
         padding: 0;
         .navbar-header{
             button.navbar-toggle{
-                background: $color-blue;
+                background: $color-orange;
                 .icon-bar{
                     background: $color-yellow;
                 }
+            }
+            .navbar-nav{
+              margin-top:20px;
             }
         }
         .top-logo{
@@ -1211,11 +1750,8 @@ footer.cyan{
             width: 4em;
         }
     }
-
-    header.top-header{
-        .title-header{
-            padding: 15px 0;
-        }
+    .title-header{
+        padding: 25px 0;
     }
 
     .wel-come{
@@ -1233,7 +1769,7 @@ footer.cyan{
     }
 
     .amazinng{
-        padding: 40px 0;
+        padding: 40px 0 90px;
     }
 
     .gift{
@@ -1262,10 +1798,101 @@ footer.cyan{
             }
         }
     }
+    /*=========== End index.html ===========*/
+    /*=========== Start contact.html ===========*/
+    .contact{
+        .gift-pack{
+            text-align: center;
+        }
+    }
+    /*=========== End contact.html ===========*/
+    /*=========== Start amazinng.html (Amazinng Race) ===========*/
+    .amazinng-page-header{
+        div{
+            // text-align: center;
+        }
+    }
+
+    .amazinng-page{
+        .amazinng-page-box{
+            text-align: center;
+            >div:not(:last-child){
+                margin-bottom: 2em;
+            }
+
+        }
+    }
+
+    .ILA-footer{
+        div{
+            .ILA-footer-item{
+                margin-bottom: 1em;
+            }
+         }
+    }
+    /*=========== End amazinng.html (Amazinng Race) ===========*/
+    /*=========== Start amazinng-summer.html ===========*/
+    .six-skill, .kiddom, .adventures{
+        text-align: center;
+        .flex-items-end{
+            display: block;
+        }
+    }
+
+    // .kiddom{
+    //     .flex-items-end{
+    //         div{
+    //             &:first-child{
+    //                 display: none;
+    //             }
+    //             table.happy-kiddom{
+    //                 tr{
+    //                     margin-bottom: 1em;
+    //                     th,td{
+    //                         width: 100%;
+    //                         text-align: left;
+    //                     }
+    //                     td{
+    //                         border-bottom: none;
+    //                         position: relative;
+    //                         &:before{
+    //                             text-align: left;
+    //                             width: 120px;
+    //                         }
+    //                         &:first-child{
+    //                             text-align: center;
+    //                             margin-top: 2em;
+    //                             &:before{
+    //                                 width: 0;
+    //                             }
+    //                         }
+    //                         & i.fa{
+    //                           position: absolute;
+    //                           left:50%;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    .adventures{
+        div{
+            .btn{
+                margin-top: 20px;
+                @include media(320px, 480px){
+                  max-width: 140px;
+                };
+            }
+        }
+    }
+    /*=========== End amazinng-summer.html ===========*/
 }
 @media only screen and (max-width: 480px){
     h1{
-        font-size: 16px;
+        font-size: 18px;
     }
     h2{
         font-size: 25px;
@@ -1279,17 +1906,29 @@ footer.cyan{
     .btn{
         width: 100%;
     }
+     /*=========== Start index.html ===========*/
     nav.top-menu{
         .top-logo{
             padding: 5px;
             left: 15px;
         }
+        .navbar-nav{
+          margin-top:20px;
+          li{
+            padding:0 15px;
+            a{
+              padding-left:15px;
+            }
+          }
+        }
+
     }
     .wel-come{
         .btn{
             margin: 15px 0;
             &:last-child{
                 margin-top: 0;
+                margin-bottom: 50px;
             }
         }
         .wel-come-more{
@@ -1307,4 +1946,45 @@ footer.cyan{
     .feeling{
         padding: 10px 0 20px;
     }
+     /*=========== End index.html ===========*/
+     /*=========== Start contact.html ===========*/
+    .contact{
+        .contact-register{
+            padding: 15px;
+            border-radius: 15px;
+        }
+    }
+     /*=========== End contact.html ===========*/
+    /*=========== Start amazinng.html (Amazinng Race) ===========*/
+    .ILA-footer{
+        div{
+            .ILA-footer-item{
+                .box{
+                    .btn{
+                        width: 135px;
+                    }
+                }
+            }
+        }
+    }
+    /*=========== End amazinng.html (Amazinng Race) ===========*/
+    /*=========== Start amazinng-summer.html ===========*/
+    .amazinng-summer-top{
+        div{
+            center{
+                .btn{
+                    &:first-child{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    /*=========== End amazinng-summer.html ===========*/
+}
+
+/*CUSTOMIZE*/
+
+span.error, #error_study_id{
+  color:red;
 }

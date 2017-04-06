@@ -11,7 +11,7 @@ class AlbumRepository{
     }
 
     public function getAll(){
-      return $this->album->select('title','status','id')->orderBy('id','DESC')->get();
+      return $this->album->select('title','status','id','year')->orderBy('id','DESC')->get();
     }
 
     public function getFindID($id){
@@ -38,5 +38,11 @@ class AlbumRepository{
       $order = $this->album->orderBy('order','DESC')->first();
       count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
       return $current;
+    }
+
+    /*FRONTENT*/
+    public function getAlbumByYear($year)
+    {
+      return $this->album->where('year',$year)->with('images')->get();
     }
 }

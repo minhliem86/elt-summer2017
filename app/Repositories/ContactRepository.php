@@ -2,6 +2,8 @@
 namespace App\Repositories;
 
 use App\Models\Contact;
+use App\Models\Center;
+use DB;
 
 class ContactRepository{
     protected $contact;
@@ -11,7 +13,7 @@ class ContactRepository{
     }
 
     public function getAll(){
-      return $this->contact->select('title','content','img_url','status','id')->orderBy('id','DESC')->get();
+      return $this->contact->select('fullname','email','phone','id')->orderBy('id','DESC')->get();
     }
 
     public function getFindID($id){
@@ -40,7 +42,15 @@ class ContactRepository{
       return $current;
     }
 
-    public function listCenter(){
-      return Center::where('status',1)->lists('name_vi','id');
+    public function getListCity()
+    {
+      return DB::connection('corporat_ref')->table('city')->select('id','name')->whereIn('id',['48','20','1','70','50','49','39'])->lists('name','id');
     }
+
+    public function getListCenter($id_city)
+    {
+      return Center::where('id_city',$id_city)->select('id','name_vi')->lists('name_vi','id');
+    }
+
+
 }
