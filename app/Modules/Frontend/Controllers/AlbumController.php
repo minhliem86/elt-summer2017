@@ -15,10 +15,6 @@ class AlbumController extends Controller {
 	public function getIndex($year)
 	{
 		$album = $this->albumRepository->getAlbumByYear($year);
-		foreach ($album as $item)
-		{
-			dd($item);
-		}
 		return view('Frontend::pages.album',compact('album', 'year'));
 	}
 

@@ -34,24 +34,27 @@
   <div class="row">
     <section class="album">
       <div class="container-fluid">
-        <center class="banner col-xs-12">
+        <center class="banner">
             <img class="wow bounceInDown" src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" alt="">
         </center>
-        <center>
-            <h2>Hình Ảnh Các Hoạt Động Hè {!!$year!!}</h2>
-        </center>
+        <div class="wrap-title-album">
+          <h2>Hình Ảnh Các Hoạt Động Hè {!!$year!!}</h2>
+        </div>
+        @foreach($album->chunk(4) as $chunk)
         <div class="row">
-          @foreach($album as $item_album)
+          @foreach($chunk as $item_album)
           <div class="col-sm-3">
             <div class="each-album">
-                <img src="" alt="">
                 <div class="overlay">
-                  <h2 class="title-album">{!!Str::words($item_album->title, 4)!!}</h2>
+                  <img src="{!! $item_album->images()->first() ? $item_album->images()->first()->img_url : ''!!}" alt="">
+                  <a href="#"><i class="link fa fa-link"></i></a>
                 </div>
+                <h3 class="title-album">{!!Str::words($item_album->title, 10)!!}</h3>
             </div>  <!-- end each-album -->
           </div>
           @endforeach
         </div>
+        @endforeach
       </div>
     </section>
   </div>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="keywords" content="ILA Anh Văn Hè 2017, ILA Amazing Summer 2017, Tiếng Anh Hè 2017">
-    <meta name="description" content="LA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên.">
+    <meta name="keywords" content="ILA Anh Văn Hè 2017, ILA Amazing Summer 2017, Tiếng Anh Hè 2017, Anh Văn Hè, Anh Van He">
+    <meta name="description" content="ILA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên.">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
     @yield('meta-share')
@@ -141,9 +141,9 @@
           study_ila: "Vui lòng chọn 1 mục bên trên"
 
         },
-        submitHandler: function (form) {
-          _swga.postLead();
-        }
+        // submitHandler: function (form) {
+        //   _swga.postLead();
+        // }
       });
 
       /*SELECT CENTER*/
@@ -163,7 +163,7 @@
       })
     })
   </script>
-  <script type="text/javascript" src="{!!asset('public/dms-analytics.js')!!}"></script>
+  <!-- <script type="text/javascript" src="{!!asset('public/dms-analytics.js')!!}"></script>
   <script type="text/javascript">
       _swga.base_url_post = 'http://marketingtool.ilavietnam.edu.vn';
       _swga.init('SW-000016', "form_summer2017", "manual");
@@ -175,7 +175,7 @@
           id_center: 'id_center',
           study_ila: 'study_ila',
       });
-  </script>
+  </script> -->
 
   @yield('script')
 </body>
