@@ -4,15 +4,21 @@
 
 @section('content')
 <div class="container">
-  <header class="top-header">
-    <div >
-        <img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt="">
-        <img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt="">
-    </div>
-    <div class="title-header">
-        <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-    </div>
-  </header>
+  <div class="row">
+    <header class="top-header">
+      <div >
+          <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt=""></a>
+          <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt=""></a>
+      </div>
+      <div class="wrap-title">
+        <div class="stage far-cloud" id="far-cloud"></div>
+        <div class="stage near-cloud" id="near-cloud"></div>
+        <div class="title-header">
+            <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+        </div>
+      </div>
+    </header>
+  </div>
 </div>
 
 <div class="container">
