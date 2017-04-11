@@ -45,4 +45,10 @@ class AlbumRepository{
     {
       return $this->album->where('year',$year)->with('images')->get();
     }
+
+    public function getImgByAlbum($id){
+      return $this->album->with(['images'=>function($query){
+        $query->select('id','thumbnail_url');
+      }])->find($id);
+    }
 }

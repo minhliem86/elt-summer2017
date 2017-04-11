@@ -2,6 +2,7 @@
 
 return [
     'upload-path' => env('DROPZONER_UPLOAD_PATH'),
+    'upload-thumb-path' => env('DROPZONER_UPLOAD_THUMB_PATH'),
     'validator'   => [
         'file'    => 'required|mimes:png,gif,jpeg,jpg,bmp'
     ],

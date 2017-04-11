@@ -16,6 +16,7 @@ class ImageController extends Controller {
 		protected $image;
 
     protected $_upload_folder = 'public/upload/image';
+    protected $_upload_folder_thumb = 'public/upload/image/thumbs';
 
     public function __construct(UploadRepository $image){
         $this->image = $image;
@@ -86,10 +87,12 @@ class ImageController extends Controller {
     {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
-				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=false,400,400);
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,550,550);
+				$thumbnail_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder_thumb,$resize=true,250,250);
 
 			}else{
 				$img_url = $request->input('img-bk');
+				$thumbnail_url = $request->input('img-thumb-bk');
 			}
 			$arr_filename = explode('/',$img_url);
 			$filename = end($arr_filename);
@@ -99,6 +102,7 @@ class ImageController extends Controller {
 				'slug' => \Unicode::make($request->title),
 				'description' => $request->input('description'),
 				'img_url' => $img_url,
+				'thumbnail_url' => $thumbnail_url,
 				'status'=> $request->status,
 				'order'=>$request->order,
 				'album_id' => $request->album_id,

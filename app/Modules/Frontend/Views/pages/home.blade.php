@@ -23,6 +23,10 @@
           <div class="stage near-cloud" id="near-cloud"></div>
           <div class="title-header">
               <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+              <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+              <div class="wrap-btn">
+                <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
+              </div>
           </div>
         </div>
       </header>
@@ -101,7 +105,7 @@
         <div class="container-fluid">
             <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive ic-amazing" alt="">
             <h2>AMAZING RACE</h2>
-            <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
+            <h4>Gay Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
             <div class="row">
                 <div class="text-content col-sm-8">
                     <p>Dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới với giải thưởng hấp dẫn, ILA Amazing Race 2017 là một sân chơi đời thực, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng thành phố HCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại 4 quốc  gia trong thời gian ngắn nhất.</p>

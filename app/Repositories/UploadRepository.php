@@ -48,6 +48,8 @@ class UploadRepository
         $manager = new ImageManager();
         $image = $manager->make( $photo )->save(config('dropzoner.upload-path') . $filename_with_extension );
 
+        $img_thumb = $manager->make( $photo )->resize(250, 250)->save(config('dropzoner.upload-thumb-path'). $filename_with_extension );
+
         if( !$image ) {
             return response()->json([
                 'error' => true,
@@ -57,12 +59,14 @@ class UploadRepository
         }
 
         // Fire ImageWasUploaded Event
+
         $current = $this->getOrder();
         $data = [
           'title' => $input['text_title'],
           'album_id' => $input['album_id'],
           'slug' => \Unicode::make($input['text_title']),
           'img_url' =>  asset(config('dropzoner.upload-path').$filename_with_extension),
+          'thumbnail_url' =>  asset(config('dropzoner.upload-thumb-path').$filename_with_extension),
           'order' => $current,
           'filename' => $filename_with_extension,
         ];

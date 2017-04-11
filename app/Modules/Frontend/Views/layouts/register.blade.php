@@ -3,6 +3,7 @@
     <section class="register">
         <div class="container-fluid">
             <div class="row">
+                <div id="overlay"></div>
                 <h2>ĐĂNG KÝ & TƯ VẤN</h2>
                 <p class="sub-form">Nhận ngay 3,500,000 đồng và áo thun ILA Summmer<br/>khi đăng ký trước 25/04/2017</p>
                 <form action="{!!route('f.postContact')!!}" class="col-sm-8 col-sm-offset-2" method="POST" id="form_summer2017">
@@ -56,7 +57,7 @@
                 </form>
             </div>
         </div>
-    </section>  
+    </section>
   </div>
 
 </div>

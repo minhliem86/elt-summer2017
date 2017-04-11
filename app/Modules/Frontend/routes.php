@@ -15,6 +15,10 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   Route::post('/get-data',['as'=>'f.postDataTesti','uses'=>'TestimonialController@postAjax']);
 
   Route::get('/album/{year}',['as'=>'f.getAlbum', 'uses'=>'AlbumController@getIndex'])->where(['year'=>'[0-9._\-]+']);
+
+  Route::get('/album/{id_album}/photo', ['as'=>'f.getImage', 'uses'=>'AlbumController@getImgByAlbum'])->where('id_album','[0-9a-zA-Z_.+\-]+');
+
+  Route::post('/photo/load',['as'=>'f.postAjaxPhoto', 'uses'=>'AlbumController@ajaxLoadPhoto']);
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
 

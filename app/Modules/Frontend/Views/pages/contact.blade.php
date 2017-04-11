@@ -19,6 +19,10 @@
         <div class="stage near-cloud" id="near-cloud"></div>
         <div class="title-header">
             <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+            <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+            <div class="wrap-btn">
+              <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
+            </div>
         </div>
       </div>
     </header>
@@ -35,9 +39,9 @@
               <center class="banner col-xs12">
                   <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" class="img-responsive img-key wow bounceInDown" alt="">
               </center>
-              <h2>ĐĂNG KÝ NGAY<br><span>ĐỂ NHẬN BỘ QUÀ ĐẶC BIỆT</span><span class="small-text">trước 25/04/2017</span></h2>
+              <!-- <h2>ĐĂNG KÝ NGAY<br><span>ĐỂ NHẬN BỘ QUÀ ĐẶC BIỆT</span><span class="small-text">trước 25/04/2017</span></h2> -->
               <div class="col-sm-6 gift-pack">
-                  <h4 class="title ">bộ quà tặng bao gồm:</h4>
+                  <!-- <h4 class="title ">bộ quà tặng bao gồm:</h4> -->
                   <!-- <p class="text-on-mobile visible-sm visible-xs">bao gồm</p> -->
                   <div class="wrap-each-contact">
                     <div class="row">

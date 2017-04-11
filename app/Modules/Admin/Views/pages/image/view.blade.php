@@ -17,6 +17,7 @@
 					<p>
 						<img src="{!!$image->img_url!!}" width="150" alt="">
 						{!!Form::hidden('img-bk',$image->img_url)!!}
+						{!!Form::hidden('img-thumb-bk',$image->thumbnail_url)!!}
 					</p>
 					{!!Form::file('img')!!}
 				</div>
@@ -29,7 +30,6 @@
 					<span class="inline-radio"><input type="radio" name="status" value="1" {!!$image->status == 1 ? 'checked' : ''!!}> <b>Active</b> </span>
 					<span class="inline-radio"><input type="radio" name="status" value="0" {!!$image->status == 0 ? 'checked' : ''!!}> <b>Deactive</b> </span>
 				</div>
-
 				<div class="form-group">
 					{!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
 				</div>

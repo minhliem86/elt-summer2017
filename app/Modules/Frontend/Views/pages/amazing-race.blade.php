@@ -14,8 +14,8 @@
         <div class="container">
             <div class="wrap-title-banner">
               <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" alt="">
-              <h2>AMAZINNG RACE</h2>
-              <h4>Gây Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
+              <h2>AMAZING RACE</h2>
+              <h4>Gay Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
               <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay</a>
             </div>
         </div>
@@ -25,6 +25,10 @@
       <div class="stage near-cloud" id="near-cloud"></div>
       <div class="title-header">
           <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
+          <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+          <div class="wrap-btn">
+            <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
+          </div>
       </div>
     </div>
   </div>
@@ -39,7 +43,7 @@
                   <center class="banner col-xs-12">
                       <img src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" class="img-responsive img-key wow bounceInDown" alt="">
                   </center>
-                  <h2>ILA AMAZING RACE<span>Gây Cấn – Hồi Hộp – Hấp Dẫn</span></h2>
+                  <h2>ILA AMAZING RACE<span>Gay Cấn – Hồi Hộp – Hấp Dẫn</span></h2>
                   <div class="text-content col-sm-10 col-sm-offset-1">
                       <p>Với niềm tin học tiếng Anh là phải dùng được, ILA Amazing Race là một sân chơi đời thực với giải thưởng hấp dẫn, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng TPHCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại các quốc gia này.</p>
                       <p>Đây là hoạt động độc quyền của ILA và lần đầu tiên xuất hiện tại HCMC, dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới</p>
@@ -67,7 +71,7 @@
                                 <h4>THÔNG TIN CHUNG:</h4>
                                 <p>• Hạn chót đăng ký tham dự: 16/04/2017</p>
                                 <p>• Bắt đầu chương trình: 23/04/2017</p>
-                                <p>• Thời gian chương trình: 9:00 – 16:00</p>
+                                <p>• Thời gian chương trình: 9:00 – 14:00</p>
                             </div>
                           </div>
                       </div>
