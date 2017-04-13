@@ -18,7 +18,7 @@
 
     <title>@yield('title', 'ILA Amazing Summer 2017')</title>
     <link rel="icon" href="{!!asset('public')!!}/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/font-awesome/css/font-awesome.min.css">
     <link href="{!!asset('public/assets/frontend')!!}/css/style.css" rel="stylesheet">
     <!-- FB Fixel-->
     <!-- Facebook Pixel Code -->

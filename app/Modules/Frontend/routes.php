@@ -19,6 +19,9 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   Route::get('/album/{id_album}/photo', ['as'=>'f.getImage', 'uses'=>'AlbumController@getImgByAlbum'])->where('id_album','[0-9a-zA-Z_.+\-]+');
 
   Route::post('/photo/load',['as'=>'f.postAjaxPhoto', 'uses'=>'AlbumController@ajaxLoadPhoto']);
+  Route::post('/photo/next',['as'=>'f.postAjaxNextPhoto', 'uses'=>'AlbumController@ajaxNextPhoto']);
+  Route::post('/photo/prev',['as'=>'f.postAjaxPrevPhoto', 'uses'=>'AlbumController@ajaxPrevPhoto']);
+
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
 

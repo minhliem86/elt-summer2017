@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','ILA Amazing Summer 2017')
+@section('title','Chương trình Anh Văn Hè 2017')
 
 @section('css')
 @stop
@@ -15,8 +15,8 @@
     <div class="row">
       <header class="top-header">
         <div >
-            <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt=""></a>
-            <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt=""></a>
+            <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt="Banner - Anh Văn Hè"></a>
+            <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt="Mobile version - Anh Văn Hè"></a>
         </div>
         <div class="wrap-title">
           <div class="stage far-cloud" id="far-cloud"></div>
@@ -103,7 +103,7 @@
         <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-02.png" class="img-responsive img-funkid wow slideInRight" alt="">
         <!-- <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-bg-01.png" class="img-responsive img-ic-ny" alt=""> -->
         <div class="container-fluid">
-            <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive ic-amazing" alt="">
+            <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-01.png" class="img-responsive ic-amazing" alt="AMAZING RACE">
             <h2>AMAZING RACE</h2>
             <h4>Gay Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
             <div class="row">
@@ -125,12 +125,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4">
-                    <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive hidden-sm hidden-xs wow slideInLeft" alt="">
+                    <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive hidden-sm hidden-xs wow slideInLeft" alt="Thế hệ ưu Việt Nhí">
                 </div>
                 <div class="col-sm-8">
                     <h4>ILA dành tặng ấn phẩm đặc biệt</h4>
                     <h3>7 THÓI QUEN CỦA THẾ HỆ ƯU VIỆT NHÍ</h3>
-                    <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive visible-sm visible-xs book-mobile" alt="">
+                    <img src="{!!asset('public/assets/frontend')!!}/images/gift-01.png" class="img-responsive visible-sm visible-xs book-mobile" alt="Thế hệ ưu Việt Nhí">
                     <div class="text-content">
                         <p>ILA trao tặng 10.000 ấn phẩm “7 THÓI QUEN CỦA THẾ HỆ ƯU VIỆT NHÍ” cùng bộ Flashcard do ILA độc quyền hợp tác với tác giả nổi tiếng thế giới SEAN COVEY xuất bản cho học viên chương trình hè 2017 từ 07/4/2017. </p>
                     </div>
@@ -159,7 +159,7 @@
                   @foreach($three_testi as $item_testi)
                   <div class="box-item-child">
                       <div class="box-child-img">
-                          <img src="{!!$item_testi->img_url!!}" alt="">
+                          <img src="{!!$item_testi->img_url!!}" alt="Cảm nhận mùa hè">
                       </div>
                       <div class="text-content">
                           <p>{!!$item_testi->title!!}</p>

@@ -63,6 +63,7 @@ class UploadRepository
         $current = $this->getOrder();
         $data = [
           'title' => $input['text_title'],
+          'description' => $input['text_title'],
           'album_id' => $input['album_id'],
           'slug' => \Unicode::make($input['text_title']),
           'img_url' =>  asset(config('dropzoner.upload-path').$filename_with_extension),

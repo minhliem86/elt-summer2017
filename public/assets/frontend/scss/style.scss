@@ -1908,7 +1908,69 @@ footer.cyan{
     }
   }
 }
+#remodal-photo{
+  padding:20px;
+  h1{
+    font-size:22px;
+    text-transform: capitalize;
+    font-family: $font-cabin;
+    color:$color-blue;
+    text-align: left;
+    padding:0 15px;
+  }
+  .body-modal{
+    .wrap-left-img{
+      position:relative;
+      .btn-control{
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%);
+        -webkit-transform:translateY(-50%);
+        -moz-transform:translateY(-50%);
+        opacity:0.2;
+        @include transition(all 0.3s);
+        right:0;
+        z-index:2;
+        cursor:pointer;
+        &.btn-prev{
+          left:0;
+          right:auto;
+        }
+      }
+      &:hover{
+        .btn-control{
+          opacity: 1;
+        }
+      }
+    }
+
+    h3.title-img{
+      text-align: left;
+      margin:0;
+      padding:0;
+      font-size:16px;
+      margin-bottom:10px;
+      text-transform: capitalize;
+    }
+    p.desc-img{
+      font-size:14px;
+      margin:0;
+      padding:0;
+      margin-bottom:10px;
+      text-align:left;
+    }
+    .wrap-btn-social{
+      text-align:right;
+      .img-social{
+        display:inline-block;
+      }
+    }
+  }
+
+}
 /*END IMAGE*/
+
+
 
 @media only screen and (max-width: 1050px){
     /*=========== Start index.html ===========*/

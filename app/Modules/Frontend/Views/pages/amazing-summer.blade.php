@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Amazing Summer')
+@section('title','Chương trình Anh Văn Hè 2017 - Amazing Summer')
 
 @section('meta-share')
 <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />
@@ -13,8 +13,8 @@
       <div class="container-fluid">
           <div class="row">
               <div>
-                <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt=""></a>
-                <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt=""></a>
+                <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-01.png" class="img-responsive visible-md visible-lg" alt="Banner - Anh Văn Hè"></a>
+                <a href="{!!route('f.getContact')!!}"><img src="{!!asset('public/assets/frontend')!!}/images/banner-mobile-homepage.png" class="img-responsive visible-sm visible-xs" alt="Mobile Version - Anh Văn Hè"></a>
               </div>
               <div class="wrap-title">
                 <div class="stage far-cloud" id="far-cloud"></div>
@@ -101,49 +101,49 @@
               </div>
               <div class="content-kiddom clearfix">
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/yoga.png" class="img-responsive" alt="Câu lạc bộ Yoga">
                   <div class="overlay">
                     <h4 class="title-content">CLB Yoga</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/dienanh.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/dienanh.png" class="img-responsive" alt="Câu lạc bộ Điện Ảnh">
                   <div class="overlay">
                     <h4 class="title-content">CLB Điện Ảnh</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/sieumau.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/sieumau.png" class="img-responsive" alt="Câu lạc bộ siêu mẫu">
                   <div class="overlay">
                     <h4 class="title-content">CLB Siêu Mẫu</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/kemaothuat.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/kemaothuat.png" class="img-responsive" alt="Kem Ảo Thuật">
                   <div class="overlay">
                     <h4 class="title-content">Kem Ảo Thuật</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/lego.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/lego.png" class="img-responsive" alt="Câu lạc bộ Lego">
                   <div class="overlay">
                     <h4 class="title-content">CLB Lắp Ráp Lego</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/nongtrai.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/nongtrai.png" class="img-responsive" alt="Câu lạc bộ Nông Trại">
                   <div class="overlay">
                     <h4 class="title-content">Chuyến đi nông trại</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/bongro.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/bongro.png" class="img-responsive" alt="Câu lạc bộ Bóng rổ">
                   <div class="overlay">
                     <h4 class="title-content">CLB Bóng Rổ</h4>
                   </div>
                 </div>
                 <div class="each-img">
-                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/buocnhay.png" class="img-responsive" alt="">
+                  <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/buocnhay.png" class="img-responsive" alt="Câu lạc bộ Bước nhảy">
                   <div class="overlay">
                     <h4 class="title-content">CLB Bước Nhảy</h4>
                   </div>

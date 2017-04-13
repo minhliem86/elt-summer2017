@@ -98,7 +98,8 @@
           <div>
               <span class="preview">
                 <img data-dz-thumbnail />
-                <div class="title"></div>
+                <div class="title form-group"></div>
+                <div class="description form-group"></div>
               </span>
           </div>
           <div>
@@ -166,9 +167,13 @@
             var uni_field_id = new Date().getTime();
 
             var title = file.title == undefined ? "" : file.title;
-            file._title = Dropzone.createElement('<input type="text" value="'+title+'" id="'+uni_field_id+'" name="title" placeholder="Title..." />')
+            var description = file.description == undefined ? "" : file.description;
+
+            file._title = Dropzone.createElement('<input type="text" value="'+title+'" id="'+uni_field_id+'" name="title" placeholder="Title..." class="form-control" />');
+            file._description = Dropzone.createElement('<textarea id="description_'+uni_field_id+'" name="description" placeholder="Description..." class="form-control">'+description+'</textarea>');
 
              file.previewElement.querySelector('.title').appendChild(file._title);
+             file.previewElement.querySelector('.description').appendChild(file._description);
           });
 
           myDropzone.on("sending",function(file, xhr, formData){

@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Amazing Race')
+@section('title','Chương trình Anh Văn Hè 2017 - Hình ảnh')
 
 @section('meta-share')
 
@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.css"/>
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal-default-theme.css">
 <script src="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.js"></script>
+<script src="{!!asset('public/assets/frontend')!!}/js/notify.min.js"></script>
 <script>
   $(document).ready(function(){
     let inst_modal = $('[data-remodal-id=modal]').remodal();
@@ -22,6 +23,26 @@
         'success' : function (data){
           $('.body-modal').html(data.result);
           inst_modal.open();
+        }
+      })
+    })
+
+    $(document).on('click','.btn-next img',function(){
+      const id = $(this).data('id');
+      $.ajax({
+        'url':'{!!route("f.postAjaxNextPhoto")!!}',
+        'type':"POST",
+        'data':{id:id, '_token':$('meta[name="csrf-token"]').attr('content') },
+        'success' : function (data){
+          $('.body-modal').html(data.result);
+          // inst_modal.open();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            
+            $.notify('Không còn ảnh');
+            // if(XMLHttpRequest.status === 500){
+            //
+            // }
         }
       })
     })
@@ -86,7 +107,7 @@
   </div>
 </div>
 
-<div class="remodal" data-remodal-id="modal">
+<div class="remodal" data-remodal-id="modal" id="remodal-photo">
   <button data-remodal-action="close" class="remodal-close"></button>
   <h1>{!!$albumWithImg->title!!}</h1>
   <div class="body-modal">

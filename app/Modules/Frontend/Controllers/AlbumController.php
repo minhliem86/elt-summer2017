@@ -36,7 +36,24 @@ class AlbumController extends Controller {
 			$id = $request->input('id');
 			$img = $this->imageRepository->getFindID($id);
 			$view = view('Frontend::ajax.photo_load', compact('img'))->render();
-			return response()->json(['result' => $view]); 
+			return response()->json(['result' => $view]);
+		}
+	}
+
+	public function ajaxNextPhoto(Request $request){
+		if(!$request->ajax())
+		{
+
+		}else{
+			$next_id = $request->input('id') + 1;
+			try{
+				$img = $this->imageRepository->getFindID($next_id);
+				$view = view('Frontend::ajax.photo_load', compact('img'))->render();
+				return response()->json(['result' => $view]);
+			}
+			catch(\Exception $e){
+				return response()->json(['result' => $e],500);
+			}
 		}
 	}
 
