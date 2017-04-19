@@ -563,8 +563,11 @@ nav.top-menu{
     }
     .banner{
       img.img-key{
-        // max-width: 200px;
+
         margin:0 auto 10px;
+        @include media(320px, 480px){
+          max-width: 200px;
+        }
       }
     }
     h2{
@@ -1049,7 +1052,7 @@ nav.top-menu{
         div.wrap-each-contact{
             margin-bottom:40px;
             @include media(320px, 480px){
-              margin-bottom:30px;
+              margin-bottom:20px;
             };
             ul.list-promotion{
               padding-left:0px;
@@ -1834,6 +1837,65 @@ footer.cyan{
     }
   }
 
+  .wrap-video-section{
+    margin-bottom:10px;
+    h2{
+      color:$color-blue;
+      text-transform: uppercase;
+      margin-bottom:25px;
+      margin-top:15px;
+      text-align: center;
+    }
+    .wrap-video{
+      .wrap-each-video{
+        position:relative;
+        .video-container{
+          position:relative;
+          margin-bottom:10px;
+          cursor: pointer;
+          span.ic-play{
+            width:45px;
+            height:45px;
+            background:url('../images/album/ic-play.png')no-repeat;
+            display:block;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translateX(-50%) translateY(-50%) scall(1);
+            -webkit-transform:translateX(-50%) translateY(-50%) scale(1);
+            -moz-transform:translateX(-50%) translateY(-50%) scale(1);
+
+          }
+          &:after{
+            content:'';
+            position: absolute;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.4);
+            opacity: 1;
+            z-index:10;
+            top:0;
+            left:0;
+            @include transition(all 0.3s);
+          }
+        }
+        p.title-video{
+          font-size:14px;
+          text-align:center;
+          color:$color-blue;
+        }
+        &:hover{
+          .video-container{
+            &:after{
+              top:10%;
+              opacity: 0;
+            }
+            
+          }
+        }
+      }
+    }
+  }
 
 }
 /*END ALBUM*/
@@ -1969,8 +2031,6 @@ footer.cyan{
 
 }
 /*END IMAGE*/
-
-
 
 @media only screen and (max-width: 1050px){
     /*=========== Start index.html ===========*/
@@ -2247,6 +2307,9 @@ footer.cyan{
         .contact-register{
             padding: 15px;
             border-radius: 15px;
+            p.note{
+              font-size:13px;
+            }
         }
     }
      /*=========== End contact.html ===========*/

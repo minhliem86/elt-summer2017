@@ -10,7 +10,10 @@
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.css"/>
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal-default-theme.css">
 <script src="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.js"></script>
+<!-- NOTIFY -->
 <script src="{!!asset('public/assets/frontend')!!}/js/notify.min.js"></script>
+<!-- SOCIAL -->
+<script src="{!!asset('public/assets/frontend')!!}/js/SocialShare.min.js"></script>
 <script>
   $(document).ready(function(){
     let inst_modal = $('[data-remodal-id=modal]').remodal();
@@ -29,20 +32,43 @@
 
     $(document).on('click','.btn-next img',function(){
       const id = $(this).data('id');
+      const id_album = $(this).data('id-album');
       $.ajax({
         'url':'{!!route("f.postAjaxNextPhoto")!!}',
         'type':"POST",
-        'data':{id:id, '_token':$('meta[name="csrf-token"]').attr('content') },
+        'data':{id:id, id_album:id_album, '_token':$('meta[name="csrf-token"]').attr('content') },
         'success' : function (data){
           $('.body-modal').html(data.result);
           // inst_modal.open();
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            
-            $.notify('Không còn ảnh');
-            // if(XMLHttpRequest.status === 500){
-            //
-            // }
+            console.log(XMLHttpRequest.status);
+            // $.notify('Không còn ảnh');
+            if(XMLHttpRequest.status === 500){
+              $.notify('Không còn ảnh',{
+              });
+            }
+        }
+      })
+    })
+    $(document).on('click','.btn-prev img',function(){
+      const id = $(this).data('id');
+      const id_album = $(this).data('id-album');
+      $.ajax({
+        'url':'{!!route("f.postAjaxPrevPhoto")!!}',
+        'type':"POST",
+        'data':{id:id, id_album:id_album, '_token':$('meta[name="csrf-token"]').attr('content') },
+        'success' : function (data){
+          $('.body-modal').html(data.result);
+          // inst_modal.open();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(XMLHttpRequest.status);
+            // $.notify('Không còn ảnh');
+            if(XMLHttpRequest.status === 500){
+              $.notify('Không còn ảnh',{
+              });
+            }
         }
       })
     })
@@ -79,6 +105,7 @@
 </div>
 
 @if($albumWithImg)
+
 <div class="container">
   <div class="row">
     <section class="image-section">

@@ -152,7 +152,6 @@ class UploadRepository
       return $this->image->with('albums')->select('title','img_url','status','id','album_id')->orderBy('id','DESC')->get();
     }
 
-
     public function getFindID($id){
       return $this->image->find($id);
     }
@@ -191,6 +190,11 @@ class UploadRepository
     public function getImgFromAlbum($id_album)
     {
       return $this->image->where('album_id', $id_album)->paginate(20);
+    }
+
+    public function getImgAjaxFromAlbum($id, $id_album)
+    {
+      return $this->image->where('album_id',$id_album)->where('id',$id)->first();
     }
 
 }

@@ -30,7 +30,7 @@
 					    <tr>
 							<th>ID</th>
 							<th data-width="30%">Title</th>
-							<th>Video URL</th>
+							<th>Video Avatar</th>
 							<th>Action</th>
 						</tr>
 				    </thead>
@@ -39,7 +39,7 @@
 						<tr>
 							<td >{!!$item->id!!}</td>
 							<td><b><a href="{!!route('admin.video.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
-							<td>{!!$item->video_url!!}</td>
+							<td><img src="{!!$item->img_url!!}" width="150" class="img-responsive" alt=""></td>
 							<td>
 							<a href="{!!route('admin.video.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
 							{!!Form::open(array('route'=>array('admin.video.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}

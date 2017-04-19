@@ -8,6 +8,14 @@
 	<div class="box">
 		<div class="container-fluid">
 			{!!Form::model($video,array('route'=>array('admin.video.update',$video->id),'method'=>'PUT' ,'class'=>'formAdmin form-horizontal','files'=>true))!!}
+      <div class="form-group">
+        <label for="" >Avatar</label>
+        <p>
+          <img src="{!!$video->img_url!!}" width="150" alt="">
+          {!!Form::hidden('img-bk',$video->img_url)!!}
+        </p>
+        {!!Form::file('img')!!}
+      </div>
 				<div class="form-group">
 					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}

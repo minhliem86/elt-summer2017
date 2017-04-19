@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Trải Nghiệm Mùa Hè')
+@section('title','Chương trình Anh Văn Hè 2017 - Trải Nghiệm Mùa Hè')
 
 @section('meta-share')
 <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />

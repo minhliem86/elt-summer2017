@@ -47,6 +47,9 @@
                 <h2>CHÀO MỪNG BẠN ĐẾN VỚI<br><span>ILA AMAZING SUMMER 2017</span></h2>
                 <div class="text-content col-sm-10 col-sm-offset-1">
                     <p style="font-size:15px"><b><i>Một mùa hè con bạn không thể nào quên</i></b></p>
+                    <div class="wrap-video">	
+                    	<div data-type="youtube" data-video-id="VonQApifKcM"></div>
+                    </div>	
                     <p>ILA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên. </p>
                     <p>Đây là sân chơi tiếng Anh với chuỗi hoạt động phong phú, mới lạ, hấp dẫn, bổ ích, giúp các em vừa học giỏi tiếng Anh, vừa rèn luyện 7 thói quen tích cực trong mùa hè, để các em trở thành thế hệ ưu việt thành công và hạnh phúc.</p>
                     <p>“Vì đây là mùa hè tuyệt vời nhất!”</p>
@@ -182,5 +185,11 @@
 @stop
 
 @section('script')
-
+	<link rel="stylesheet" type="text/css" href="{!!asset('public/assets/frontend')!!}/js/video/plyr.css">
+	<script src="{!!asset('public/assets/frontend')!!}/js/video/plyr.js"></script>
+	<script>
+	$(document).ready(function(){
+		plyr.setup();
+	});
+	</script>
 @stop

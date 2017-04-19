@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Thank You')
+@section('title','Chương trình Anh Văn Hè 2017 - Thank You')
 
 @section('content')
 <div class="container">
@@ -20,7 +20,7 @@
     </header>
   </div>
 </div>
-{!!Session::get('campaign')!!}
+
 <div class="container">
   <div class="row">
     <section class="wel-come">

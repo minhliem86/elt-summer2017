@@ -45,9 +45,10 @@ class VideoController extends Controller {
     public function store(Request $request,ImageRequest $imgrequest)
     {
         $current = $this->videoRepository->getOrder();
+
 				if($imgrequest->hasFile('img')){
 						$common = new CommonRepository;
-						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,600,350);
+						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,195);
 				}else{
 					$img_url = $this->_default_img;
 				}
@@ -56,6 +57,7 @@ class VideoController extends Controller {
             'slug' => \Unicode::make($request->title),
             'description' => $request->input('description'),
 						'video_url' => $request->input('video_url'),
+						'img_url' => $img_url,
             'status'=> $request->status,
             'order'=>$current
         ];
@@ -98,7 +100,7 @@ class VideoController extends Controller {
     {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
-				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,600,350);
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,195);
 			}else{
 				$img_url = $request->input('img-bk');
 			}
@@ -107,6 +109,7 @@ class VideoController extends Controller {
 				'slug' => \Unicode::make($request->title),
 				'description' => $request->input('description'),
 				'video_url' => $request->input('video_url'),
+				'img_url' => $img_url,
 				'status'=> $request->status,
 				'order'=>$request->order,
 			];

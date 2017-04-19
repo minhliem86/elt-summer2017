@@ -1,9 +1,9 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Amazing Race')
+@section('title','Chương trình Anh Văn Hè 2017 - Amazing Race')
 
 @section('meta-share')
-<meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare04.png" />
+<meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/amazing-race-fb.png" />
 @stop
 
 @section('content')
@@ -106,7 +106,7 @@
                         <li>• Sân chơi sẽ tạo ra thử thách Tiếng Anh tại 4 điểm đến Anh, Mỹ, Úc, Thụy Sĩ</li>
                         <li>• Người chơi cần hoàn thành thử thách tại 1 điểm đến để nhận được Visa và tìm manh mối cho điểm đến kế tiếp.</li>
                         <li>• Người chơi phải giao tiếp 100% bằng Tiếng Anh với bất kỳ người nước ngoài nào trên đường đua.</li>
-                        <li>• Trong vòng 5 tiếng, cá nhân hoặc tập thể nào sưu tập đủ visa của 4 quốc gia và về đích trước 3h chiều cùng ngày sẽ giành được giải thưởng do ILA trao tặng .</li>
+                        <li>• Trong vòng 5 tiếng, cá nhân hoặc tập thể nào sưu tập đủ visa của 4 quốc gia và về đích trước 2h chiều cùng ngày sẽ giành được giải thưởng do ILA trao tặng .</li>
                     </ul>
                     <center class="col-xs-12">
                         <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay</a>
@@ -118,6 +118,7 @@
   </div>
 </div>
 
+<!--
 <div class="container">
   <div class="row">
     <section class="ILA-footer">
@@ -141,7 +142,6 @@
                             <div>
                                 <img src="{!!asset('public/assets/frontend')!!}/images/icon-crown-blue.png" alt="">
                                 <h3>Happy Kiddom</h3>
-                                <!-- <h3>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</h3> -->
                                 <p>Vương Quốc Hạnh Phúc<br/>Của Thế Hệ Ưu Việt Nhí</p>
                             </div>
                             <a href="{!!route('f.getAmazingSummer')!!}" class="btn btn-yellow">Tìm hiểu thêm</a>
@@ -165,6 +165,7 @@
     </section>
   </div>
 </div>
+-->
 
 @include('Frontend::layouts.register')
 @include('Frontend::layouts.footer-orange')

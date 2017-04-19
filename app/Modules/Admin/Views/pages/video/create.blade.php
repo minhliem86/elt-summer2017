@@ -9,6 +9,13 @@
 	<div class="box">
 		<div class="container-fluid">
 			{!!Form::open(array('route'=>array('admin.video.store'),'class'=>'formAdmin form-horizontal','files'=>true))!!}
+      <div class="form-group">
+        <label for="">Avatar</label>
+        {!!Form::file('img')!!}
+        @if($errors->first('img'))
+          <p class="error">{!!$errors->first('img')!!}</p>
+        @endif
+      </div>
 				<div class="form-group">
 					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}

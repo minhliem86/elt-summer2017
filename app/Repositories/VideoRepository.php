@@ -11,7 +11,7 @@ class VideoRepository{
     }
 
     public function getAll(){
-      return $this->video->select('title','description','video_url','status','id')->orderBy('id','DESC')->get();
+      return $this->video->select('title','description','video_url','status','id','img_url')->orderBy('id','DESC')->get();
     }
 
     public function getFindID($id){

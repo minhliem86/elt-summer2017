@@ -8,6 +8,6 @@ class Video extends Model {
 
   public $table = 'videos';
 
-  protected $fillable = ['title','slug','description','video_url','order','status'];
+  protected $fillable = ['title','slug','description','video_url','order','status', 'img_url'];
 
 }

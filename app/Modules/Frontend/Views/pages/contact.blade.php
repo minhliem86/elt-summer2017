@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Liên Hệ')
+@section('title','Chương trình Anh Văn Hè 2017 - Liên Hệ')
 
 @section('meta-share')
 <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />
@@ -92,7 +92,7 @@
                               <input type="radio" id="yes" name="study_ila" value="1"> <label for="yes">Có</label>
                             </span>
                             <span class="study_inline">
-                              <input type="radio" id="no" name="study_ila" value="0"> <label for="no">Không</label>
+                              <input type="radio" id="no" name="study_ila" value="0" checked=""> <label for="no">Không</label>
                             </span>
                           </div>
                           <div id="error_study_id"></div>
@@ -102,6 +102,13 @@
                           <input type="submit" name="btn-submit" value="Đăng ký">
                       </center>
                   </form>
+                  @if($errors->has())
+                      <div class="alert alert-danger" role="alert">
+                          @foreach ($errors->all() as $error)
+                          <p>{!!$error!!}</p>
+                          @endforeach
+                      </div>
+                  @endif
               </div>
 
           </div>
