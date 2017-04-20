@@ -18,9 +18,9 @@ class AlbumController extends Controller {
 		$this->videoRepository = $video;
 	}
 
-	public function getIndex($year)
+	public function getIndex()
 	{
-		$album = $this->albumRepository->getAlbumByYear($year);
+		$album = $this->albumRepository->get8Album();
 		$video = $this->videoRepository->getAll();
 		return view('Frontend::pages.album',compact('album', 'year','video'));
 	}
@@ -51,13 +51,13 @@ class AlbumController extends Controller {
 		}else{
 			$next_id = $request->input('id') + 1;
 			$id_album = $request->input('id_album');
-			try{
-				$img = $this->imageRepository->getImgAjaxFromAlbum($next_id, $id_album);
+			$img = $this->imageRepository->getImgAjaxFromAlbum($next_id, $id_album);
+
+			if($img){
 				$view = view('Frontend::ajax.photo_load', compact('img'))->render();
-				return response()->json(['result' => $view]);
-			}
-			catch(\Exception $e){
-				return response()->json(['result' =>'Something is wrong'],500);
+				return response()->json(['error'=> false,'result' => $view],200);
+			}else{
+				return response()->json(['error'=> true, 'msg'=> 'ses'],500);
 			}
 		}
 	}
@@ -83,14 +83,36 @@ class AlbumController extends Controller {
 	// LOAD VIDEO
 	public function ajaxLoadVideo(Request $request){
 		if(!$request->ajax()){
-			abort(404);
+			abort(404, 'Page Not Found');
 		}else{
 			$id = $request->input('id');
 			$video = $this->videoRepository->getFindID($id);
 			$view = view('Frontend::ajax.videoLoad',compact('video'))->render();
 			return response()->json(['rs' =>$view]);
 		}
+	}
 
+	// LOAD MORE PHOTO
+	public function postAjaxGetAllImg(Request $request){
+		if(!$request->ajax()){
+			abort(404, 'Page Not Found');
+		}else{
+			$album = $this->albumRepository->getAllAlbumWithImage();
+			if(count($album)){
+				$view = view('Frontend::ajax.loadmorealbum', compact('album'))->render();
+				return response()->json([
+					'error' => false,
+					'code' => 200,
+					'rs' => $view,
+				],200);
+			}else{
+				return response()->json([
+					'error' => true,
+					'code' => 500,
+					'message' => 'Không có album',
+				],500);
+			}
+		}
 	}
 
 

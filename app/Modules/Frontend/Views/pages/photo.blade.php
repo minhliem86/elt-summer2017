@@ -39,14 +39,12 @@
         'data':{id:id, id_album:id_album, '_token':$('meta[name="csrf-token"]').attr('content') },
         'success' : function (data){
           $('.body-modal').html(data.result);
-          // inst_modal.open();
+          window.history.pushState({} , '', `#${id}`);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            console.log(XMLHttpRequest.status);
             // $.notify('Không còn ảnh');
             if(XMLHttpRequest.status === 500){
-              $.notify('Không còn ảnh',{
-              });
+              $.notify('Không còn ảnh');
             }
         }
       })
@@ -60,14 +58,11 @@
         'data':{id:id, id_album:id_album, '_token':$('meta[name="csrf-token"]').attr('content') },
         'success' : function (data){
           $('.body-modal').html(data.result);
-          // inst_modal.open();
+          window.history.pushState({} , '', `#${id}`);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            console.log(XMLHttpRequest.status);
-            // $.notify('Không còn ảnh');
             if(XMLHttpRequest.status === 500){
-              $.notify('Không còn ảnh',{
-              });
+              $.notify('Không còn ảnh');
             }
         }
       })

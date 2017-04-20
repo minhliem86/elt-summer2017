@@ -43,8 +43,18 @@ class AlbumRepository{
     /*FRONTENT*/
     public function getAlbumByYear($year)
     {
-      return $this->album->where('year',$year)->with('images')->get();
+      return $this->album->where('year',$year)->with('images')->orderBy('id','DESC')->take(4)->get();
     }
+
+    public function get8Album(){
+      return $this->album->select('title','status','id','year')->orderBy('id','DESC')->with('images')->take(8)->get();
+    }
+
+    public function getAllAlbumWithImage(){
+      return $this->album->select('title','id')->orderBy('id','DESC')->with('images')->get();
+    }
+
+
 
     public function getImgByAlbum($id){
       return $this->album->with(['images'=>function($query){

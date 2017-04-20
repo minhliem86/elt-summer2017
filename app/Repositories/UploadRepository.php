@@ -194,7 +194,12 @@ class UploadRepository
 
     public function getImgAjaxFromAlbum($id, $id_album)
     {
-      return $this->image->where('album_id',$id_album)->where('id',$id)->first();
+      $img =  $this->image->where('album_id',$id_album)->where('id',$id)->first();
+      if(count($img)){
+        return $img;
+      }else{
+        return false;
+      }
     }
 
 }

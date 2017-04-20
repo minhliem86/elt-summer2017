@@ -1758,11 +1758,26 @@ footer.cyan{
 .album{
   .wrap-title-album{
     text-align: center;
+    position:relative;
     h2{
       color:$color-blue;
       text-transform: uppercase;
       margin-bottom:25px;
       margin-top:15px;
+    }
+    button.btn-loadmore{
+      font-size:12px;
+      border:none;
+      box-shadow: none;
+      position:absolute;
+      padding:4px 20px;
+      background:$color-blue;
+      color:white;
+      right:0;
+      top:50%;
+      transform:translateY(-50%);
+      -webkit-transform:translateY(-50%);
+      -moz-transform:translateY(-50%);
     }
   }
   .each-album{
@@ -2027,10 +2042,14 @@ footer.cyan{
       text-align:right;
       .img-social{
         display:inline-block;
+        cursor:pointer;
       }
     }
   }
 
+}
+.notifyjs-corner{
+  z-index:10000 !important;
 }
 /*END IMAGE*/
 
