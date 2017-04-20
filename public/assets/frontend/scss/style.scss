@@ -1770,9 +1770,10 @@ footer.cyan{
     h3.title-album{
       font-size:14px;
       line-height: 22px;
-      text-transform: uppercase;
       margin:0;
       color:$color-blue;
+      text-align: center;
+      font-weight: 400;
     }
     .overlay{
       position:relative;
@@ -1881,6 +1882,7 @@ footer.cyan{
         }
         p.title-video{
           font-size:14px;
+          line-height: 22px;
           text-align:center;
           color:$color-blue;
         }
@@ -1890,7 +1892,7 @@ footer.cyan{
               top:10%;
               opacity: 0;
             }
-            
+
           }
         }
       }
