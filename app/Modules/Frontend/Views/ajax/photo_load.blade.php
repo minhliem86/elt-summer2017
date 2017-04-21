@@ -23,11 +23,8 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
-    $('.share').ShareLink({
-      title: '{!!$img->title!!}', // title for share message
-      text: '{!!$img->description!!}', // text for share message
-      image: '{!!$img->img_url!!}', // text for share message
-      urk: '', // text for share message
+    $('.img-social').click(function(){
+      FBShareOp("{!!$img->title!!}", "{!!$img->description!!}", "{!!$img->img_url!!}", "{!!route('f.getPhotoDetail',$img->id)!!}", 'ILA Amazing Summer');
     })
   })
 </script>

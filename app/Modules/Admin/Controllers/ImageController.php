@@ -87,8 +87,8 @@ class ImageController extends Controller {
     {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
-				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,550,550);
-				$thumbnail_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder_thumb,$resize=true,250,250);
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,1200,630);
+				$thumbnail_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder_thumb,$resize=true,300,158);
 
 			}else{
 				$img_url = $request->input('img-bk');

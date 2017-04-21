@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Repositories\AlbumRepository;
 use App\Repositories\UploadRepository;
 use App\Repositories\VideoRepository;
+use App\Models\Image as Img;
 
 class AlbumController extends Controller {
 
@@ -21,7 +22,7 @@ class AlbumController extends Controller {
 	public function getIndex()
 	{
 		$album = $this->albumRepository->get8Album();
-		$video = $this->videoRepository->getAll();
+		$video = $this->videoRepository->getAllVideo();
 		return view('Frontend::pages.album',compact('album', 'year','video'));
 	}
 
@@ -113,6 +114,13 @@ class AlbumController extends Controller {
 				],500);
 			}
 		}
+	}
+
+	public function getPhotoDetail($id){
+		$img = $this->imageRepository->getFindID($id);
+		if($img) return view('Frontend::pages.photo_detail', compact('img'));
+		abort(404, 'Do not have photo');
+
 	}
 
 

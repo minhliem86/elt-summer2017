@@ -146,6 +146,7 @@
       // DROPZONE
       var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
         url: "{!!route('admin.image.postUpload')!!}", // Set the url
+        maxFilesize: 30,
         uploadMultiple: false,
         autoProcessQueue: false,
         acceptedFiles: 'image/*',

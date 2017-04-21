@@ -39,4 +39,8 @@ class VideoRepository{
       count($order) == 0 ?  $current = 1 :  $current = $order->order +1 ;
       return $current;
     }
+    // FRONTEND
+    public function getAllVideo(){
+      return $this->video->select('title','description','video_url','status','id','img_url')->where('status',1)->orderBy('id','DESC')->get();
+    }
 }

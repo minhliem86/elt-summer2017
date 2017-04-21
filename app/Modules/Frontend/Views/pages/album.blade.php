@@ -1,6 +1,6 @@
 @extends('Frontend::layouts.default')
 
-@section('title','Chương trình Anh Văn Hè 2017 - Thư viện các hoạt động')
+@section('title','Chương trình Anh Văn Hè 2017 - Các hoạt động tại ILA Summer 2017')
 
 @section('meta-share')
 
@@ -101,7 +101,7 @@
   </div>
 </div>
 
-@if(!$album->isEmpty())
+
 <div class="container">
   <div class="row">
     <section class="album">
@@ -109,9 +109,9 @@
         <center class="banner">
             <img class="wow bounceInDown" src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" alt="">
         </center>
+        @if(!$video->isEmpty())
         <div class="wrap-video-section">
           <h2>Video Hoạt Động Hè 2017</h2>
-          @if(!$video->isEmpty())
           <div class="wrap-video">
             <div class="swiper-container" id="video-slider">
               <div class="swiper-wrapper">
@@ -134,8 +134,10 @@
               <div class="swiper-button-next"></div>
             </div> <!-- end slider video -->
           </div> <!-- end video -->
-            @endif
         </div>  <!-- end wrap-video -->
+        @endif
+        
+        @if(!$album->isEmpty())
         <div class="wrap-title-album">
           <h2>Hình Ảnh Các Hoạt Động Hè 2017</h2>
           <button class="btn-loadmore" id="loadmore">Xem tất cả</button>
@@ -157,6 +159,7 @@
           </div>
           @endforeach
         </div>  <!-- end load image -->
+        @endif
       </div>
     </section>
   </div>
@@ -164,7 +167,7 @@
 <div class="remodal" data-remodal-id="modal" id="remodal-video">
 
 </div>
-@endif
+
 
 @include('Frontend::layouts.register')
 @include('Frontend::layouts.footer-orange')

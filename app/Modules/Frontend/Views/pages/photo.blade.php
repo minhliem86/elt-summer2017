@@ -3,7 +3,7 @@
 @section('title','Chương trình Anh Văn Hè 2017 - Hình ảnh')
 
 @section('meta-share')
-
+  <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/amazing-race-fb.png" />
 @stop
 
 @section('script')
@@ -12,8 +12,53 @@
 <script src="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.js"></script>
 <!-- NOTIFY -->
 <script src="{!!asset('public/assets/frontend')!!}/js/notify.min.js"></script>
-<!-- SOCIAL -->
-<script src="{!!asset('public/assets/frontend')!!}/js/SocialShare.min.js"></script>
+
+<!-- FACEBOOK -->
+<script type="application/javascript">
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '1046352865465751',
+      status     : true,
+      xfbml      : true
+    });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+function FBShareOp(name, desc, img, url, capt){
+  FB.api('https://graph.facebook.com/', 'post', {
+	      id: url,
+	      scrape: true
+	  }, function(response) {
+	    FB.ui(
+      {
+	      method: 'share',
+	      title: capt,
+	      caption: capt,
+	      description: desc,
+	      picture: img,
+	      href : url,
+        mobile_iframe: true,
+	    },function(res){
+	      if(typeof res !== 'undefined'){
+
+	      }else{
+
+	      }
+	    })
+	  });
+}
+</script>
+
 <script>
   $(document).ready(function(){
     let inst_modal = $('[data-remodal-id=modal]').remodal();
@@ -118,7 +163,7 @@
             <div class="each-img" data-img="{!!$img->id!!}">
                 <div class="overlay"></div>
                 <i class="ic-zoom fa fa-search" ></i>
-                <img src="{!!$img->img_url!!}"  class="img-responsive" alt="{!!$img->title!!}">
+                <img src="{!!$img->thumbnail_url!!}"  class="img-responsive" alt="{!!$img->title!!}">
             </div>  <!-- end each-image -->
           </div>
           @endforeach
