@@ -35,27 +35,22 @@
    }(document, 'script', 'facebook-jssdk'));
 
 function FBShareOp(name, desc, img, url, capt){
-  FB.api('https://graph.facebook.com/', 'post', {
-	      id: url,
-	      scrape: true
-	  }, function(response) {
-	    FB.ui(
-      {
-	      method: 'share',
-	      title: capt,
-	      caption: capt,
-	      description: desc,
-	      picture: img,
-	      href : url,
-        mobile_iframe: true,
-	    },function(res){
-	      if(typeof res !== 'undefined'){
+    FB.ui(
+    {
+      method: 'share',
+      title: capt,
+      caption: capt,
+      description: desc,
+      picture: img,
+      href : url,
+      mobile_iframe: true,
+    },function(res){
+      if(typeof res !== 'undefined'){
 
-	      }else{
+      }else{
 
-	      }
-	    })
-	  });
+      }
+    })
 }
 </script>
 
@@ -112,6 +107,27 @@ function FBShareOp(name, desc, img, url, capt){
         }
       })
     })
+
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
+        // $('#load a').css('color', '#dfecf6');
+        // $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
+
+        var url = $(this).attr('href');
+        getArticles(url);
+        window.history.pushState("", "", url);
+    });
+
+    function getArticles(url) {
+        $.ajax({
+            url : url
+        }).done(function (data) {
+            $('.articles').html(data);
+        }).fail(function () {
+            alert('Articles could not be loaded.');
+        });
+    }
+
   })
 </script>
 
@@ -132,7 +148,7 @@ function FBShareOp(name, desc, img, url, capt){
                 <div class="stage near-cloud" id="near-cloud"></div>
                 <div class="title-header">
                     <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
                     <div class="wrap-btn">
                       <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
                     </div>
@@ -144,7 +160,7 @@ function FBShareOp(name, desc, img, url, capt){
   </div>
 </div>
 
-@if($albumWithImg)
+@if(!$img->isEmpty())
 
 <div class="container">
   <div class="row">
@@ -154,21 +170,9 @@ function FBShareOp(name, desc, img, url, capt){
             <img class="wow bounceInDown" src="{!!asset('public/assets/frontend')!!}/images/wel-come-banner.png" alt="">
         </center>
         <div class="wrap-title-img">
-          <h2>{!!$albumWithImg->title!!}</h2>
+          <h2>{!!$AlbumTitle!!}</h2>
         </div>
-        @foreach($albumWithImg->images()->get()->chunk(4) as $chunk)
-        <div class="row">
-          @foreach($chunk as $img)
-          <div class="col-sm-3">
-            <div class="each-img" data-img="{!!$img->id!!}">
-                <div class="overlay"></div>
-                <i class="ic-zoom fa fa-search" ></i>
-                <img src="{!!$img->thumbnail_url!!}"  class="img-responsive" alt="{!!$img->title!!}">
-            </div>  <!-- end each-image -->
-          </div>
-          @endforeach
-        </div>
-        @endforeach
+        @include('Frontend::ajax.loadPhoto')
       </div>
     </section>
   </div>
@@ -176,7 +180,7 @@ function FBShareOp(name, desc, img, url, capt){
 
 <div class="remodal" data-remodal-id="modal" id="remodal-photo">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <h1>{!!$albumWithImg->title!!}</h1>
+  <h1>{!!$AlbumTitle!!}</h1>
   <div class="body-modal">
 
   </div>

@@ -63,7 +63,7 @@ class UploadRepository
         $current = $this->getOrder();
         $data = [
           'title' => $input['text_title'],
-          'description' => $input['text_title'],
+          'description' => $input['text_desc'],
           'album_id' => $input['album_id'],
           'slug' => \Unicode::make($input['text_title']),
           'img_url' =>  asset(config('dropzoner.upload-path').$filename_with_extension),
@@ -154,7 +154,6 @@ class UploadRepository
 
     public function getFindID($id){
       return $this->image->find($id);
-    
     }
 
     public function postUpdate($id,$data){
@@ -190,7 +189,7 @@ class UploadRepository
     /*FRONTEND*/
     public function getImgFromAlbum($id_album)
     {
-      return $this->image->where('album_id', $id_album)->paginate(20);
+      return $this->image->where('album_id', $id_album)->paginate(4);
     }
 
     public function getImgAjaxFromAlbum($id, $id_album)

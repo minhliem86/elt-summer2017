@@ -178,8 +178,10 @@
           });
 
           myDropzone.on("sending",function(file, xhr, formData){
-            title = file.previewElement.querySelector("input[name='title'");
+              title = file.previewElement.querySelector("input[name='title'");
+              description = file.previewElement.querySelector("textarea[name='description'");
               formData.append("text_title",$(title).val());
+              formData.append("text_desc",$(description).val());
               formData.append("album_id",$('select[name="album_id"]').val());
 
 

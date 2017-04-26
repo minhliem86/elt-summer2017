@@ -22,6 +22,12 @@
 					{!!Form::file('img')!!}
 				</div>
 				<div class="form-group">
+					{!!Form::text('title', old('title'), ['class'=>'form-control'] )!!}
+				</div>
+				<div class="form-group">
+					{!!Form::textarea('description', old('description'), ['class'=>'form-control'] )!!}
+				</div>
+				<div class="form-group">
 					<label for="" >Sort</label>
 					{!!Form::text('order',old('order'),array('class'=>'form-control'))!!}
 				</div>

@@ -26,10 +26,14 @@ class AlbumController extends Controller {
 		return view('Frontend::pages.album',compact('album', 'year','video'));
 	}
 
-	public function getImgByAlbum($id_album)
+	public function getImgByAlbum(Request $request, $id_album)
 	{
-		$albumWithImg = $this->albumRepository->getImgByAlbum($id_album);
-		return view('Frontend::pages.photo', compact('albumWithImg'));
+		$img = $this->imageRepository->getImgFromAlbum($id_album);
+		$AlbumTitle = $img->first()->albums->title;
+		if ($request->ajax()) {
+    	// return view('Frontend::ajax.loadPhoto', ['img' => $img])->render();
+    }
+			return view('Frontend::pages.photo', compact('img','AlbumTitle'));
 	}
 
 	// LOAD PHOTO

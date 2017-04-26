@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="container">
+<div class="container hidden-sm hidden-xs">
   <div class="row">
     <header class="top-header">
       <div >
@@ -19,7 +19,7 @@
         <div class="stage near-cloud" id="near-cloud"></div>
         <div class="title-header">
             <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-            <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+            <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
             <div class="wrap-btn">
               <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
             </div>
@@ -34,6 +34,7 @@
       <img src="{!!asset('public/assets/frontend')!!}/images/sun.png" class="img-responsive contact-img img-sun" alt="ILA Amazing Summer 2017">
       <img src="{!!asset('public/assets/frontend')!!}/images/contact-bg-leaf.png" class="img-responsive contact-img img-leaf" alt="ILA Amazing Summer 2017">
       <img src="{!!asset('public/assets/frontend')!!}/images/contact-bg-bird.png" class="img-responsive contact-img img-bird" alt="ILA Amazing Summer 2017">
+
       <div class="container-fluid">
           <div class="row">
               <center class="banner col-xs12">
@@ -61,7 +62,7 @@
               <div class="col-sm-6">
                   <form action="{!!route('f.postContact')!!}" class="contact-register" method="POST" id="form_summer2017">
                       {!!Form::token()!!}
-                      <p class="note">Bạn vui lòng hoàn tất bản thông tin dưới đây, chúng tôi sẽ liên lạc lại với bạn trong 24 giờ tới.</p>
+                      <p class="note">Vui lòng hoàn tất bản thông tin dưới đây, ILA sẽ liên lạc lại với bạn trong 24 giờ tới.</p>
                       <div class="form-group">
                           <label>Họ Tên</label>
                           <input type="text" name="fullname" class="form-control" placeholder="">

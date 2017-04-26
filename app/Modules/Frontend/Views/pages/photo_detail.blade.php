@@ -24,7 +24,7 @@
                 <div class="stage near-cloud" id="near-cloud"></div>
                 <div class="title-header">
                     <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
                     <div class="wrap-btn">
                       <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
                     </div>

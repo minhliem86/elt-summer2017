@@ -49,11 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 		Route::post('schedule/deleteall',['as'=>'admin.schedule.deleteall','uses'=>'ScheduleController@deleteAll']);
 		Route::resource('schedule','ScheduleController');
 
-		Route::get('/center',function(){
-			$schedules = App\Models\Schedule::find(19);
-			dd($schedules->centers);
-		});
-
+		
 		/*Image*/
 		Route::post('image/deleteall',['as'=>'admin.image.deleteall','uses'=>'ImageController@deleteAll']);
 		Route::post('image/postUpload',['as'=>'admin.image.postUpload','uses'=>'ImageController@postUpload']);

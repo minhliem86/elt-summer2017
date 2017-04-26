@@ -1778,6 +1778,16 @@ footer.cyan{
       transform:translateY(-50%);
       -webkit-transform:translateY(-50%);
       -moz-transform:translateY(-50%);
+      @include media(320px, 767px){
+        position: static
+      };
+    }
+  }
+  .banner{
+    img{
+      @include media(320px, 480px){
+        max-width:200px;
+      };
     }
   }
   .each-album{
@@ -1930,6 +1940,13 @@ footer.cyan{
       color:$color-blue;
     }
   }
+  .banner {
+    img{
+      @include media(320px, 480px){
+        max-width:200px
+      };
+    }
+  }
   .each-img{
     position:relative;
     margin-bottom:20px;
@@ -2021,6 +2038,9 @@ footer.cyan{
           opacity: 1;
         }
       }
+      @include media(320px, 480px){
+        margin-bottom:15px;
+      };
     }
 
     h3.title-img{

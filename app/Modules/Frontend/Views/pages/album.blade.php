@@ -34,6 +34,16 @@
         spaceBetween: 10,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
+        breakpoints: {
+          '480': {
+              slidesPerView: 1,
+              slidesPerColumn: 1,
+          },
+          '768': {
+            slidesPerView: 3,
+            slidesPerColumn: 1,
+          }
+        }
       })
 
       // POPUP VIDEO
@@ -89,7 +99,7 @@
                 <div class="stage near-cloud" id="near-cloud"></div>
                 <div class="title-header">
                     <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 25/04</p>
+                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
                     <div class="wrap-btn">
                       <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
                     </div>
@@ -136,7 +146,7 @@
           </div> <!-- end video -->
         </div>  <!-- end wrap-video -->
         @endif
-        
+
         @if(!$album->isEmpty())
         <div class="wrap-title-album">
           <h2>Hình Ảnh Các Hoạt Động Hè 2017</h2>
