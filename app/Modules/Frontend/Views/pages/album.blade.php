@@ -150,7 +150,9 @@
         @if(!$album->isEmpty())
         <div class="wrap-title-album">
           <h2>Hình Ảnh Các Hoạt Động Hè 2017</h2>
+          @if($album->count() > 6)
           <button class="btn-loadmore" id="loadmore">Xem tất cả</button>
+          @endif
         </div>
         <div class="load-img">
           @foreach($album->chunk(4) as $chunk)
@@ -158,7 +160,7 @@
             @foreach($chunk as $item_album)
             <div class="col-sm-4">
               <div class="each-album">
-                  <a href="{!!route('f.getImage',$item_album->id)!!}">
+                  <a href="{!!route('f.getImage',$item_album->slug)!!}">
                     <div class="overlay">
                       <img src="{!! $item_album->images()->first() ? $item_album->images()->first()->img_url : ''!!}" alt="">
                       <i class="link fa fa-link"></i>

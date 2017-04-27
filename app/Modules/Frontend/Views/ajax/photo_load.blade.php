@@ -10,8 +10,8 @@
     <h3 class="title-img">{!!$img->title!!} </h3>
     <p class="desc-img">{!!$img->description!!}</p>
     <div class="wrap-btn-social">
-        <img src="{!!asset('public/assets/frontend')!!}/images/fb-icon.png" alt="" class="img-responsive img-social share s_facebook">
-        <a href="{!!$img->img_url!!}" download="ila_img_{!!$img->id!!}"><img src="{!!asset('public/assets/frontend')!!}/images/download.png" alt="" class="img-responsive img-social"></a>
+        <img src="{!!asset('public/assets/frontend')!!}/images/fb-icon.png" alt="Share on Facebook" class="img-responsive img-social share s_facebook hidden-sm hidden-xs">
+        <a href="{!!$img->img_url!!}" title="Download" download="ila_img_{!!$img->id!!}"><img src="{!!asset('public/assets/frontend')!!}/images/download.png" alt="" class="img-responsive img-social"></a>
     </div>
   </div>  <!-- end wrap-img-->
 </div>

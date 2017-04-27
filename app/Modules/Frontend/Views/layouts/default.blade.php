@@ -176,7 +176,7 @@
           study_ila: 'study_ila',
       });
   </script> -->
-
+  
   @yield('script')
 </body>
 </html>

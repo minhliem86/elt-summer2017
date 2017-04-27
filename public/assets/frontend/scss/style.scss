@@ -167,16 +167,16 @@ nav.top-menu{
     }
     .nav{
         li{
-            margin-left: 15px;
+            margin-left: 8px;
             a{
                 @extend %transition;
                 color: $color-orange;
                 margin: 0;
-                padding: 0 15px;
+                padding: 0 8px;
                 height: 35px;
                 line-height: 35px;
                 border-radius: 35px;
-                font-size:14px;
+                font-size:12px;
                 font-family: $font-montserrat;
             }
             &:hover, &.current{
@@ -1762,7 +1762,7 @@ footer.cyan{
     h2{
       color:$color-blue;
       text-transform: uppercase;
-      margin-bottom:25px;
+      margin-bottom:50px;
       margin-top:15px;
     }
     button.btn-loadmore{
@@ -2012,7 +2012,7 @@ footer.cyan{
   }
 }
 #remodal-photo{
-  padding:20px 35px;
+  padding:20px 50px;
   h1{
     font-size:22px;
     text-transform: capitalize;
@@ -2032,13 +2032,19 @@ footer.cyan{
         -moz-transform:translateY(-50%);
         opacity:0.2;
         @include transition(all 0.3s);
-        right:0;
+        right:-40px;
         z-index:2;
         cursor:pointer;
         &.btn-prev{
-          left:0;
+          left:-40px;
           right:auto;
         }
+        @include media(320px, 480px){
+          top:40%;
+          transform:scale(0.8);
+          -webkit-transform:scale(0.8);
+          -moz-transform:scale(0.8);
+        };
       }
       &:hover{
         .btn-control{

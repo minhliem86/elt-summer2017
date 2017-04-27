@@ -15,13 +15,13 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   Route::post('/get-data',['as'=>'f.postDataTesti','uses'=>'TestimonialController@postAjax']);
 
   // GET ALBUM PAGE
-  Route::get('/album',['as'=>'f.getAlbum', 'uses'=>'AlbumController@getIndex']);
+  Route::get('/thu-vien-hinh-anh',['as'=>'f.getAlbum', 'uses'=>'AlbumController@getIndex']);
   // AJAX VIDEO
-  Route::post('album/loadVideo',['as'=>'f.postAjaxVideo','uses'=>'AlbumController@ajaxLoadVideo']);
+  Route::post('/album/loadVideo',['as'=>'f.postAjaxVideo','uses'=>'AlbumController@ajaxLoadVideo']);
   // LOAD MORE PHOTO
-  Route::post('album/loadPhoto',['as'=>'f.postAjaxGetAllImg','uses'=>'AlbumController@postAjaxGetAllImg']);
+  Route::post('/album/loadPhoto',['as'=>'f.postAjaxGetAllImg','uses'=>'AlbumController@postAjaxGetAllImg']);
 
-  Route::get('/album/{id_album}/photo', ['as'=>'f.getImage', 'uses'=>'AlbumController@getImgByAlbum'])->where('id_album','[0-9a-zA-Z_.+\-]+');
+  Route::get('/thu-vien-hinh-anh/{album_slug}/photo', ['as'=>'f.getImage', 'uses'=>'AlbumController@getImgByAlbum'])->where('id_album','[0-9a-zA-Z_.+\-]+');
 
   Route::post('/photo/load',['as'=>'f.postAjaxPhoto', 'uses'=>'AlbumController@ajaxLoadPhoto']);
   Route::post('/photo/next',['as'=>'f.postAjaxNextPhoto', 'uses'=>'AlbumController@ajaxNextPhoto']);

@@ -14,6 +14,7 @@
 <script src="{!!asset('public/assets/frontend')!!}/js/notify.min.js"></script>
 
 <!-- FACEBOOK -->
+
 <script type="application/javascript">
   window.fbAsyncInit = function() {
     // init the FB JS SDK
@@ -43,7 +44,7 @@ function FBShareOp(name, desc, img, url, capt){
       description: desc,
       picture: img,
       href : url,
-      mobile_iframe: true,
+      mobile_iframe: false,
     },function(res){
       if(typeof res !== 'undefined'){
 
@@ -57,7 +58,7 @@ function FBShareOp(name, desc, img, url, capt){
 <script>
   $(document).ready(function(){
     let inst_modal = $('[data-remodal-id=modal]').remodal();
-    $('.each-img').click(function(e){
+    $('body').on('click','.each-img',function(){
       const id = $(this).data('img');
       $.ajax({
         'url':'{!!route("f.postAjaxPhoto")!!}',
@@ -69,6 +70,7 @@ function FBShareOp(name, desc, img, url, capt){
         }
       })
     })
+
 
     $(document).on('click','.btn-next img',function(){
       const id = $(this).data('id');
@@ -111,7 +113,7 @@ function FBShareOp(name, desc, img, url, capt){
     $('body').on('click', '.pagination a', function(e) {
         e.preventDefault();
         // $('#load a').css('color', '#dfecf6');
-        // $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
+        $('#load').append(`<img style="position: absolute; left: 50%; top: 0; transform:translateX(-50%); z-index: 100000;" src="{!!asset('public/assets/frontend')!!}/images/loading.gif" />`);
 
         var url = $(this).attr('href');
         getPhoto(url);
@@ -123,7 +125,7 @@ function FBShareOp(name, desc, img, url, capt){
             url : url,
             type: 'GET',
         }).done(function (data) {
-            $('.articles').html(data);
+            $('.load-photo').html(data);
         }).fail(function () {
             alert('Articles could not be loaded.');
         });
@@ -173,7 +175,9 @@ function FBShareOp(name, desc, img, url, capt){
         <div class="wrap-title-img">
           <h2>{!!$AlbumTitle!!}</h2>
         </div>
-        @include('Frontend::ajax.loadPhoto')
+        <div class="load-photo">
+          @include('Frontend::ajax.loadPhoto')
+        </div>
       </div>
     </section>
   </div>

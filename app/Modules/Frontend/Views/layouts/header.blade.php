@@ -18,6 +18,7 @@
                       <li class="{!!\Active::setActive(1,'amazing-summer','current')!!}"><a href="{!!route('f.getAmazingSummer')!!}">Amazing Summer</a></li>
                       <li class="{!!\Active::setActive(1,'amazing-race','current')!!}" ><a href="{!!route('f.getAmazing')!!}" >Amazing Race</a></li>
                       <li class="{!!\Active::setActive(1,'trai-nghiem-mua-he','current')!!}"><a href="{!!route('f.getTestimonial')!!}">Trải Nghiệm Mùa Hè</a></li>
+                      <li class="{!!\Active::setActive(1,'thu-vien-hinh-anh','current')!!}"><a href="{!!route('f.getAlbum')!!}">Thư viện hình ảnh</a></li>
                       <li class="{!!\Active::setActive(1,'lien-he','current')!!}" ><a href="{!!route('f.getContact')!!}">Liên Hệ</a></li>
                   </ul>
               </div>

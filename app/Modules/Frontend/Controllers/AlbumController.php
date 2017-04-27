@@ -26,9 +26,9 @@ class AlbumController extends Controller {
 		return view('Frontend::pages.album',compact('album', 'year','video'));
 	}
 
-	public function getImgByAlbum(Request $request, $id_album)
+	public function getImgByAlbum(Request $request, $slug_album)
 	{
-		$img = $this->imageRepository->getImgFromAlbum($id_album);
+		$img = $this->albumRepository->getImgByAlbum($slug_album);
 		$AlbumTitle = $img->first()->albums->title;
 		if ($request->ajax()) {
     	return view('Frontend::ajax.loadPhoto', ['img' => $img])->render();

@@ -47,18 +47,18 @@ class AlbumRepository{
     }
 
     public function get8Album(){
-      return $this->album->select('title','status','id')->orderBy('id','DESC')->with('images')->take(8)->get();
+      return $this->album->select('title','status','id','slug')->orderBy('id','DESC')->with('images')->take(6)->get();
     }
 
     public function getAllAlbumWithImage(){
-      return $this->album->select('title','id')->orderBy('id','DESC')->with('images')->get();
+      return $this->album->select('title','status','id','slug')->orderBy('id','DESC')->with('images')->get();
     }
 
 
 
-    public function getImgByAlbum($id){
-      return $this->album->with(['images'=>function($query){
-        $query->select('id','thumbnail_url');
-      }])->find($id);
+    public function getImgByAlbum($slug){
+       $album = $this->album->select('id', 'slug', 'title')->where('slug', $slug)->first();
+       $img = $album->images()->paginate(24);
+       return $img;
     }
 }
