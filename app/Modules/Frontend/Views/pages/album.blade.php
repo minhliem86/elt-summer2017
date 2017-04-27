@@ -3,7 +3,7 @@
 @section('title','Chương trình Anh Văn Hè 2017 - Các hoạt động tại ILA Summer 2017')
 
 @section('meta-share')
-
+  <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/amazing-race-fb.png" />
 @stop
 
 @section('script')
