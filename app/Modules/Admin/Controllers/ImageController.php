@@ -88,7 +88,7 @@ class ImageController extends Controller {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
 				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,1200,630);
-				$thumbnail_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder_thumb,$resize=true,300,158);
+				$thumbnail_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder_thumb,$resize=true,400,210);
 
 			}else{
 				$img_url = $request->input('img-bk');
@@ -141,29 +141,29 @@ class ImageController extends Controller {
         if(!$request->ajax()){
             return view('404');
         }else{
-						$upload_path = config('dropzoner.upload-path');
+			$upload_path = config('dropzoner.upload-path');
             $data = $request->arr;
-						if($data){
-							foreach($data as $item){
-								$filename = $this->image->getNameImg($item);
+			if($data){
+				foreach($data as $item){
+					$filename = $this->image->getNameImg($item);
 
-								$full_path = $upload_path . $filename;
+					$full_path = $upload_path . $filename;
 
-								if (\File::exists($full_path)) {
-										\File::delete($full_path);
-								}
+					if (\File::exists($full_path)) {
+							\File::delete($full_path);
+					}
 
-								event(new ImageWasDeleted($data));
+					event(new ImageWasDeleted($data));
 
-								return response()->json([
-										'error' => false,
-										'code'  => 200
-								], 200);
-							}
-						}else{
-								return response()->json(array('msg'=>'error'));
-						}
+					return response()->json([
+							'error' => false,
+							'code'  => 200
+					], 200);
 				}
+			}else{
+					return response()->json(array('msg'=>'error'));
+			}
+		}
     }
 
     public function checkRelate(Request $request){

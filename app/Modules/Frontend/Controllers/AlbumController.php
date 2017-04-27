@@ -31,7 +31,7 @@ class AlbumController extends Controller {
 		$img = $this->imageRepository->getImgFromAlbum($id_album);
 		$AlbumTitle = $img->first()->albums->title;
 		if ($request->ajax()) {
-    	// return view('Frontend::ajax.loadPhoto', ['img' => $img])->render();
+    	return view('Frontend::ajax.loadPhoto', ['img' => $img])->render();
     }
 			return view('Frontend::pages.photo', compact('img','AlbumTitle'));
 	}

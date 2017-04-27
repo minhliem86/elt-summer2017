@@ -48,7 +48,7 @@ class UploadRepository
         $manager = new ImageManager();
         $image = $manager->make( $photo )->resize(1200, 630)->save(config('dropzoner.upload-path') . $filename_with_extension );
 
-        $img_thumb = $manager->make( $photo )->resize(300, 158)->save(config('dropzoner.upload-thumb-path'). $filename_with_extension );
+        $img_thumb = $manager->make( $photo )->resize(400, 210)->save(config('dropzoner.upload-thumb-path'). $filename_with_extension );
 
         if( !$image ) {
             return response()->json([

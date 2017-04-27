@@ -114,13 +114,14 @@ function FBShareOp(name, desc, img, url, capt){
         // $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
 
         var url = $(this).attr('href');
-        getArticles(url);
+        getPhoto(url);
         window.history.pushState("", "", url);
     });
 
-    function getArticles(url) {
+    function getPhoto(url) {
         $.ajax({
-            url : url
+            url : url,
+            type: 'GET',
         }).done(function (data) {
             $('.articles').html(data);
         }).fail(function () {

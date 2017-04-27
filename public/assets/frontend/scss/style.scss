@@ -1792,6 +1792,9 @@ footer.cyan{
   }
   .each-album{
     margin-bottom:15px;
+    a{
+      text-decoration: none;
+    }
     h3.title-album{
       font-size:14px;
       line-height: 22px;
@@ -1860,7 +1863,11 @@ footer.cyan{
           visibility: visible;
         }
       }
+      h3.title-album{
+        color:$color-orange;
+      }
     }
+
   }
 
   .wrap-video-section{
@@ -1932,7 +1939,7 @@ footer.cyan{
   padding:20px 0 40px;
   .wrap-title-img{
     text-align: center;
-    margin:20px 0 30px;
+    margin:20px 0 50px;
     h2{
       margin:0;
       text-transform: uppercase;
@@ -2005,7 +2012,7 @@ footer.cyan{
   }
 }
 #remodal-photo{
-  padding:20px;
+  padding:20px 35px;
   h1{
     font-size:22px;
     text-transform: capitalize;
@@ -2041,6 +2048,9 @@ footer.cyan{
       @include media(320px, 480px){
         margin-bottom:15px;
       };
+      > img{
+        margin-bottom:15px;
+      }
     }
 
     h3.title-img{
