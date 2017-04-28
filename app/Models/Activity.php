@@ -18,4 +18,8 @@ class Activity extends Model {
 		return $this->belongsToMany('App\Models\Center','center_activity');
 	}
 
+	public function albums(){
+		return $this->hasMany('App\Models\Album');
+	}
+
 }

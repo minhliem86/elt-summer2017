@@ -30,7 +30,7 @@
 					    <tr>
 							<th>ID</th>
 							<th >Title</th>
-							<th >Year</th>
+							<th >Image</th>
 							<th>Action</th>
 						</tr>
 				    </thead>
@@ -39,7 +39,7 @@
 						<tr>
 							<td >{!!$item->id!!}</td>
 							<td><b><a href="{!!route('admin.album.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
-							<td>{!!$item->year!!}</td>
+							<td><img src="{!!$item->img_url!!}" class="img-responsive" style="width:150px" alt=""></td>
 							<td>
 							<a href="{!!route('admin.album.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
 							{!!Form::open(array('route'=>array('admin.album.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}

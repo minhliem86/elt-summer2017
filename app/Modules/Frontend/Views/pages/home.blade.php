@@ -47,9 +47,9 @@
                 <h2>CHÀO MỪNG BẠN ĐẾN VỚI<br><span>ILA AMAZING SUMMER 2017</span></h2>
                 <div class="text-content col-sm-10 col-sm-offset-1">
                     <p style="font-size:15px"><b><i>Một mùa hè con bạn không thể nào quên</i></b></p>
-                    <div class="wrap-video">	
+                    <div class="wrap-video">
                     	<div data-type="youtube" data-video-id="VonQApifKcM"></div>
-                    </div>	
+                    </div>
                     <p>ILA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên. </p>
                     <p>Đây là sân chơi tiếng Anh với chuỗi hoạt động phong phú, mới lạ, hấp dẫn, bổ ích, giúp các em vừa học giỏi tiếng Anh, vừa rèn luyện 7 thói quen tích cực trong mùa hè, để các em trở thành thế hệ ưu việt thành công và hạnh phúc.</p>
                     <p>“Vì đây là mùa hè tuyệt vời nhất!”</p>
@@ -111,7 +111,8 @@
             <h4>Gay Cấn – Hồi Hộp – Hấp Dẫn – Độc Đáo</h4>
             <div class="row">
                 <div class="text-content col-sm-8">
-                    <p>Dựa trên cảm hứng cuộc đua AMAZING RACE nổi tiếng thế giới với giải thưởng hấp dẫn, ILA Amazing Race 2017 là một sân chơi đời thực, kết nối 4 quốc gia Anh, Mỹ, Úc, Thụy Sĩ trong lòng thành phố HCM, đòi hỏi người chơi nghe nói Tiếng Anh tốt, có 6 kỹ năng thế kỷ 21 để chinh phục thử thách tại 4 quốc  gia trong thời gian ngắn nhất.</p>
+                    <p>Ngày 23/4 vừa qua, cuộc đua quy tụ hơn 1,200 học viên xuất sắc của ILA đến từ 7 thành phố: TPHCM, Vũng Tàu, Hà Nội, Hải Phòng, Biên Hòa đã thực sự bước ra khỏi lớp học, hòa mình vào cuộc chơi lớn. Cuộc đua có tất cả 185 đội chơi đi qua 4 địa điểm: Dinh Thống Nhất, Saigon Centre, công viên Lê Thị Riêng và nhà hát Hòa Bình, mỗi địa điểm này đại diện cho một nước, bao gồm: Thụy Sĩ, Anh, Úc, Mỹ.</p>
+                    <p>Tại các điểm đến, mỗi đội sẽ giải quyết các nhiệm vụ đặt ra giao tiếp với các giám khảo người nước ngoài để vượt qua thử thách. Qua đó, các bạn trẻ được tiếp xúc với văn hóa các nước để mở rộng thêm kiến thức.</p>
                 </div>
                 <div class="col-sm-12 wrap-btn">
                     <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay </a>

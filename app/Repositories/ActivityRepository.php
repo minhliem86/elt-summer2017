@@ -44,4 +44,22 @@ class ActivityRepository{
     public function listCenter(){
       return Center::where('status',1)->lists('name_vi','id');
     }
+
+    public function getListActivity(){
+      return $this->activity->lists('title','id');
+    }
+
+    public function get8Activity(){
+      return $this->activity->select('title','status','id','slug','img_url')->orderBy('id','DESC')->take(6)->get();
+    }
+
+    public function getIdByActiSlug($slug){
+      try {
+        return $act = $this->activity->where('slug', $slug)->with('albums')->first();
+
+      } catch (Exception $e) {
+        return redirect()->back();
+      }
+
+    }
 }

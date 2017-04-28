@@ -29,9 +29,9 @@
       });
 
       let videoSlider = new Swiper('#video-slider',{
-        slidesPerView: 4,
+        slidesPerView: 3,
         slidesPerColumn: 2,
-        spaceBetween: 10,
+        spaceBetween: 45,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         breakpoints: {
@@ -140,32 +140,32 @@
 
               </div>
               <!-- If we need navigation buttons -->
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
+              <!-- <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div> -->
             </div> <!-- end slider video -->
           </div> <!-- end video -->
         </div>  <!-- end wrap-video -->
         @endif
 
-        @if(!$album->isEmpty())
+        @if(!$acti_inst->isEmpty())
         <div class="wrap-title-album">
           <h2>Hình Ảnh Các Hoạt Động Hè 2017</h2>
-          @if($album->count() > 6)
+          @if($acti_inst->count() > 6)
           <button class="btn-loadmore" id="loadmore">Xem tất cả</button>
           @endif
         </div>
         <div class="load-img">
-          @foreach($album->chunk(4) as $chunk)
+          @foreach($acti_inst->chunk(4) as $chunk)
           <div class="row">
-            @foreach($chunk as $item_album)
+            @foreach($chunk as $item_acti)
             <div class="col-sm-4">
               <div class="each-album">
-                  <a href="{!!route('f.getImage',$item_album->slug)!!}">
+                  <a href="{!!route('f.getImage',$item_acti->slug)!!}">
                     <div class="overlay">
-                      <img src="{!! $item_album->images()->first() ? $item_album->images()->first()->img_url : ''!!}" alt="">
+                      <img src="{!! $item_acti->img_url !!}" alt="">
                       <i class="link fa fa-link"></i>
                     </div>
-                    <h3 class="title-album">{!!Str::words($item_album->title, 10)!!}</h3>
+                    <h3 class="title-album">{!!Str::words($item_acti->title, 10)!!}</h3>
                   </a>
               </div>  <!-- end each-album -->
             </div>

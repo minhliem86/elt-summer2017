@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Repositories\AlbumRepository;
 use App\Repositories\UploadRepository;
 use App\Repositories\VideoRepository;
+use App\Repositories\ActivityRepository;
 use App\Models\Image as Img;
 
 class AlbumController extends Controller {
@@ -12,18 +13,25 @@ class AlbumController extends Controller {
 	protected $albumRepository;
 	protected $imageRepository;
 	protected $videoRepository;
+	protected $activityRepo;
 
-	public function __construct(AlbumRepository $album, UploadRepository $image, VideoRepository $video){
+	public function __construct(AlbumRepository $album, UploadRepository $image, VideoRepository $video, ActivityRepository $actiRepo){
 		$this->albumRepository = $album;
 		$this->imageRepository = $image;
 		$this->videoRepository = $video;
+		$this->activityRepo = $actiRepo;
 	}
 
 	public function getIndex()
 	{
-		$album = $this->albumRepository->get8Album();
+		$acti_inst = $this->activityRepo->get8Activity();
 		$video = $this->videoRepository->getAllVideo();
-		return view('Frontend::pages.album',compact('album', 'year','video'));
+		return view('Frontend::pages.album',compact('acti_inst','video'));
+	}
+
+	public function getAlbumByAct($act_slug){
+		$acti = $this->activityRepo->getIdByActiSlug($act_slug);
+		dd($acti);
 	}
 
 	public function getImgByAlbum(Request $request, $slug_album)

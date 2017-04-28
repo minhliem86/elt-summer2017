@@ -11,7 +11,7 @@ class AlbumRepository{
     }
 
     public function getAll(){
-      return $this->album->select('title','status','id')->orderBy('id','DESC')->get();
+      return $this->album->select('title','status','id','img_url')->orderBy('id','DESC')->get();
     }
 
     public function getFindID($id){
@@ -40,6 +40,7 @@ class AlbumRepository{
       return $current;
     }
 
+
     /*FRONTENT*/
     public function getAlbumByYear($year)
     {
@@ -53,7 +54,6 @@ class AlbumRepository{
     public function getAllAlbumWithImage(){
       return $this->album->select('title','status','id','slug')->orderBy('id','DESC')->with('images')->get();
     }
-
 
 
     public function getImgByAlbum($slug){

@@ -8,7 +8,7 @@ class Album extends Model {
 
 	public $table = 'albums';
 
-  protected $fillable = ['title','slug','description','order','status','year'];
+  protected $fillable = ['title','slug','description','order','status','year','img_url'];
 
   public function images(){
     return $this->hasMany('App\Models\Image');

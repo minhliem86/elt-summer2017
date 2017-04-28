@@ -5,17 +5,21 @@ use Illuminate\Http\Request;
 use Notification;
 use App\Http\Requests\ImageRequest;
 use App\Repositories\AlbumRepository;
+use App\Repositories\ActivityRepository;
+use App\Repositories\CommonRepository;
 
 
 class AlbumController extends Controller {
 
 	protected $albumRepository;
+	protected $activity;
 
 	protected $_upload_folder = 'public/upload/album';
 	protected $_default_img = "asset('public/assets/backend/img/image_thumbnail.gif')";
 
-	public function __construct(AlbumRepository $album){
+	public function __construct(AlbumRepository $album, ActivityRepository $activity){
 		$this->albumRepository = $album;
+		$this->activity = $activity;
 	}
 
 	public function index()
@@ -31,7 +35,8 @@ class AlbumController extends Controller {
      */
     public function create()
     {
-        return view('Admin::pages.album.create');
+				$activity = $this->activity->getListActivity();
+        return view('Admin::pages.album.create', compact('activity'));
     }
 
     /**
@@ -43,12 +48,9 @@ class AlbumController extends Controller {
     public function store(Request $request,ImageRequest $imgrequest)
     {
         $current = $this->albumRepository->getOrder();
-
-
-
 				if($imgrequest->hasFile('img')){
 						$common = new CommonRepository;
-						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,184);
 				}else{
 					$img_url = $this->_default_img;
 				}
@@ -58,7 +60,8 @@ class AlbumController extends Controller {
             'title'=>$request->title,
             'slug' => \Unicode::make($request->title),
             'description' => $request->input('description'),
-            'year' => $request->input('year'),
+            'img_url' => $img_url,
+            'activity_id' => $request->input('activity_id'),
             'status'=> $request->status,
             'order'=>$current
         ];
@@ -87,7 +90,8 @@ class AlbumController extends Controller {
     public function edit($id)
     {
         $album = $this->albumRepository->getFindID($id);
-        return view('Admin::pages.album.view')->with(compact('album'));
+				$activity = $this->activity->getListActivity();
+        return view('Admin::pages.album.view')->with(compact('album','activity'));
     }
 
     /**
@@ -101,7 +105,7 @@ class AlbumController extends Controller {
     {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
-				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,184);
 			}else{
 				$img_url = $request->input('img-bk');
 			}
@@ -109,7 +113,8 @@ class AlbumController extends Controller {
 				'title'=>$request->title,
 				'slug' => \Unicode::make($request->title),
 				'description' => $request->input('description'),
-				'year'=> $request->year,
+				'img_url' => $img_url,
+				'activity_id' => $request->input('activity_id'),
 				'status'=> $request->status,
 				'order'=>$request->order,
 			];

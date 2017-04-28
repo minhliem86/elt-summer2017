@@ -9,6 +9,17 @@
 	<div class="box">
 		<div class="container-fluid">
 			{!!Form::open(array('route'=>array('admin.album.store'),'class'=>'formAdmin form-horizontal','files'=>true))!!}
+      <div class="form-group">
+        <label for="">Chọn hoạt động hè</label>
+        {!!Form::select('activity_id',$activity,old('activity_id'), ['class'=>'form-control'] )!!}
+      </div>
+      <div class="form-group">
+        <label for="">Image URL</label>
+        {!!Form::file('img')!!}
+        @if($errors->first('img'))
+          <p class="error">{!!$errors->first('img')!!}</p>
+        @endif
+      </div>
 				<div class="form-group">
 					<label for="">Title</label>
 					{!!Form::text('title',old('title'),array('class'=>'form-control'))!!}
@@ -17,11 +28,6 @@
 					<label for="">Descripton</label>
 					{!!Form::textarea('description',old('description'),array('class'=>'form-control ckeditor'))!!}
 				</div>
-        <div class="form-group">
-					<label for="">Year</label>
-					{!!Form::text('year',old('year'),array('class'=>'form-control'))!!}
-				</div>
-
 				<div class="form-margin">
 					<label for="">Status</label>
 					<div>

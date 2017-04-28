@@ -414,7 +414,7 @@ nav.top-menu{
     };
     img.img-funkid{
       position:absolute;
-      right:-95px;
+      right:-120px;
       bottom:0;
       max-width:550px;
       opacity: 0.8;
@@ -634,6 +634,16 @@ nav.top-menu{
           background:$color-yellow;
           color:$color-blue;
         }
+    }
+    .wrap-rule-content{
+      width:80%;
+      margin:0 auto 15px;
+      p{
+        text-align: justify;
+      }
+      @include media(320px, 480px){
+        width:100%;
+      };
     }
 }
 .ILA-footer{
@@ -1875,7 +1885,7 @@ footer.cyan{
     h2{
       color:$color-blue;
       text-transform: uppercase;
-      margin-bottom:25px;
+      margin-bottom:50px;
       margin-top:15px;
       text-align: center;
     }
