@@ -10,7 +10,7 @@
 		<div class="container-fluid">
 			{!!Form::open(array('route'=>array('admin.activity.store'),'class'=>'formAdmin form-horizontal','files'=>true))!!}
         <div class="form-group">
-          <label for="">Image URL</label>
+          <label for="">Image URL (350x184)</label>
           {!!Form::file('img')!!}
           @if($errors->first('img'))
             <p class="error">{!!$errors->first('img')!!}</p>
