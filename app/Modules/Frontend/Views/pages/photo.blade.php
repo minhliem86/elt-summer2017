@@ -174,6 +174,7 @@ function FBShareOp(name, desc, img, url, capt){
         </center>
         <div class="wrap-title-img">
           <h2>{!!$AlbumTitle!!}</h2>
+          <a href="{!!URL::previous()!!}" class="btn-previous">Quay lại</a>
         </div>
         <div class="load-photo">
           @include('Frontend::ajax.loadPhoto')

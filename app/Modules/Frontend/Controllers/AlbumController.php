@@ -31,17 +31,25 @@ class AlbumController extends Controller {
 
 	public function getAlbumByAct($act_slug){
 		$acti = $this->activityRepo->getIdByActiSlug($act_slug);
-		dd($acti);
+		return view('Frontend::pages.album_list', compact('acti'));
 	}
 
 	public function getImgByAlbum(Request $request, $slug_album)
 	{
+	try {
 		$img = $this->albumRepository->getImgByAlbum($slug_album);
+	} catch (Exception $e) {
+		abort(404);
+	}
+	if($img->isEmpty()){
+		return redirect()->back()->withErrors('Chưa có hình ảnh trong album này.');
+	}else{
 		$AlbumTitle = $img->first()->albums->title;
+	}
 		if ($request->ajax()) {
     	return view('Frontend::ajax.loadPhoto', ['img' => $img])->render();
     }
-			return view('Frontend::pages.photo', compact('img','AlbumTitle'));
+		return view('Frontend::pages.photo', compact('img','AlbumTitle'));
 	}
 
 	// LOAD PHOTO

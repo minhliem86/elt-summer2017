@@ -21,7 +21,7 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   // LOAD MORE PHOTO
   Route::post('/album/loadPhoto',['as'=>'f.postAjaxGetAllImg','uses'=>'AlbumController@postAjaxGetAllImg']);
 
-  Route::get('/thu-vien-hinh-anh/{acti_slug}',['as'=>'f.getAlbumByAct', 'uses'=>'AlbumController@getAlbumByAct'])
+  Route::get('/thu-vien-hinh-anh/{acti_slug}',['as'=>'f.getAlbumByAct', 'uses'=>'AlbumController@getAlbumByAct']);
 
   Route::get('/thu-vien-hinh-anh/{album_slug}/photo', ['as'=>'f.getImage', 'uses'=>'AlbumController@getImgByAlbum'])->where('id_album','[0-9a-zA-Z_.+\-]+');
 

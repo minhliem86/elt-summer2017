@@ -56,7 +56,6 @@ class ActivityRepository{
     public function getIdByActiSlug($slug){
       try {
         return $act = $this->activity->where('slug', $slug)->with('albums')->first();
-
       } catch (Exception $e) {
         return redirect()->back();
       }

@@ -9,7 +9,7 @@
 		<div class="container-fluid">
 			{!!Form::model($activity,array('route'=>array('admin.activity.update',$activity->id),'method'=>'PUT' ,'class'=>'formAdmin form-horizontal','files'=>true))!!}
         <div class="form-group">
-          <label for="" >Image URL</label>
+          <label for="" >Image URL (350x184)</label>
           <p>
             <img src="{!!$activity->img_url!!}" width="150" alt="">
             {!!Form::hidden('img-bk',$activity->img_url)!!}

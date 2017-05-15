@@ -47,7 +47,7 @@ class ActivityController extends Controller {
 
 				if($imgrequest->hasFile('img')){
 						$common = new CommonRepository;
-						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+						$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,184);
 				}else{
 					$img_url = $this->_default_img;
 				}
@@ -100,7 +100,7 @@ class ActivityController extends Controller {
     {
 			if($imgrequest->hasFile('img')){
 				$common = new CommonRepository;
-				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,400,400);
+				$img_url = $common->uploadImage($request,$imgrequest->file('img'),$this->_upload_folder,$resize=true,350,184);
 			}else{
 				$img_url = $request->input('img-bk');
 			}

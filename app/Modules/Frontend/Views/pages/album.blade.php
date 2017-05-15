@@ -160,7 +160,7 @@
             @foreach($chunk as $item_acti)
             <div class="col-sm-4">
               <div class="each-album">
-                  <a href="{!!route('f.getImage',$item_acti->slug)!!}">
+                  <a href="{!!route('f.getAlbumByAct',$item_acti->slug)!!}">
                     <div class="overlay">
                       <img src="{!! $item_acti->img_url !!}" alt="">
                       <i class="link fa fa-link"></i>

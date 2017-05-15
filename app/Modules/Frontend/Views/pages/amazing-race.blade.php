@@ -111,7 +111,7 @@
                         <li>• Trong vòng 5 tiếng, cá nhân hoặc tập thể nào sưu tập đủ visa của 4 quốc gia và về đích trước 2h chiều cùng ngày sẽ giành được giải thưởng do ILA trao tặng .</li>
                     </ul> -->
                     <center class="col-xs-12">
-                        <a href="{!!route('f.getContact')!!}" class="btn btn-white-border">Đăng ký ngay</a>
+                        <a href="http://ila.edu.vn/anh-van-he/thu-vien-hinh-anh/amazing-race/photo" class="btn btn-white-border">Xem hình ảnh</a>
                     </center>
                 </div>
             </div>
