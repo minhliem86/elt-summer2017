@@ -10,8 +10,7 @@
 		"fzaninotto/faker": "^1.6",
 		"zizaco/entrust":"1.4.1",
 		"edvinaskrucas/notification": "5.0.*",
-		"intervention/image": "^2.3",
-		"codingo-me/dropzoner": "^1.0"
+		"intervention/image": "^2.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

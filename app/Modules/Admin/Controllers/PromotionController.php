@@ -135,7 +135,7 @@ class PromotionController extends Controller {
         }else{
             $data = $request->arr;
             if($data){
-                $this->promotionRepository->deleteAll($data);
+                $this->album->deleteAll($data);
                 return response()->json(array('msg'=>'ok'));
             }else{
                 return response()->json(array('msg'=>'error'));
