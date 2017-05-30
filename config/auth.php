@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'driver' => 'eloquent',
+	// 'driver' => 'eloquent',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'App\Models\User',
+	// 'model' => 'App\Models\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
 	|
 	*/
 
-	'table' => 'users',
+	// 'table' => 'users',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -57,6 +57,19 @@ return [
 	| they have less time to be guessed. You may change this as needed.
 	|
 	*/
+
+	'multi' => [
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => 'App\Models\User',
+        ],
+        'client' => [
+            'driver' => 'eloquent',
+            'model' => 'App\Models\Customer',
+            'email' => 'client.emails.password',
+        ]
+    ],
+
 
 	'password' => [
 		'email' => 'emails.password',

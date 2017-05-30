@@ -13,11 +13,11 @@
         {!!Form::select('album_id',$list_album,$image->album_id,['class'=>'form-control'])!!}
       </div>
 				<div class="form-group">
-					<label for="" >Image URL (1200x630)</label>
+					<label for="" >Image URL</label>
 					<p>
 						<img src="{!!$image->img_url!!}" width="150" alt="">
 						{!!Form::hidden('img-bk',$image->img_url)!!}
-            {!!Form::hidden('img-thumb-bk',$image->thumbnail_url)!!}
+						{!!Form::hidden('img-thumb-bk',$image->thumbnail_url)!!}
 					</p>
 					{!!Form::file('img')!!}
 				</div>

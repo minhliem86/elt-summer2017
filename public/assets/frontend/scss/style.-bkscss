@@ -167,16 +167,16 @@ nav.top-menu{
     }
     .nav{
         li{
-            margin-left: 8px;
+            margin-left: 15px;
             a{
                 @extend %transition;
                 color: $color-orange;
                 margin: 0;
-                padding: 0 8px;
+                padding: 0 15px;
                 height: 35px;
                 line-height: 35px;
                 border-radius: 35px;
-                font-size:12px;
+                font-size:14px;
                 font-family: $font-montserrat;
             }
             &:hover, &.current{
@@ -414,7 +414,7 @@ nav.top-menu{
     };
     img.img-funkid{
       position:absolute;
-      right:-120px;
+      right:-95px;
       bottom:0;
       max-width:550px;
       opacity: 0.8;
@@ -634,16 +634,6 @@ nav.top-menu{
           background:$color-yellow;
           color:$color-blue;
         }
-    }
-    .wrap-rule-content{
-      width:80%;
-      margin:0 auto 15px;
-      p{
-        text-align: justify;
-      }
-      @include media(320px, 480px){
-        width:100%;
-      };
     }
 }
 .ILA-footer{
@@ -987,7 +977,7 @@ nav.top-menu{
 /*CONTACT*/
 .contact{
     color: $color-blue;
-    padding-top:30px;
+    padding-top:20px;
     padding-bottom: 100px;
     background: $color-yellow url(../images/contact-bg-left.png) no-repeat left bottom;
     position:relative;
@@ -1044,14 +1034,7 @@ nav.top-menu{
     .gift-pack{
       @include media(320px, 480px){
         text-align: center;
-        padding-left:0;
       };
-      .wrap-giftpack{
-        padding-left:25px;
-        @include media(320px, 480px){
-          padding:0;
-        };
-      }
         .title{
           margin:0;
           margin-bottom: 40px;
@@ -1071,17 +1054,15 @@ nav.top-menu{
             @include media(320px, 480px){
               margin-bottom:20px;
             };
-
             ul.list-promotion{
               padding-left:0px;
+
               li{
                 font-size:14px;
                 margin-bottom:8px;
-                text-align: justify;
                 @include media(320px, 480px){
                   list-style: none;
                   font-size:13px;
-                  text-align: left;
                 };
               }
             }
@@ -1113,26 +1094,10 @@ nav.top-menu{
                 left:50%;
                 bottom:5px;
                 font-size:30px;
-              }
-            }
-            &.beyond{
-              h4.title-each{
-                font-wegiht:600;
-              }
-              p{
-                margin:0 0 5px;
-              }
-              ul.list-promotion{
-                padding-left:15px;
+
               }
             }
         }
-    }
-    .wrap-form{
-  padding-right:25px;
-      @include media(320px, 480px){
-        padding:0;
-      };
     }
     .contact-register{
         background: $color-white;
@@ -1793,50 +1758,21 @@ footer.cyan{
 .album{
   .wrap-title-album{
     text-align: center;
-    position:relative;
     h2{
       color:$color-blue;
       text-transform: uppercase;
-      margin-bottom:50px;
+      margin-bottom:25px;
       margin-top:15px;
-    }
-    button.btn-loadmore{
-      font-size:12px;
-      border:none;
-      box-shadow: none;
-      position:absolute;
-      padding:4px 20px;
-      background:$color-blue;
-      color:white;
-      right:0;
-      top:50%;
-      transform:translateY(-50%);
-      -webkit-transform:translateY(-50%);
-      -moz-transform:translateY(-50%);
-      @include media(320px, 767px){
-        position: static
-      };
-    }
-  }
-  .banner{
-    img{
-      @include media(320px, 480px){
-        max-width:200px;
-      };
     }
   }
   .each-album{
     margin-bottom:15px;
-    a{
-      text-decoration: none;
-    }
     h3.title-album{
       font-size:14px;
       line-height: 22px;
+      text-transform: uppercase;
       margin:0;
       color:$color-blue;
-      text-align: center;
-      font-weight: 400;
     }
     .overlay{
       position:relative;
@@ -1898,73 +1834,9 @@ footer.cyan{
           visibility: visible;
         }
       }
-      h3.title-album{
-        color:$color-orange;
-      }
-    }
-
-  }
-
-  .wrap-video-section{
-    margin-bottom:10px;
-    h2{
-      color:$color-blue;
-      text-transform: uppercase;
-      margin-bottom:50px;
-      margin-top:15px;
-      text-align: center;
-    }
-    .wrap-video{
-      .wrap-each-video{
-        position:relative;
-        .video-container{
-          position:relative;
-          margin-bottom:10px;
-          cursor: pointer;
-          span.ic-play{
-            width:45px;
-            height:45px;
-            background:url('../images/album/ic-play.png')no-repeat;
-            display:block;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translateX(-50%) translateY(-50%) scall(1);
-            -webkit-transform:translateX(-50%) translateY(-50%) scale(1);
-            -moz-transform:translateX(-50%) translateY(-50%) scale(1);
-
-          }
-          &:after{
-            content:'';
-            position: absolute;
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,0.4);
-            opacity: 1;
-            z-index:10;
-            top:0;
-            left:0;
-            @include transition(all 0.3s);
-          }
-        }
-        p.title-video{
-          font-size:14px;
-          line-height: 22px;
-          text-align:center;
-          color:$color-blue;
-        }
-        &:hover{
-          .video-container{
-            &:after{
-              top:10%;
-              opacity: 0;
-            }
-
-          }
-        }
-      }
     }
   }
+
 
 }
 /*END ALBUM*/
@@ -1974,38 +1846,12 @@ footer.cyan{
   padding:20px 0 40px;
   .wrap-title-img{
     text-align: center;
-    margin:20px 0 50px;
-    position:relative;
+    margin:20px 0 30px;
     h2{
       margin:0;
       text-transform: uppercase;
       font-size:22px;
       color:$color-blue;
-    }
-    .btn-previous{
-      text-decoration: none;
-      font-size:12px;
-      border:none;
-      box-shadow: none;
-      position:absolute;
-      padding:4px 20px;
-      background:$color-blue;
-      color:white;
-      left:0;
-      top:50%;
-      transform:translateY(-50%);
-      -webkit-transform:translateY(-50%);
-      -moz-transform:translateY(-50%);
-      @include media(320px, 767px){
-        position: static
-      };
-    }
-  }
-  .banner {
-    img{
-      @include media(320px, 480px){
-        max-width:200px
-      };
     }
   }
   .each-img{
@@ -2064,82 +1910,6 @@ footer.cyan{
       }
     }
   }
-}
-#remodal-photo{
-  padding:20px 50px;
-  h1{
-    font-size:22px;
-    text-transform: capitalize;
-    font-family: $font-cabin;
-    color:$color-blue;
-    text-align: left;
-    padding:0 15px;
-  }
-  .body-modal{
-    .wrap-left-img{
-      position:relative;
-      .btn-control{
-        position:absolute;
-        top:50%;
-        transform:translateY(-50%);
-        -webkit-transform:translateY(-50%);
-        -moz-transform:translateY(-50%);
-        opacity:0.2;
-        @include transition(all 0.3s);
-        right:-40px;
-        z-index:2;
-        cursor:pointer;
-        &.btn-prev{
-          left:-40px;
-          right:auto;
-        }
-        @include media(320px, 480px){
-          top:40%;
-          transform:scale(0.8);
-          -webkit-transform:scale(0.8);
-          -moz-transform:scale(0.8);
-        };
-      }
-      &:hover{
-        .btn-control{
-          opacity: 1;
-        }
-      }
-      @include media(320px, 480px){
-        margin-bottom:15px;
-      };
-      > img{
-        margin-bottom:15px;
-      }
-    }
-
-    h3.title-img{
-      text-align: left;
-      margin:0;
-      padding:0;
-      font-size:16px;
-      margin-bottom:10px;
-      text-transform: capitalize;
-    }
-    p.desc-img{
-      font-size:14px;
-      margin:0;
-      padding:0;
-      margin-bottom:10px;
-      text-align:left;
-    }
-    .wrap-btn-social{
-      text-align:right;
-      .img-social{
-        display:inline-block;
-        cursor:pointer;
-      }
-    }
-  }
-
-}
-.notifyjs-corner{
-  z-index:10000 !important;
 }
 /*END IMAGE*/
 

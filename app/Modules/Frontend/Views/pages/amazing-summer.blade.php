@@ -21,7 +21,7 @@
                 <div class="stage near-cloud" id="near-cloud"></div>
                 <div class="title-header">
                     <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-                    <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
+                    <p class="text-title">Nhận Ngay Ưu Đãi 3,000,000 VNĐ Trước 31/05</p>
                     <div class="wrap-btn">
                       <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
                     </div>
@@ -145,7 +145,7 @@
                 <div class="each-img">
                   <img src="{!!asset('public/assets/frontend')!!}/images/amazinng-summer/photo/buocnhay.png" class="img-responsive" alt="Câu lạc bộ Bước nhảy">
                   <div class="overlay">
-                    <h4 class="title-content">CLB Bước Nhảy</h4>
+                    <h4 class="title-content">CLB Nhảy Hiện Đại</h4>
                   </div>
                 </div>
               </div>  <!-- end content kiddom -->

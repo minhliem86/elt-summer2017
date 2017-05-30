@@ -16,7 +16,7 @@ class HomeController extends Controller {
 	{
 		$one_testi = $this->testimonialRepository->getOneRandom();
 		$three_testi = $this->testimonialRepository->getThreeRandom([$one_testi->id]);
-		return view('Frontend::pages.home',compact('one_testi', 'three_testi'));
+		return view('Frontend::pages.index',compact('one_testi', 'three_testi'));
 	}
 
 }

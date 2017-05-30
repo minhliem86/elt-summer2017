@@ -2,13 +2,24 @@
 <html lang="en">
 
 <head>
+  <!-- GOOGLE ADS -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NNC6V2W');</script>
+  <!-- End Google Tag Manager -->
+
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow" /> 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="keywords" content="ILA Anh Văn Hè 2017, ILA Amazing Summer 2017, Tiếng Anh Hè 2017, Anh Văn Hè, Anh Van He">
-    <meta name="description" content="ILA Amazing Summer 2017 là hành trình đưa các em đến với mùa hè tuổi thơ trong veo ánh nắng, nụ cười giòn tan ngập tràn niềm vui bất tận, những khoảnh khắc tràn đầy cảm xúc bùng nổ không thể nào quên.">
+    <meta name="keywords" content="ILA Anh Văn Hè 2017, Tiếng Anh Hè 2017, Anh Văn Hè, ILA Amazing Summer 2017">
+    <meta name="description" content="Chương trình anh văn hè ILA Amazing Summer giúp các em vừa học giỏi tiếng Anh, vừa rèn luyện 7 thói quen tích cực trong mùa hè.">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
     @yield('meta-share')
@@ -16,7 +27,7 @@
     <meta property="og:image:height" content="315" />
 
 
-    <title>@yield('title', 'ILA Amazing Summer 2017')</title>
+    <title>@yield('title', 'Chương trình Anh Văn Hè 2017')</title>
     <link rel="icon" href="{!!asset('public')!!}/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/font-awesome/css/font-awesome.min.css">
     <link href="{!!asset('public/assets/frontend')!!}/css/style.css" rel="stylesheet">
@@ -40,6 +51,27 @@
     &noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
+	
+	<!-- Facebook Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window,document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	 fbq('init', '955386641272538'); 
+	fbq('track', 'PageView');
+	</script>
+	<noscript>
+	 <img height="1" width="1" 
+	src="https://www.facebook.com/tr?id=955386641272538&ev=PageView
+	&noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code -->
+
 
     <!--GA-->
     <script>
@@ -53,15 +85,6 @@
 
     </script>
     <!--END GA-->
-    <!-- GOOGLE ADS -->
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NNC6V2W');</script>
-    <!-- End Google Tag Manager -->
-
 </head>
 
 <body>
@@ -100,6 +123,9 @@
       {
         animateClass: 'animated',
         offset:       200,
+        // callback:     function(box) {
+        //   console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        // }
       }
     );
     wow.init();
@@ -139,12 +165,10 @@
           id_city:"Vui lòng chọn Thành phố",
           id_center: "Vui lòng chọn trung tâm",
           study_ila: "Vui lòng chọn 1 mục bên trên"
-
         },
-        // submitHandler: function (form) {
-        //   _swga.postLead();
-        // }
+
       });
+      
 
       /*SELECT CENTER*/
       $('select[name="id_center"]').prop('disabled',true);
@@ -163,20 +187,8 @@
       })
     })
   </script>
-  <!-- <script type="text/javascript" src="{!!asset('public/dms-analytics.js')!!}"></script>
-  <script type="text/javascript">
-      _swga.base_url_post = 'http://marketingtool.ilavietnam.edu.vn';
-      _swga.init('SW-000016', "form_summer2017", "manual");
-      _swga.loadForm({
-          fullname: 'fullname',
-          phone: 'phone',
-          email: 'email',
-          id_city: 'id_city',
-          id_center: 'id_center',
-          study_ila: 'study_ila',
-      });
-  </script> -->
-  
+
+
   @yield('script')
 </body>
 </html>

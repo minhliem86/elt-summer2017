@@ -5,7 +5,7 @@
             <div class="row">
                 <div id="overlay"></div>
                 <h2>ĐĂNG KÝ & TƯ VẤN</h2>
-                <p class="sub-form">Nhận ngay 3,500,000 đồng và áo thun ILA Summmer<br/>khi đăng ký trước 30/04/2017</p>
+                <p class="sub-form">Nhận ngay 3,000,000 đồng và áo thun ILA Summmer<br/>khi đăng ký trước 21/05/2017</p>
                 <form action="{!!route('f.postContact')!!}" class="col-sm-8 col-sm-offset-2" method="POST" id="form_summer2017">
                     {!!Form::token()!!}
                     <div class="form-group">

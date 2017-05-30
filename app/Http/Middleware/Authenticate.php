@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Auth;
 
 class Authenticate {
 
@@ -18,9 +19,9 @@ class Authenticate {
 	 * @param  Guard  $auth
 	 * @return void
 	 */
-	public function __construct(Guard $auth)
+	public function __construct()
 	{
-		$this->auth = $auth;
+		$this->auth = Auth::admin();
 	}
 
 	/**

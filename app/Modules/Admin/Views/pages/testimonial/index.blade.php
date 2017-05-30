@@ -94,6 +94,7 @@
 			$('#btn-count').click( function () {
 				var data = [];
 				table.rows('.selected').data().each(function(index, e){
+					// console.log(index)[0];
 					data.push(index[0]);
 				});
 				alertify.confirm('You can not undo this action. Are you sure ?', function(e){

@@ -33,9 +33,9 @@ class AuthController extends Controller {
 	protected $redirectAfterLogout = "admin/login";
 
 
-	public function __construct(Guard $auth, Registrar $registrar)
+	public function __construct(Registrar $registrar)
 	{
-		$this->auth = $auth;
+		$this->auth = Auth::admin();
 		$this->registrar = $registrar;
 
 		// $this->middleware('guest', ['except' => 'getLogout']);

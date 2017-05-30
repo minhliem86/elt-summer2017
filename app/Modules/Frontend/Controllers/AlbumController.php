@@ -64,13 +64,13 @@ class AlbumController extends Controller {
 			return response()->json(['result' => $view]);
 		}
 	}
-	// NEXT PREV PHOTO
+	// NEXT NEXT PHOTO
 	public function ajaxNextPhoto(Request $request){
 		if(!$request->ajax())
 		{
 			abort(404, 'Page Not Found');
 		}else{
-			$next_id = $request->input('id') + 1;
+			$next_id = $request->input('id');
 			$id_album = $request->input('id_album');
 			$img = $this->imageRepository->getImgAjaxFromAlbum($next_id, $id_album);
 
@@ -78,20 +78,20 @@ class AlbumController extends Controller {
 				$view = view('Frontend::ajax.photo_load', compact('img'))->render();
 				return response()->json(['error'=> false,'result' => $view],200);
 			}else{
-				return response()->json(['error'=> true, 'msg'=> 'ses'],500);
+				return response()->json(['error'=> true, 'msg'=> 'err'],500);
 			}
 		}
 	}
-
+// NEXT PREV PHOTO
 	public function ajaxPrevPhoto(Request $request){
 		if(!$request->ajax())
 		{
 			abort(404, 'Page Not Found');
 		}else{
-			$next_id = $request->input('id') - 1;
+			$next_id = $request->input('id') ;
 			$id_album = $request->input('id_album');
 			try{
-				$img = $this->imageRepository->getImgAjaxFromAlbum($next_id, $id_album);
+				$img = $this->imageRepository->getImgAjaxFromAlbum($next_id, $id_album,'<', 'DESC');
 				$view = view('Frontend::ajax.photo_load', compact('img'))->render();
 				return response()->json(['result' => $view]);
 			}

@@ -49,7 +49,7 @@ class ContactRepository{
 
     public function getListCenter($id_city)
     {
-      return Center::where('id_city',$id_city)->select('id','name_vi')->lists('name_vi','id');
+      return Center::where('id_city',$id_city)->select('id','name_vi')->where('status',1)->lists('name_vi','id');
     }
 
 

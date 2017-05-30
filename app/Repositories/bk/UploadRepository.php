@@ -46,9 +46,7 @@ class UploadRepository
         $filename_with_extension = $allowed_filename .'.' . $extension;
 
         $manager = new ImageManager();
-        $image = $manager->make( $photo )->resize(1200, 630)->save(config('dropzoner.upload-path') . $filename_with_extension );
-
-        $img_thumb = $manager->make( $photo )->resize(400, 210)->save(config('dropzoner.upload-thumb-path'). $filename_with_extension );
+        $image = $manager->make( $photo )->save(config('dropzoner.upload-path') . $filename_with_extension );
 
         if( !$image ) {
             return response()->json([
@@ -59,15 +57,12 @@ class UploadRepository
         }
 
         // Fire ImageWasUploaded Event
-
         $current = $this->getOrder();
         $data = [
           'title' => $input['text_title'],
-          'description' => $input['text_desc'],
           'album_id' => $input['album_id'],
           'slug' => \Unicode::make($input['text_title']),
           'img_url' =>  asset(config('dropzoner.upload-path').$filename_with_extension),
-          'thumbnail_url' =>  asset(config('dropzoner.upload-thumb-path').$filename_with_extension),
           'order' => $current,
           'filename' => $filename_with_extension,
         ];
@@ -152,6 +147,7 @@ class UploadRepository
       return $this->image->with('albums')->select('title','img_url','status','id','album_id')->orderBy('id','DESC')->get();
     }
 
+
     public function getFindID($id){
       return $this->image->find($id);
     }
@@ -185,21 +181,4 @@ class UploadRepository
     public function getNameImg($id){
       return $this->image->find($id)->filename;
     }
-
-    /*FRONTEND*/
-    public function getImgFromAlbum($id_album)
-    {
-      return $this->image->where('album_id', $id_album)->paginate(4);
-    }
-
-    public function getImgAjaxFromAlbum($id, $id_album, $where = '>' , $order = 'ASC')
-    {
-      $img =  $this->image->where('album_id',$id_album)->where('id',$where,$id)->orderBy('id', $order)->first();
-      if(count($img)){
-        return $img;
-      }else{
-        return false;
-      }
-    }
-
 }

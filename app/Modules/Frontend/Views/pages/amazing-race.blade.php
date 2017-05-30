@@ -25,7 +25,7 @@
       <div class="stage near-cloud" id="near-cloud"></div>
       <div class="title-header">
           <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-          <p class="text-title">Nhận Ngay Ưu Đãi 3,500,000 VNĐ Trước 30/04</p>
+          <p class="text-title">Nhận Ngay Ưu Đãi 3,000,000 VNĐ Trước 31/05</p>
           <div class="wrap-btn">
             <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
           </div>
@@ -99,7 +99,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <h2>THỂ LỆ CUỘC THI</h2>
+                    <h2>CẬP NHẬT TIN TỨC CUỘC THI</h2>
                     <div class="wrap-rule-content">
                       <p>Ngày 23/4 vừa qua, cuộc đua quy tụ hơn 1,200 học viên xuất sắc của ILA đến từ 7 thành phố: TPHCM, Vũng Tàu, Hà Nội, Hải Phòng, Biên Hòa đã thực sự bước ra khỏi lớp học, hòa mình vào cuộc chơi lớn. Cuộc đua có tất cả 185 đội chơi đi qua 4 địa điểm: Dinh Thống Nhất, Saigon Centre, công viên Lê Thị Riêng và nhà hát Hòa Bình, mỗi địa điểm này đại diện cho một nước, bao gồm: Thụy Sĩ, Anh, Úc, Mỹ.</p>
                       <p>Tại các điểm đến, mỗi đội sẽ giải quyết các nhiệm vụ đặt ra giao tiếp với các giám khảo người nước ngoài để vượt qua thử thách. Qua đó, các bạn trẻ được tiếp xúc với văn hóa các nước để mở rộng thêm kiến thức.</p>
@@ -111,7 +111,7 @@
                         <li>• Trong vòng 5 tiếng, cá nhân hoặc tập thể nào sưu tập đủ visa của 4 quốc gia và về đích trước 2h chiều cùng ngày sẽ giành được giải thưởng do ILA trao tặng .</li>
                     </ul> -->
                     <center class="col-xs-12">
-                        <a href="http://ila.edu.vn/anh-van-he/thu-vien-hinh-anh/amazing-race/photo" class="btn btn-white-border">Xem hình ảnh</a>
+                        <a href="{!!route('f.getAlbum')!!}" class="btn btn-white-border">Xem hình ảnh</a>
                     </center>
                 </div>
             </div>

@@ -31,6 +31,7 @@
               <center class="banner col-sm-8 col-sm-offset-2">
                   <h2>Cảm ơn bạn đã đăng ký tham gia <Br/>ILA AMAZING SUMMER 2017.</h2>
                   <h4>Nhân viên ILA sẽ liên lạc với bạn trong thời gian sớm nhất.</h4>
+                  <!-- <h2>Chúng tôi đang tiến hành cập nhật website.<Br/>Vui lòng truy cập lại sau 13h ngày 02/05/2017.</h2> -->
               </center>
           </div>
       </div>
