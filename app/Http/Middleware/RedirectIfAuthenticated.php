@@ -22,7 +22,7 @@ class RedirectIfAuthenticated {
 	 */
 	public function __construct()
 	{
-		$this->auth = Auth::admin();
+		$this->auth = Auth::client();
 	}
 
 	/**

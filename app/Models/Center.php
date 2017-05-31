@@ -21,4 +21,9 @@ class Center extends Model {
 	public function schedules(){
 		return $this->hasMany('App\Models\Schedule');
 	}
+
+	public function kiddomschedules()
+	{
+		return $this->hasOne('App\Models\KiddomSchedule');
+	}
 }

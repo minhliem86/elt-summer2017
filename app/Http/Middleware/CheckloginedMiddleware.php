@@ -13,9 +13,13 @@ class CheckloginedMiddleware {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+	protected $auth;
+	public function __construct(){
+		$this->auth = Auth::admin();
+	}
 	public function handle($request, Closure $next)
 	{
-		if(Auth::check() && Auth::user()->hasRole('Admin')){
+		if($this->auth->check() && $this->auth->get()->hasRole('Admin')){
 			Notification::error("You're logined!");
 			return redirect()->route('admin');
 		}
