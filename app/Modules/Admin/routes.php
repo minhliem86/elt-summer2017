@@ -45,14 +45,15 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 		Route::post('activity/deleteall',['as'=>'admin.activity.deleteall','uses'=>'ActivityController@deleteAll']);
 		Route::resource('activity','ActivityController');
 
+		/*CENTER*/
+		Route::resource('center','CenterController');
+
+		/*HAPPY KIDDOM SCHEDULE*/
+		Route::resource('/happykiddom','KiddomController');
+
 		/*SCHEDULE*/
 		Route::post('schedule/deleteall',['as'=>'admin.schedule.deleteall','uses'=>'ScheduleController@deleteAll']);
 		Route::resource('schedule','ScheduleController');
-
-		Route::get('/center',function(){
-			$schedules = App\Models\Schedule::find(19);
-			dd($schedules->centers);
-		});
 
 		/*Image*/
 		Route::post('image/deleteall',['as'=>'admin.image.deleteall','uses'=>'ImageController@deleteAll']);

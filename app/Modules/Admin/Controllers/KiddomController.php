@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Repositories\CenterRepository;
+use App\Repositories\KiddomRepository;
+use Notification;
+
 class KiddomController extends Controller {
 
 	/**
@@ -12,9 +16,17 @@ class KiddomController extends Controller {
 	 *
 	 * @return Response
 	 */
+	protected $kiddom;
+	protected $center;
+
+	public function __construct(CenterRepository $center, KiddomRepository $kiddom)
+	{
+		$this->center = $center;
+		$this->kiddom = $kiddom;
+	}
 	public function index()
 	{
-		//
+
 	}
 
 	/**
@@ -24,7 +36,8 @@ class KiddomController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$center = $this->center->listCenter('name_vi','id');
+		return view('Admin::pages.happykiddom.create', compact('center'));
 	}
 
 	/**
@@ -32,9 +45,16 @@ class KiddomController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$checkExistCenter = $this->kiddom->findByField('center_id', $request->center_id);
+		if($checkExistCenter){
+			Notification::error('Center has Schedule already.');
+			return redirect()->back();
+		}
+		$this->kiddom->create(['center_id'=>$request->center_id,'schedule' => $request->schedule]);
+		Notification::success('Schedule is Created.');
+		return redirect()->route('admin.center.index');
 	}
 
 	/**
@@ -56,7 +76,9 @@ class KiddomController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$center = $this->center->listCenter('name_vi','id');
+		$schedule = $this->kiddom->find($id);
+		return view('Admin::pages.happykiddom.view', compact('schedule', 'center'));
 	}
 
 	/**
@@ -65,9 +87,25 @@ class KiddomController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$checkExistCenter = $this->kiddom->checkExistCenterUpdate('center_id', $request->center_id, [$id]);
+		if($checkExistCenter){
+			Notification::error('Center has Schedule already.');
+			return redirect()->back();
+		}
+		$data = [
+			'center_id' => $request->center_id,
+			'schedule' => $request->schedule
+		];
+		$schedule = $this->kiddom->update($id, $data);
+		if(!$schedule){
+			Notification::error('Update Fail.');
+			return redirect()->back();
+		}
+		Notification::success('Update Successful.');
+		return redirect()->route('admin.center.index');
+
 	}
 
 	/**

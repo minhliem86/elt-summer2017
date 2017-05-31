@@ -28,13 +28,17 @@ abstract class BaseRepository implements BaseInterface{
   /*FIND ID*/
   public function find($id, $column=['*'])
   {
-    return $this->model->find($id, $columns);
+    return $this->model->find($id, $column);
   }
 
   /*FIND WHERE*/
   public function findByField($field, $value, $column=['*'])
   {
-    return $this->model->where($field,'=',$value)->get($column);
+    $rs = $this->model->where($field,'=',$value)->get($column);
+    if($rs->count()){
+      return $rs;
+    }
+    return false;
   }
 
   /*UPDATE*/

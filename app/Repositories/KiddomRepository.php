@@ -8,6 +8,16 @@ class KiddomRepository extends BaseRepository{
 
   public function getModel()
   {
-    return KiddomSchedule;
+    return KiddomSchedule::class;
   }
+
+  public function checkExistCenterUpdate($field, $value, $notID=[''])
+  {
+    $rs = $this->model->where($field,'=', $value)->whereNotIn('id',$notID)->get();
+    if($rs->count() >= 1 ){
+      return $rs;
+    }
+    return false;
+  }
+
 }
