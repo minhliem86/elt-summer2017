@@ -3,7 +3,7 @@ namespace App\Repositories;
 
 use Excel;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Client;
 use App\Models\LogCreateUser;
 use Carbon\Carbon as Carbon;
 

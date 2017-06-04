@@ -6,6 +6,6 @@ class LogCreateUser extends Model {
 
 	public $table = "log_create_users";
 
-    protected $fillable = ['']
+    protected $fillable = ['username', 'init_password', 'email', 'name'];
 
 }

@@ -65,8 +65,8 @@ return [
         ],
         'client' => [
             'driver' => 'eloquent',
-            'model' => 'App\Models\Customer',
-            'email' => 'client.emails.password',
+            'model' => 'App\Models\Client',
+            'email' => 'Frontend::emails.password',
         ]
     ],
 

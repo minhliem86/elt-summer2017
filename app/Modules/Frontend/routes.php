@@ -31,6 +31,15 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
 
   Route::get('/photo/{id}',['as'=>'f.getPhotoDetail', 'uses'=>'AlbumController@getPhotoDetail'])->where('id','[0-9]+');
 
+  // LOGIN CLIENT
+  Route::get('/client',['middleware'=>'Checklogined','as'=>'f.getlogin','uses'=>'Auth\AuthController@getLogin']);
+	Route::post('/client',['middleware'=>'Checklogined','as'=>'f.postLogin','uses'=>'Auth\AuthController@postLogin']);
+
+  Route::get('sendEmailReset',['as'=>'f.getSendEmailReset','uses'=>'Auth\PasswordController@getEmail']);
+  Route::post('sendEmailReset',['as'=>'f.postSendEmailReset','uses'=>'Auth\PasswordController@postEmail']);
+  Route::get('resetPassword/{token?}',['as'=>'f.getresetPassword','uses'=>'Auth\PasswordController@getReset']);
+  Route::post('resetPassword',['as'=>'f.postresetPassword','uses'=>'Auth\PasswordController@postReset']);
+
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
 
