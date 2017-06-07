@@ -6,11 +6,19 @@
 </section>
 <section class="content">
 	<div class="box">
-		<div class="container-fluid">
+	    <div class="container-fluid">
 			{!!Form::model($schedule,array('route'=>array('admin.happykiddom.update',$schedule->id),'method'=>'PUT' ,'class'=>'formAdmin form-horizontal'))!!}
+            <div class="form-group">
+                <label for="">Title</label>
+                {!!Form::text('title',old('title'),array('class'=>'form-control'))!!}
+            </div>
       <div class="form-group">
         <label for="">Center</label>
-        {!!Form::select('center_id',$center,old('center_id'),array('class'=>'form-control'))!!}
+        {!!Form::select('center_id',['' => 'Select Center'] + $center,old('center_id'),array('class'=>'form-control'))!!}
+      </div>
+      <div class="form-group">
+        <label for="">Programe</label>
+        {!!Form::select('class_code',['' => 'Select Programe']+$capdo,old('class_code'),array('class'=>'form-control'))!!}
       </div>
 
       <div class="form-group">

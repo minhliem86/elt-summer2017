@@ -15,26 +15,30 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
-	      @if($activity->count() != 0)
+                <div class="box-header">
+	              <div class="pull-right">
+	              	<a href="{!!route('admin.happykiddom.create')!!}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i> Add New</a>
+					<button class="btn btn-danger btn-xs" id="btn-count">Remove data selected</button>
+	              </div>
+	            </div>
+	      @if($schedule->count() != 0)
 				<div class="box-body">
 				  <table id="table-post" class="table table-bordered table-striped">
 				    <thead>
 					    <tr>
 							<th>ID</th>
 							<th data-width="30%">Title</th>
-							<th>Image</th>
 							<th>Action</th>
 						</tr>
 				    </thead>
 				    <tbody>
-					    @foreach($activity as $item)
+					    @foreach($schedule as $item)
 						<tr>
 							<td >{!!$item->id!!}</td>
-							<td><b><a href="{!!route('admin.activity.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
-							<td><img src="{!!$item->img_url!!}" width="100" alt=""></td>
+							<td><b><a href="{!!route('admin.happykiddom.edit',$item->id)!!}">{!!$item->title!!}</a></b></td>
 							<td>
-							<a href="{!!route('admin.activity.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
-							{!!Form::open(array('route'=>array('admin.activity.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
+							<a href="{!!route('admin.happykiddom.edit', array($item->id) )!!}" class="btn btn-info btn-xs"> Edit </a>
+							{!!Form::open(array('route'=>array('admin.happykiddom.destroy',$item->id),'method'=>'DELETE', 'class' => 'inline'))!!}
 							<button class="btn  btn-danger btn-xs remove-btn" type="button" attrid="{!!$item->id!!}" onclick="confirm_remove(this);"> Remove </button>
 							{!!Form::close()!!}
 							</td>

@@ -39,7 +39,8 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 		// $this->middleware('guest', ['except' => 'getLogout']);
-    $this->middleware('client_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
+
+    // $this->middleware('customer_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
 	}
 
 	protected function validator(array $data)

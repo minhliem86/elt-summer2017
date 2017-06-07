@@ -6,6 +6,6 @@ class Client extends Model {
 
 	public $table = 'clients';
 
-  protected $fillable= ['name', 'email', 'username', 'center_id', 'password'];
+  protected $fillable= ['name', 'email', 'username', 'center_id', 'password', 'class_code'];
 
 }

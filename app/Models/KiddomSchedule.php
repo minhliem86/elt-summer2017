@@ -6,7 +6,7 @@ class KiddomSchedule extends Model {
 
 	public $table ="kiddom_schedules";
 
-  protected $fillable = ['schedule', 'center_id'];
+  protected $fillable = ['schedule', 'center_id', 'class_code', 'title'];
 
   public function centers()
   {
