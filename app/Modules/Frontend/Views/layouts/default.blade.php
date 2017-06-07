@@ -11,11 +11,11 @@
   })(window,document,'script','dataLayer','GTM-NNC6V2W');</script>
   <!-- End Google Tag Manager -->
 
-  
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index,follow" /> 
+    <meta name="robots" content="index,follow" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="keywords" content="ILA Anh Văn Hè 2017, Tiếng Anh Hè 2017, Anh Văn Hè, ILA Amazing Summer 2017">
@@ -31,6 +31,7 @@
     <link rel="icon" href="{!!asset('public')!!}/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/font-awesome/css/font-awesome.min.css">
     <link href="{!!asset('public/assets/frontend')!!}/css/style.css" rel="stylesheet">
+    @yield('css')
     <!-- FB Fixel-->
     <!-- Facebook Pixel Code -->
     <script>
@@ -51,7 +52,7 @@
     &noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
-	
+
 	<!-- Facebook Pixel Code -->
 	<script>
 	!function(f,b,e,v,n,t,s)
@@ -62,11 +63,11 @@
 	t.src=v;s=b.getElementsByTagName(e)[0];
 	s.parentNode.insertBefore(t,s)}(window,document,'script',
 	'https://connect.facebook.net/en_US/fbevents.js');
-	 fbq('init', '955386641272538'); 
+	 fbq('init', '955386641272538');
 	fbq('track', 'PageView');
 	</script>
 	<noscript>
-	 <img height="1" width="1" 
+	 <img height="1" width="1"
 	src="https://www.facebook.com/tr?id=955386641272538&ev=PageView
 	&noscript=1"/>
 	</noscript>
@@ -168,7 +169,7 @@
         },
 
       });
-      
+
 
       /*SELECT CENTER*/
       $('select[name="id_center"]').prop('disabled',true);

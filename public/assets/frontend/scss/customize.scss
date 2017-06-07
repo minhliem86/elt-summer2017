@@ -1,15 +1,113 @@
+// LOGIN PAGE
+@font-face {
+  font-family: 'VIE-KievitOT';
+  src: url('../font/VIE-MarkOT-Medium.otf') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$color-blue : #000565;
+$color-white : #fff;
+$color-yellow : #FFDE17;
+$color-orange : #F26522;
+$color-light-orange: #F7941E;
+$color-light-blue:#27A9E1;
+
+$font-cabin: 'Cabin Condensed',sans-serif;
+$font-montserrat: 'Montserrat', sans-serif;
+$font-VIE: 'VIE-KievitOT', sans-serif;
+
+$magrin-0: 0;
+$padding-0: 0;
+
+%transition{
+     -webkit-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+}
+@mixin media($min-width, $max-width){
+  @media screen and (min-width:$min-width) and (max-width: $max-width){
+    @content;
+  }
+}
+@mixin transition($trans...) {
+  transition:$trans;
+  -webkit-transition:$trans;
+  -moz-transition:$trans;
+}
 p{margin:0; padding:0;}
+
+.login-section{
+    padding:12rem 0;
+    background:white;
+    .wrap-login{
+        text-align:center;
+        h2{
+            margin: 0;
+            margin-bottom:1.5rem;
+            font-size:2.2rem;
+            font-family: $font-montserrat;
+            color: $color-blue;;
+            text-align: center;
+        }
+        .wrap-form{
+            max-width:500px;
+            margin:0 auto;
+            .btn-submit{
+                width:100%;
+                height:auto;
+            }
+        }
+    }
+}
+
+// EVENT SCHEDULE
+.event-section{
+    background:white;
+    padding: 5rem 0 7rem;
+    h2{
+        margin: 0;
+        margin-bottom:1.5rem;
+        font-size:2.2rem;
+        font-family: $font-montserrat;
+        color: $color-blue;;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
 table.table-event{
+    border:1px solid $color-blue;
+    tr > th, tr > td{
+        vertical-align: middle;
+    }
     thead{
         th{
             text-transform: uppercase;
             font-size:1.6rem;
-            background:#F89E22;
+            background:$color-blue;
             color:white;
             border:1px solid white;
         }
     }
     tbody{
-        tr:
+        tr:nth-of-type(odd){
+            background:#fff122;
+        }
+        tr:nth-of-type(even){
+            background:#efa854;
+        }
+        tr {
+            td{
+                p{
+                    color:$color-blue;
+                    font-size:1.4rem;
+                    margin-bottom:5px;
+                }
+            }
+            & td:first-child{
+                p{
+                    font-weight: 600;
+                }
+            }
+        }
     }
 }

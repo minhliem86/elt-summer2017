@@ -39,7 +39,7 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 		// $this->middleware('guest', ['except' => 'getLogout']);
-    $this->middleware('customer_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
+    // $this->middleware('customer_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
 	}
 
 	protected function validator(array $data)
@@ -60,7 +60,7 @@ class AuthController extends Controller {
 	 */
 	public function getLogin()
 	{
-		return view('Frontend::users.customer_login');
+		return view('Frontend::auth.login');
 	}
 
 	/**

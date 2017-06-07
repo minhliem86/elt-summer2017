@@ -34,7 +34,8 @@ class KiddomController extends Controller {
 	}
 	public function index()
 	{
-
+		$schedule = $this->kiddom->all([ 'id', 'title']);
+		return view('Admin::pages.happykiddom.index', compact('schedule'));
 	}
 
 	/**
@@ -61,9 +62,9 @@ class KiddomController extends Controller {
 			Notification::error('Center has Schedule already.');
 			return redirect()->back();
 		}
-		$this->kiddom->create(['center_id'=>$request->center_id, 'class_code' => $request->class_code, 'schedule' => $request->schedule]);
+		$this->kiddom->create(['center_id'=>$request->center_id, 'class_code' => $request->class_code, 'schedule' => $request->schedule, 'title' => $request->title]);
 		Notification::success('Schedule is Created.');
-		return redirect()->route('admin.center.index');
+		return redirect()->route('admin.happykiddom.index');
 	}
 
 	/**
@@ -107,7 +108,8 @@ class KiddomController extends Controller {
 		$data = [
 			'center_id' => $request->center_id,
 			'class_code' => $request->class_code,
-			'schedule' => $request->schedule
+			'schedule' => $request->schedule,
+			'title' => $request->title
 		];
 		$schedule = $this->kiddom->update($id, $data);
 		if(!$schedule){
@@ -115,7 +117,7 @@ class KiddomController extends Controller {
 			return redirect()->back();
 		}
 		Notification::success('Update Successful.');
-		return redirect()->route('admin.center.index');
+		return redirect()->route('admin.happykiddom.index');
 
 	}
 

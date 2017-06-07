@@ -9,13 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="0" class="table-event table table-striped">
+    <table border="1" class="table-event table ">
         <thead>
             <tr>
-                <th>Hoạt Động</th>
-                <th>Ngày & Giờ</th>
-                <th>Buổi</th>
-                <th>Địa Điểm</th>
+                <th width="30%">Hoạt Động</th>
+                <th width="15%">Ngày diễn ra hoạt động</th>
+                <th width="15%">Buổi</th>
+                <th width="30%">Địa Điểm</th>
             </tr>
         </thead>
         <tbody>

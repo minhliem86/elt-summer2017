@@ -11,7 +11,7 @@ class KiddomRepository extends BaseRepository{
     return KiddomSchedule::class;
   }
 
-  public function checkExistCenterCreate($field, $value, $field2, $value2 ,$colum=['*'])
+  public function checkExistCenterCreate($field, $value, $field2, $value2 ,$column=['*'])
   {
       $rs = $this->model->where($field,'=',$value)->where($field2, '=', $value2)->get($column);
       if($rs->count()){

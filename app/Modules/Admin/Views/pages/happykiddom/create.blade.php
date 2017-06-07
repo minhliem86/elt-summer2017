@@ -9,7 +9,12 @@
 	<div class="box">
 		<div class="container-fluid">
 			{!!Form::open(array('route'=>array('admin.happykiddom.store'),'class'=>'formAdmin form-horizontal','files'=>true))!!}
-				<div class="form-group">
+                <div class="form-group">
+                    <label for="">Title</label>
+                    {!!Form::text('title',old('title'),array('class'=>'form-control'))!!}
+                </div>
+
+                <div class="form-group">
 					<label for="">Center</label>
 					{!!Form::select('center_id',['' => 'Select Center']+$center,old('center_id'),array('class'=>'form-control'))!!}
 				</div>
