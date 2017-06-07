@@ -30,6 +30,8 @@ class Kernel extends HttpKernel {
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
 		'admin' => 'App\Http\Middleware\CheckLoginMiddleware',
 		'Checklogined' => 'App\Http\Middleware\CheckloginedMiddleware',
+		'client_checklogin' => 'App\Modules\Frontend\Middlewares\CheckloginMiddleware',
+		'client_logined' => 'App\Modules\Frontend\Middlewares\ClientLogined',
 		'getProperty' => 'App\Http\Middleware\GetCampainMiddleware'
 	];
 

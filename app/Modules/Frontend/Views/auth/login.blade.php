@@ -7,7 +7,7 @@
   <title>Customer Login</title>
 </head>
 <body>
-  {!!Form::open(['route'=>['f.postLoginCustomer'],'class'=>'formLogin' ])!!}
+  {!!Form::open(['route'=>['f.postLogin'],'class'=>'formLogin' ])!!}
     <div class="form-group">
       {!!Form::text('username',old('username'), ['class'=>'forn-control'] )!!}
     </div>

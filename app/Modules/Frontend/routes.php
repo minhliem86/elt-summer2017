@@ -40,6 +40,9 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   Route::get('resetPassword/{token?}',['as'=>'f.getresetPassword','uses'=>'Auth\PasswordController@getReset']);
   Route::post('resetPassword',['as'=>'f.postresetPassword','uses'=>'Auth\PasswordController@postReset']);
 
+  // EVENT
+  Route::get('/lich-hoc', ['middleware'=>'client_checklogin', 'as'=>'f.lichhoc', 'uses'=>'ScheduleController@index']);
+
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
 
