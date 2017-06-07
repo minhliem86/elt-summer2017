@@ -11,9 +11,18 @@ class KiddomRepository extends BaseRepository{
     return KiddomSchedule::class;
   }
 
-  public function checkExistCenterUpdate($field, $value, $notID=[''])
+  public function checkExistCenterCreate($field, $value, $field2, $value2 ,$colum=['*'])
   {
-    $rs = $this->model->where($field,'=', $value)->whereNotIn('id',$notID)->get();
+      $rs = $this->model->where($field,'=',$value)->where($field2, '=', $value2)->get($column);
+      if($rs->count()){
+        return $rs;
+      }
+      return false;
+  }
+
+  public function checkExistCenterUpdate($field, $value, $field2, $value2 , $notID=[''])
+  {
+    $rs = $this->model->where($field,'=', $value)->where($field2, '=', $value2)->whereNotIn('id',$notID)->get();
     if($rs->count() >= 1 ){
       return $rs;
     }

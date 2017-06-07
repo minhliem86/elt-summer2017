@@ -43,4 +43,8 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);
 
+  Route::get('test', function(){
+     return view('Frontend::events.HCMC1') ;
+  });
+
 });
