@@ -129,7 +129,24 @@ class KiddomController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$this->kiddom->delete($id);
+		Notification::success('Delete Successful.');
+		return redirect()->route('admin.happykiddom.index');
+	}
+
+	public function deleteAll(Request $request)
+	{
+		if(!$request->ajax()){
+				return view('404');
+		}else{
+				$data = $request->arr;
+				if($data){
+						$this->kiddom->deleteAll($data);
+						return response()->json(array('msg'=>'ok'));
+				}else{
+						return response()->json(array('msg'=>'error'));
+				}
+		}
 	}
 
 }

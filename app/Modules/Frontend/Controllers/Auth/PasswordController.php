@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Ollieread\Multiauth\Passwords\PasswordBroker;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Validator;
 use Auth;
@@ -43,7 +44,7 @@ class PasswordController extends Controller {
 		// $this->passwords = $passwords;
 		$this->passwords = Password::client();
 
-		$this->middleware('customer_logined');
+		$this->middleware('client_logined');
 	}
 
 	public function getEmail()

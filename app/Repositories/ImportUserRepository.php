@@ -25,43 +25,63 @@ class ImportUserRepository{
       $last_id = $last_item->id;
     }
     $excel = Excel::selectSheets('Sheet1')->load($file, function($reader){})->get();
-    $data_log = [];
-    $data = [];
+      // dd($excel);
+    // $data_log = [];
+    // $data = [];
     if(!$excel->isEmpty() && $excel->count()){
-      $chu_excel = $excel->chunk(2);
+      $chu_excel = $excel->chunk(50);
       foreach($chu_excel as $item){
         foreach($item as $data_item){
           $username = \Unicodenospace::make($data_item->name).$data_item->dob;
           $password = 'abc123456';
           $email =  '' ;
           $name = $data_item->name;
-          $tour_id = round($data_item->code);
-          $obj_log = [
-            'username' => $username,
-            'init_password' => $password,
-            'email' => $email,
-            'name' => $name,
-          ];
-          array_push($data_log, $obj_log);
+          $center_id = round($data_item->center);
+          $class_code = $data_item->class_code;
+          // $obj_log = [
+          //   'username' => $username,
+          //   'init_password' => $password,
+          //   'email' => $email,
+          //   'name' => $name,
+          // ];
+          LogCreateUser::create(
+            [
+              'username' => $username,
+              'init_password' => $password,
+              'email' => $email,
+              'name' => $name,
+            ]
+          );
 
-          $data []= [
+          Client::create([
             'username'=> $username,
             'password' => bcrypt($password),
             'email' => $email,
             'name' => $name,
-            'tour_id' => $tour_id
-          ];
+            'center_id' => $center_id,
+            'class_code' => $class_code,
+          ]);
+
+          // array_push($data_log, $obj_log);
+
+          // $data []= [
+          //   'username'=> $username,
+          //   'password' => bcrypt($password),
+          //   'email' => $email,
+          //   'name' => $name,
+          //   'tour_id' => $tour_id
+          // ];
         }
       }
-      for($i = 0 ; $i<count($data); $i++){
-        LogCreateUser::create($data_log[$i]);
-        Customer::create($data[$i]);
-      }
+      // for($i = 0 ; $i<count($data); $i++){
+      //   LogCreateUser::create($data_log[$i]);
+      //   Customer::create($data[$i]);
+      // }
       if(isset($last_id)){
         $list_export = LogCreateUser::select('name', 'username', 'init_password')->where('id', '>', $last_id )->get();
         $time = Carbon::now();
         Excel::create('account_'.$time, function($excel) use($list_export){
-          $excel->sheet('Sheet 1', function($sheet) use ($list_export){
+          $excel->sheet('Sheet1', function($sheet) use ($list_export){
             $sheet->cells('A1:C1', function($cell){
               $cell->setBackground('#76b7bf');
               $cell->setFontSize(14);
@@ -73,8 +93,9 @@ class ImportUserRepository{
       }
       return "done";
     }else{
-      return "File rỗng";
+      return false;
     }
+    return true;
   }
 
 

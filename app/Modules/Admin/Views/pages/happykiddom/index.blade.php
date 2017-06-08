@@ -94,7 +94,7 @@
 				alertify.confirm('You can not undo this action. Are you sure ?', function(e){
 					if(e){
 						$.ajax({
-							'url':"{!!route('admin.activity.deleteall')!!}",
+							'url':"{!!route('admin.happykiddom.deleteall')!!}",
 							'data' : {arr: data,_token:$('meta[name="csrf-token"]').attr('content')},
 							'type': "POST",
 							'success':function(result){

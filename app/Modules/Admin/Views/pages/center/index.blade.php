@@ -15,11 +15,6 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
-				<div class="box-header">
-					<div class="pull-right">
-						<a href="{!!route('admin.happykiddom.create')!!}" class="btn btn-info btn-xs"> Add Schedule </a>
-					</div>
-				</div>
 				<!-- /.box-header -->
         @if($center->count() != 0)
 				<div class="box-body">
@@ -28,7 +23,6 @@
 					    <tr>
 							<th>ID</th>
 							<th data-width="60%">Center Name</th>
-							<th>Schedule</th>
 						</tr>
 				    </thead>
 				    <tbody>
@@ -36,13 +30,7 @@
 						<tr>
 							<td >{!!$item->id!!}</td>
 							<td><b>{!! $item->name_vi!!}</b></td>
-							<td>
 
-							@if(count($item->kiddomschedules))
-								<a href="{!!route('admin.happykiddom.edit',$item->kiddomschedules->id)!!}" class="btn btn-info btn-xs"> Edit Schedule </a>
-							@endif
-
-							</td>
 						</tr>
 						@endforeach
 				    </tbody>

@@ -1,14 +1,14 @@
 <?php
 
 Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],function(){
-	Route::get('/role',function(){
-		$role = new App\Models\Role;
-		$role->name = 'Admin';
-		$role->display_name = 'admin';
-		$role->description = " Can login in CMS";
-		$role->save();
-		return "Role create";
-	});
+	// Route::get('/role',function(){
+	// 	$role = new App\Models\Role;
+	// 	$role->name = 'Admin';
+	// 	$role->display_name = 'admin';
+	// 	$role->description = " Can login in CMS";
+	// 	$role->save();
+	// 	return "Role create";
+	// });
 	Route::get('login',['middleware'=>'Checklogined','as'=>'admin.getlogin','uses'=>'Auth\AuthController@getLogin']);
 	Route::post('login',['middleware'=>'Checklogined','as'=>'admin.postLogin','uses'=>'Auth\AuthController@postLogin']);
 
@@ -49,6 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Modules\Admin\Controllers'],fu
 		Route::resource('center','CenterController');
 
 		/*HAPPY KIDDOM SCHEDULE*/
+		Route::post('/happykiddom/deleteall',['as'=>'admin.happykiddom.deleteall', 'uses'=>'KiddomController@deleteAll']);
 		Route::resource('/happykiddom','KiddomController');
 
 		/*SCHEDULE*/

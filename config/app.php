@@ -153,6 +153,7 @@ return [
 		'Intervention\Image\ImageServiceProvider',
 		'Codingo\Dropzoner\DropzonerServiceProvider',
 		'App\Providers\ComposerServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider'
 	],
 
 	/*
@@ -205,7 +206,8 @@ return [
 		'Str' => 'Illuminate\Support\Str',
 		'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 		'Notification' => 'Krucas\Notification\Facades\Notification',
-		'Image' => 'Intervention\Image\Facades\Image'
+		'Image' => 'Intervention\Image\Facades\Image',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 
