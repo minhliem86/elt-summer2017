@@ -186,6 +186,19 @@
           }
         })
       })
+
+    //   SUB MENU
+    $('ul li.parent').click(function(){
+        $(this).children('.wrap-submenu').slideToggle();
+        // if($(this).children('.wrap-submenu').is(':hidden')){
+        //     $(this).children('.wrap-submenu').find('li').show();
+        //     $(this).children('.wrap-submenu').slideDown();
+        //
+        // }else{
+        //     $(this).children('.wrap-submenu').find('li').hide();
+        //     $(this).children('.wrap-submenu').slideUp();
+        // }
+    })
     })
   </script>
 

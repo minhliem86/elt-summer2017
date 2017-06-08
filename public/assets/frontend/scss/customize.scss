@@ -36,6 +36,65 @@ $padding-0: 0;
 }
 p{margin:0; padding:0;}
 
+// SUB MENU
+.navbar-nav{
+    li{
+        &.parent{
+            color: #F26522;
+            margin: 0;
+            padding: 0 8px;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 35px;
+            font-size: 12px;
+            font-family: "Montserrat",sans-serif;
+            cursor: pointer;
+            &:hover{
+                color:white;
+                background: $color-orange;
+            }
+        }
+        .wrap-submenu{
+            position: absolute;
+            padding-top:5px;
+            right:0;
+            top:100%;
+            display:none;
+        }
+        ul.sub-nav{
+            width:150px;
+            padding:0;
+            list-style:none;
+            text-align:right;
+            background:$color-orange;
+            padding:6px;
+            border-radius:7px;
+            li{
+                text-transform: capitalize;
+                margin-bottom:5px;
+                a{
+                    font-size:1.3rem;
+                    display: block;
+                    color:white;
+                }
+                &:hover{
+                    a{
+                        text-decoration: none;
+                        // background:none;
+                        // color:$color-orange;
+                    }
+                }
+            }
+        }
+        &:hover{
+            ul > li a {
+                background:none;
+            }
+        }
+    }
+}
+
+// LOGIN PAGE
 .login-section{
     padding:12rem 0;
     background:white;

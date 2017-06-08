@@ -32,23 +32,25 @@ Route::group(['middleware'=>['getProperty'],'namespace' => 'App\Modules\Frontend
   Route::get('/photo/{id}',['as'=>'f.getPhotoDetail', 'uses'=>'AlbumController@getPhotoDetail'])->where('id','[0-9]+');
 
   // LOGIN CLIENT
-  Route::get('/client',['as'=>'f.getlogin','uses'=>'Auth\AuthController@getLogin']);
-	Route::post('/client',['as'=>'f.postLogin','uses'=>'Auth\AuthController@postLogin']);
+  Route::get('/dang-nhap',['as'=>'f.getlogin','uses'=>'Auth\AuthController@getLogin']);
+	Route::post('/dang-nhap',['as'=>'f.postLogin','uses'=>'Auth\AuthController@postLogin']);
 
-  Route::get('/doi-mat-khau',['as'=>'f.getChangpass','uses'=>'Auth\AuthController@getChangePass']);
-  Route::post('/doi-mat-khau',['as'=>'f.postChangpass','uses'=>'Auth\AuthController@postChangePass']);
+  Route::get('/doi-mat-khau',['middleware' => 'client_checklogin' ,'as'=>'f.getChangpass','uses'=>'Auth\AuthController@getChangePass']);
+  Route::post('/doi-mat-khau',['middleware' => 'client_checklogin', 'as'=>'f.postChangpass','uses'=>'Auth\AuthController@postChangePass']);
 
   Route::get('sendEmailReset',['as'=>'f.getSendEmailReset','uses'=>'Auth\PasswordController@getEmail']);
   Route::post('sendEmailReset',['as'=>'f.postSendEmailReset','uses'=>'Auth\PasswordController@postEmail']);
   Route::get('resetPassword/{token?}',['as'=>'f.getresetPassword','uses'=>'Auth\PasswordController@getReset']);
   Route::post('resetPassword',['as'=>'f.postresetPassword','uses'=>'Auth\PasswordController@postReset']);
 
+  Route::get('/dang-xuat', ['as' => 'f.getLogout', 'uses' => 'Auth\AuthController@getLogout']);
+
   // IMPORT USER
   Route::get('/import-user', ['as'=>'f.import-user', 'uses' => 'ImportController@getImport']);
   Route::post('/import-user', ['as'=>'f.postimport-user', 'uses' => 'ImportController@postImport']);
 
   // EVENT
-  Route::get('/lich-hoc', ['middleware'=>'client_checklogin', 'as'=>'f.lichhoc', 'uses'=>'ScheduleController@index']);
+  Route::get('/lich-hoc', ['middleware' => 'client_checklogin', 'as'=>'f.lichhoc', 'uses'=>'ScheduleController@index']);
 
   /*THANKS*/
   Route::get('/thanks',['as'=>'f.getThanks','uses'=>'ContactController@getThanks']);

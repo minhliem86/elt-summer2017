@@ -4,6 +4,8 @@
 
 @section('meta-share')
   <meta property="og:image" content="{!!$img->img_url!!}" />
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="315">
 @stop
 
 @section('script')
@@ -24,7 +26,6 @@
                 <div class="stage near-cloud" id="near-cloud"></div>
                 <div class="title-header">
                     <h1>CHƯƠNG TRÌNH ANH VĂN HÈ 2017</h1>
-                    <p class="text-title">Nhận Ngay Ưu Đãi 3,000,000 VNĐ Trước 31/05</p>
                     <div class="wrap-btn">
                       <a href="{!!route('f.getContact')!!}" class="btn btn-white">Đăng ký ngay</a>
                     </div>

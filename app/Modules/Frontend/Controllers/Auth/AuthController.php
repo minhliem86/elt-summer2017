@@ -10,7 +10,6 @@ use Auth;
 use Session;
 use App\Models\Client;
 use Illuminate\Http\Request;
-use App\Models\KiddomSchedule;
 
 class AuthController extends Controller {
 
@@ -28,40 +27,31 @@ class AuthController extends Controller {
 	use AuthenticatesAndRegistersUsers;
 
 
-	protected $validator;
-	protected $loginPath = 'admin/login';
-	protected $redirectAfterLogout = "admin/login";
+	// protected $validator;
+	// protected $redirectPath = 'admin/dashboard';
+	// protected $loginPath = 'admin/login';
+	// protected $redirectAfterLogout = "admin/login";
 
 
-	public function __construct(Registrar $registrar)
+	public function __construct( Registrar $registrar)
 	{
 		// $this->auth = $auth;
 		$this->auth = Auth::client();
 		$this->registrar = $registrar;
 
 		// $this->middleware('guest', ['except' => 'getLogout']);
-
-    // $this->middleware('customer_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
+    $this->middleware('client_logined',['except' => ['getLogout','getChangePass', 'postChangePass']]);
 	}
 
 	protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-						'username' => 'required',
-//           'password' => 'required|min:6|confirmed',
-						'password' => 'required|min:3|confirmed',
-						'password_confirmation' => 'required|min:3',
+			'name' => 'required|max:255',
+			'username' => 'required',
+			'password' => 'required|min:3|confirmed',
+			'password_confirmation' => 'required|min:3',
         ]);
     }
-
-		protected function CreateValidator(array $data)
-			{
-					return Validator::make($data, [
-							'username' => 'required',
-							'password' => 'required|min:3|confirmed',
-					]);
-			}
 
 	/**
 	 * Show the application login form.
@@ -86,27 +76,25 @@ class AuthController extends Controller {
 			'username' => 'required', 'password' => 'required',
 		]);
 
-
 		$credentials = $request->only('username', 'password');
-		// dd($credentials);
 		// $filter = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 		// $request->merge([$filter => $request->input('login') ]);
 		// $credentials = $request->only($filter, 'password');
-		if ($this->auth->attempt($credentials))
+		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
 			// if($this->auth->get()->super){
 			// 	return redirect()->route('f.superAlbum');
 			// }
-			$center_id = $this->auth->get()->center_id;
-			$class_code = $this->auth->get()->class_code;
+			// $tour_id = $this->auth->get()->tour_id;
 			// if($this->auth->get()->change_pass){
 			// 	return redirect()->route('f.album');
 			// }else{
 			// 	Session::flash('first_time', 'Lần đầu');
 			// 	return redirect()->route('f.getChangePass');
 			// }
-			// $schedule = KiddomSchedule::where('center_id', $center_id)->where('class_code', $class_code)->first();
-			return view('Frontend::kiddom.event', compact('schedule'));
+			// return redirect()->route('f.album');
+			return redirect()->route('f.lichhoc');
+
 		}
 
 		return redirect()->back()
@@ -134,7 +122,8 @@ class AuthController extends Controller {
 	public function getLogout()
 	{
 		$this->auth->logout();
-		return redirect()->route('f.getLoginCustomer');
+		\Session::flash('success', 'Đăng xuất thành công.');
+		return redirect()->route('f.getlogin');
 		// return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 
@@ -182,12 +171,12 @@ class AuthController extends Controller {
 
     $user = $this->auth->get();
     $user->password=\Hash::make($request->input('new_password'));
-    $user->change_pass = 1;
+    // $user->change_pass = 1;
     $user->save();
 
-    \Session::flash('success', 'Bạn đã đổi mật khẩu thành công. Vui lòng đăng nhập lại với mật khẩu mới.');
+    \Session::flash('success', 'Bạn đã đổi mật khẩu thành công.<br/> Vui lòng đăng nhập lại với mật khẩu mới.');
 
-		$this->getLogout();
+	$this->auth->logout();
     return redirect()->route('f.getlogin');
   }
 

@@ -12,8 +12,8 @@ class ClientLogined {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
- protected $auth;
- 
+ 	protected $auth;
+
 	public function __construct()
 	{
 		$this->auth = Auth::client();
@@ -22,7 +22,7 @@ class ClientLogined {
 	public function handle($request, Closure $next)
 	{
 		if($this->auth->check()){
-			return redirect()->back();
+			return redirect('/lich-hoc');
 		}
 		return $next($request);
 	}
