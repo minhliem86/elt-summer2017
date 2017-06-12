@@ -6,6 +6,10 @@
   <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/amazing-race-fb.png" />
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
+@stop
+
 @section('script')
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal.css"/>
 <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/remodal/remodal-default-theme.css">

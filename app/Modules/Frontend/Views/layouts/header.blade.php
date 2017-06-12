@@ -19,8 +19,13 @@
                       <li class="{!!\Active::setActive(1,'amazing-race','current')!!}" ><a href="{!!route('f.getAmazing')!!}" >Amazing Race</a></li>
                       <li class="{!!\Active::setActive(1,'trai-nghiem-mua-he','current')!!}"><a href="{!!route('f.getTestimonial')!!}">Trải Nghiệm Mùa Hè</a></li>
                       <li class="{!!\Active::setActive(1,'thu-vien-hinh-anh','current')!!}"><a href="{!!route('f.getAlbum')!!}">Thư viện hình ảnh</a></li>
-                      <li class="{!!\Active::setActive(1,'lich-hoc','current')!!}"><a href="{!!route('f.getlogin')!!}">Lịch Hoạt Động</a></li>
                       <li class="{!!\Active::setActive(1,'lien-he','current')!!}" ><a href="{!!route('f.getContact')!!}">Liên Hệ</a></li>
+                      @if(Auth::client()->check())
+                        <li class="{!!\Active::setActive(1,'lich-hoc','current')!!}"><a href="{!!route('f.lichhoc')!!}">Lịch hoạt động</a></li>
+                      @else
+                        <li class="{!!\Active::setActive(1,'lich-hoc','current')!!}"><a href="{!!route('f.getlogin')!!}">Đăng nhập</a></li>
+                      @endif
+
                       @if(Auth::client()->check())
                         <li class="{!!\Active::setActive(1,'doi-mat-khau','current')!!} parent">Profiles
                             <div class="wrap-submenu">

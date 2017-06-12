@@ -8,6 +8,10 @@
   <meta property="og:image:height" content="315">
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
+@stop
+
 @section('script')
 @stop
 

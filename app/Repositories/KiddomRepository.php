@@ -8,7 +8,7 @@ class KiddomRepository extends BaseRepository{
 
   public function getModel()
   {
-    return KiddomSchedule::class;
+    return get_class(new KiddomSchedule);
   }
 
   public function checkExistCenterCreate($field, $value, $field2, $value2 ,$column=['*'])

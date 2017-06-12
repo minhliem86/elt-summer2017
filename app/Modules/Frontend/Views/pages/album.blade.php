@@ -6,6 +6,10 @@
   <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/amazing-race-fb.png" />
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
+@stop
+
 @section('script')
   <!--SWIPER-->
   <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/js/swiper/css/swiper.min.css">

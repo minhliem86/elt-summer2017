@@ -6,6 +6,9 @@
 <meta property="og:image" content="{!!asset('public/assets/frontend')!!}/images/fb-thumb/FBshare01.png" />
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
+@stop
 @section('content')
 <div class="container hidden-sm hidden-xs">
   <div class="row">

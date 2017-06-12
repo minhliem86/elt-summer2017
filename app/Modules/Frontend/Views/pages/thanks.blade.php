@@ -2,6 +2,10 @@
 
 @section('title','Chương trình Anh Văn Hè 2017 - Thank You')
 
+@section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
+@stop
+
 @section('content')
 <div class="container">
   <div class="row">

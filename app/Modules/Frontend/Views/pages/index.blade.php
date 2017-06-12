@@ -3,6 +3,7 @@
 @section('title','Chương trình Anh Văn Hè 2017')
 
 @section('css')
+    <link rel="stylesheet" href="{!!asset('public/assets/frontend')!!}/css/customize.min.css">
 @stop
 
 

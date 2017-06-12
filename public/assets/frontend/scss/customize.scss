@@ -161,6 +161,16 @@ table.table-event{
                     font-size:1.4rem;
                     margin-bottom:5px;
                 }
+                .bold{
+                    font-weight: 600;
+                }
+                span.block{
+                    margin-bottom:5px;
+                }
+                .small{
+                    font-style: italic;
+                    font-size:12px;
+                }
             }
             & td:first-child{
                 p{

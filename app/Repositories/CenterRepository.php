@@ -2,6 +2,7 @@
 namespace App\Repositories;
 use App\Repositories\Eloquent\BaseRepository;
 use App\Models\Center;
+
 class CenterRepository extends BaseRepository
 {
   // protected $center;
@@ -11,7 +12,7 @@ class CenterRepository extends BaseRepository
   // }
   public function getModel()
   {
-    return Center::class;
+    return get_class(new Center);
   }
   public function listCenter($key, $value)
   {
