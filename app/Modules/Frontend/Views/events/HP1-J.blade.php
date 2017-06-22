@@ -14,20 +14,6 @@
                 </td>
                 <td>
                     <p>14-06-2017</p>
-                </td>
-                <td>
-                    <p>Buổi chiều</p>
-                </td>
-                <td>
-                    <p>Vui lòng liên hệ trung tâm ILA để nhận được thông tin chính xác.</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <p>- YOGA</p>
-                </td>
-                <td>
                     <p>16-06-2017</p>
                 </td>
                 <td>
@@ -44,6 +30,7 @@
                 </td>
                 <td>
                     <p>20-06-2017</p>
+                    <p>27-06-2017</p>
                 </td>
                 <td>
                     <p>Buổi chiều</p>
@@ -59,6 +46,7 @@
                 </td>
                 <td>
                     <p>23-06-2017</p>
+                    <p>28-06-2017</p>
                 </td>
                 <td>
                     <p>Buổi chiều</p>
@@ -80,38 +68,6 @@
                 </td>
                 <td>
                     <p>Làng cổ Kẻ Giai</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <p>- BASKETBALL</p>
-
-                </td>
-                <td>
-                    <p>27-06-2017</p>
-                </td>
-                <td>
-                    <p>Buổi chiều</p>
-                </td>
-                <td>
-                    <p>Vui lòng liên hệ trung tâm ILA để nhận được thông tin chính xác.</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <p>- DANCE</p>
-
-                </td>
-                <td>
-                    <p>28-06-2017</p>
-                </td>
-                <td>
-                    <p>Buổi chiều</p>
-                </td>
-                <td>
-                    <p>Vui lòng liên hệ trung tâm ILA để nhận được thông tin chính xác.</p>
                 </td>
             </tr>
 

@@ -30,7 +30,7 @@
                         <li class="{!!\Active::setActive(1,'doi-mat-khau','current')!!} parent">Profiles
                             <div class="wrap-submenu">
                                 <ul class="sub-nav">
-                                    <li><a href="{!!route('f.getChangpass')!!}">Đổi mật khẩu</a></li>
+                                    {{-- <li><a href="{!!route('f.getChangpass')!!}">Đổi mật khẩu</a></li> --}}
                                     <li><a href="{!!route('f.getLogout')!!}">Đăng xuất</a></li>
                                 </ul>
                             </div>
